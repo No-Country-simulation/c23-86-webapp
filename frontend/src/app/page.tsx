@@ -1,4 +1,5 @@
 
+
 export default function Home() {
   return (
     <div>
@@ -6,4 +7,6 @@ export default function Home() {
     <p>Bienvenido al dashboard principal.</p>
   </div>
   );
+
+
 }
