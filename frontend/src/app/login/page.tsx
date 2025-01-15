@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import LinkComponent from "../components/Link";
 
 const Login = () => {
+
 	const [email, setEmail] = useState("");
 	const [emailError, setEmailError] = useState<string | null>(null);
 
@@ -68,3 +69,4 @@ const Login = () => {
 };
 
 export default Login;
+
