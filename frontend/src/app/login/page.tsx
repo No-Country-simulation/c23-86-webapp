@@ -1,14 +1,16 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import Input from "@/app/components/Input";
+import Button from "../components/Button";
+import LinkComponent from "../components/Link";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
 	const [emailError, setEmailError] = useState<string | null>(null);
 
 	const [password, setPassword] = useState("");
-const [passwordError, setPasswordError] = useState<string | null>(null);
+	const [passwordError, setPasswordError] = useState<string | null>(null);
 
 	// Validación del correo electrónico
 	const validateEmail = (value: string) => {
@@ -26,12 +28,16 @@ const [passwordError, setPasswordError] = useState<string | null>(null);
 	const validatePassword = (value: string) => {
 		if (!value) {
 			setPasswordError("El campo no puede estar vacío.");
-		} else if (value.length < 6) {
-			setPasswordError("La contraseña debe tener al menos 6 caracteres.");
+		} else if (value.length < 8) {
+			setPasswordError("La contraseña debe tener al menos 8 caracteres.");
 		} else {
 			setPasswordError(null);
 		}
 		setPassword(value);
+	};
+
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
 	};
 
 	return (
@@ -51,10 +57,12 @@ const [passwordError, setPasswordError] = useState<string | null>(null);
 				cambio={validatePassword}
 				inputType='password'
 			/>
-
-			<button type='submit' disabled={!!emailError || !!passwordError}>
-				Enviar
-			</button>
+			<LinkComponent nombre='He olvidado la contraseña' redireccion='/regis'></LinkComponent>
+			<Button
+				type='submit'
+				disableOptions={!!emailError || !!passwordError}
+				buttonName='Enviar'
+			/>
 		</form>
 	);
 };
