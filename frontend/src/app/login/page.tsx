@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Input from "@/app/components/Input";
+import Button from "../components/Button";
+import LinkComponent from "../components/Link";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -34,6 +36,10 @@ const Login = () => {
 		setPassword(value);
 	};
 
+	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+	};
+
 	return (
 		<form>
 			<Input
@@ -51,10 +57,12 @@ const Login = () => {
 				cambio={validatePassword}
 				inputType='password'
 			/>
-
-			<button type='submit' disabled={!!emailError || !!passwordError}>
-				Enviar
-			</button>
+			<LinkComponent nombre='He olvidado la contraseña' redireccion='/regis'></LinkComponent>
+			<Button
+				type='submit'
+				disableOptions={!!emailError || !!passwordError}
+				buttonName='Enviar'
+			/>
 		</form>
 	);
 };
