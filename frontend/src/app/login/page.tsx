@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import Input from "@/app/components/Input";
@@ -8,7 +8,7 @@ const Login = () => {
 	const [emailError, setEmailError] = useState<string | null>(null);
 
 	const [password, setPassword] = useState("");
-const [passwordError, setPasswordError] = useState<string | null>(null);
+	const [passwordError, setPasswordError] = useState<string | null>(null);
 
 	// Validación del correo electrónico
 	const validateEmail = (value: string) => {
@@ -26,8 +26,8 @@ const [passwordError, setPasswordError] = useState<string | null>(null);
 	const validatePassword = (value: string) => {
 		if (!value) {
 			setPasswordError("El campo no puede estar vacío.");
-		} else if (value.length < 6) {
-			setPasswordError("La contraseña debe tener al menos 6 caracteres.");
+		} else if (value.length < 8) {
+			setPasswordError("La contraseña debe tener al menos 8 caracteres.");
 		} else {
 			setPasswordError(null);
 		}
