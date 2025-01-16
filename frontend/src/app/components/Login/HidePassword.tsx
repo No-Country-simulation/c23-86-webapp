@@ -3,8 +3,8 @@ import React from "react";
 const HidePassword = () => {
 	return (
 		<svg
-			width='100%'
-			height='100%'
+			width='24px'
+			height='24px'
 			viewBox='0 0 64 64'
 			version='1.1'
 			xmlns='http://www.w3.org/2000/svg'
