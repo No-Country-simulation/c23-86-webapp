@@ -3,5 +3,5 @@ export type ButtonProps = {
 	type: "submit" | "reset" | "button";
 	disableOptions: boolean;
     handler?: MouseEventHandler<HTMLButtonElement>;
-    buttonName: string
+    buttonName: string|React.ReactNode
 }

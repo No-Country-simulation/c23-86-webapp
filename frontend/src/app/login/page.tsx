@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import Input from "@/app/components/Input";
-import Button from "../components/Button";
-import LinkComponent from "../components/Link";
+import Button from "@/app/components/Button";
+import LinkComponent from "@/app/components/LinkComponent";
+import HidePassword from "../components/Login/HidePassword";
+import ShowPassword from "../components/Login/ShowPassword";
 
 const Login = () => {
 
@@ -12,6 +14,7 @@ const Login = () => {
 
 	const [password, setPassword] = useState("");
 	const [passwordError, setPasswordError] = useState<string | null>(null);
+	const [showPassword, setShowPassword] = useState(false);
 
 	// Validación del correo electrónico
 	const validateEmail = (value: string) => {
@@ -40,7 +43,10 @@ const Login = () => {
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 	};
-
+	
+	const showPasswordHandler = () => {
+		setShowPassword(!showPassword);
+	}
 	return (
 		<form>
 			<Input
@@ -56,9 +62,20 @@ const Login = () => {
 				value={password}
 				error={passwordError ?? ""}
 				cambio={validatePassword}
-				inputType='password'
+				inputType={showPassword ? "text" : "password"}
+				item={
+					<Button
+						type='button'
+						disableOptions={false}
+						handler={showPasswordHandler}
+						buttonName={showPassword ? <HidePassword/> :<ShowPassword/>}
+					/>
+				}
 			/>
-			<LinkComponent nombre='He olvidado la contraseña' redireccion='/regis'></LinkComponent>
+			<LinkComponent
+				nombre='He olvidado la contraseña'
+				redireccion='/regis'
+				target='_blank'></LinkComponent>
 			<Button
 				type='submit'
 				disableOptions={!!emailError || !!passwordError}
