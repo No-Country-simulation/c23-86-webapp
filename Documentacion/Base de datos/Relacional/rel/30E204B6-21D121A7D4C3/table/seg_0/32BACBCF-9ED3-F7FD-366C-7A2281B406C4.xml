@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="32BACBCF-9ED3-F7FD-366C-7A2281B406C4" name="HistorialPagos">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>C69AE464-E4D7-24D6-8B14-3A522C4E5BD2</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_Pago" id="8003B239-4A25-692E-D351-FAF1F0A58188">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>2B5E10E2-84F6-3B00-3E50-3F2EA85F355B</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fechaPago" id="8939D501-1B40-BB13-1934-497190C1E574">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>0E384FDB-D916-B3A4-BED9-64737E3C63F4</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fechaVencimiento" id="11973895-9CEB-F1F6-9F0A-44AC6E1381BF">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>D775ECCC-FDCB-DC11-7585-C8B23D45B45E</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="montoPagado" id="C5BCB8EA-9937-E303-861D-4AA53E041C3A">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>F410AE9F-574D-3AEF-AC61-2257EB9629CC</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_cliente" id="5CEB2215-1C84-4CAA-530F-C9DC3196498A">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>C6E6605C-EB63-6FE6-A1F0-DB60175BEB6B</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FBA204E0-8082-C990-B39F-0DBDDF002B56" referredColumn="1E94707D-BB21-E2B7-B400-4279413FCFDA"/>
+</associations>
+</Column>
+<Column name="id_servicio" id="FDC59731-223D-A29F-3CEE-5A69CEA7DD63">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>3DF3938D-9164-624D-C770-9C1770BE0004</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FBA204E0-8082-C990-B39F-0DBDDF002B56" referredColumn="3454D0D0-0691-4C70-8014-8540289D4FBA"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4644DA65-BA1B-8F78-4DB3-C65730AC395B" name="HistorialPagos_PK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>C4FAF4FB-CAC4-D684-0C2C-CAFB7768B91A</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8003B239-4A25-692E-D351-FAF1F0A58188"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AF2BA45C-444D-13E6-615E-092CF956EF36" name="historialPagos_indice">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:21:29 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8003B239-4A25-692E-D351-FAF1F0A58188"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F4B968DE-F130-D930-350C-0770CD82A7C9" name="Cliente_Servicio_FK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>3E92114B-9E2F-53A8-06B1-61821EED45E5</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5CEB2215-1C84-4CAA-530F-C9DC3196498A"/>
+<colUsage columnID="FDC59731-223D-A29F-3CEE-5A69CEA7DD63"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

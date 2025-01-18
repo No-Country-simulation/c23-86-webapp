@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4C1A5BF0-FD98-7D2E-DE52-6E1CDE2331C5" name="Cliente_Servicio">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>BBD55928-C351-C09E-EE41-4BF5F87ED90E</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="monto" id="B48383D6-C73D-D319-443D-08B240E0E979">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>AF0C6EF9-E04B-5FE0-41D0-52FFBD7C80A3</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fechaAlta" id="4758671E-F677-AD34-D8A6-56D91C6D2E4E">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>4D088CA5-8113-3CB9-9687-32D3B0951364</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_Servicio" id="3454D0D0-0691-4C70-8014-8540289D4FBA">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>092957E4-2668-A9A5-9EE3-2780133ABBE4</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A165FDD3-1130-063D-A7AA-BA990311E78D" referredColumn="02D4EDAB-5FC0-F5BF-D54C-C2BB57BB6E95"/>
+</associations>
+</Column>
+<Column name="id_Cliente" id="1E94707D-BB21-E2B7-B400-4279413FCFDA">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>89203851-5C29-256C-12D8-53A11343D5AD</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="30813F88-D1EB-455D-4868-1F0A1601A0E1" referredColumn="B6389C13-81A1-5ABE-92A4-C251702BB2D4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8368738F-E66D-EBA8-7C5F-E0C41C0DFA4A" name="idClienteServicio">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>8136689A-5909-9C92-BD35-4C755988524F</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1E94707D-BB21-E2B7-B400-4279413FCFDA"/>
+<colUsage columnID="3454D0D0-0691-4C70-8014-8540289D4FBA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="40B3658F-7CA6-456C-C554-A67784876118" name="Servicio_FK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>8181C1F2-F848-670D-3940-145553EC1622</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3454D0D0-0691-4C70-8014-8540289D4FBA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="075954F2-F59C-7AEA-4B61-23D70936113C" name="Cliente_FK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>C5DFA540-A0BE-4347-79B3-C328E26C8D78</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1E94707D-BB21-E2B7-B400-4279413FCFDA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

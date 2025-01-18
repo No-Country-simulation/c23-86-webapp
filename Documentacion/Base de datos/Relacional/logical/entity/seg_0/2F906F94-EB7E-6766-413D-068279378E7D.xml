@@ -1,0 +1,150 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2F906F94-EB7E-6766-413D-068279378E7D" name="Empleado">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:33:32 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_Empleado" id="7B4CD47B-A25E-4FA2-5528-50EE196E2D89">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:57:53 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="7BCC9D49-C880-0F25-7E00-616320F83A19">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:58:07 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="apellido" id="4B83AAD8-5A96-67E4-C2B3-07CE95C5026B">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:58:15 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rol" id="91C17DD1-A975-6DE3-B3B4-EA62587E19C1">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:00:42 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 CHAR</dataTypeSize>
+<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="correoPersonal" id="25A37758-9E98-1C38-61BD-D7D64F5FE768">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:58:26 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="correoEmpresarial" id="1DDE3CF5-3F01-AF7F-5E93-7F6B2E518441">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:58:48 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="clave" id="B8D21BEB-5559-D576-CE72-47FE265B6D6C">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:01:10 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="telefono" id="14A7AB45-AC54-F0CE-F091-C83C793798FB">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:59:51 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>11</dataTypePrecision>
+<ownDataTypeParameters>,11,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fechaIngreso" id="B728D985-C415-84F6-1CA4-DA06646F7A40">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:04:10 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="970F58AD-ED21-8571-49F1-2F2A5FED5351" name="Empleado PK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:58:00 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7B4CD47B-A25E-4FA2-5528-50EE196E2D89</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
