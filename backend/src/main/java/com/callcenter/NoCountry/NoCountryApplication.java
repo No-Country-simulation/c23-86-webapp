@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class NoCountryApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CallcenterApplication.class, args);
+		SpringApplication.run(NoCountryApplication.class, args);
 	}
 
 }
