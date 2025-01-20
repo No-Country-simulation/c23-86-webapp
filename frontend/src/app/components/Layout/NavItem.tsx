@@ -5,7 +5,7 @@ type NavItemProps = {
   label: string;
 };
 
-export default function NavItem({ href, label }: NavItemProps) {
+export default function NavItem({ href, label } : NavItemProps) {
   return (
     <li>
       <Link href={href} className="hover:text-gray-400">
