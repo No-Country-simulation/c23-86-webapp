@@ -16,9 +16,8 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>7</dataTypePrecision>
-<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="nombre" id="5B61FC94-14E8-4C73-B62A-A490E69029C5">
@@ -52,13 +51,10 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>7</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="B852265F-34F5-1C26-4196-86878E8A0FDC" referredColumn="69E56EB9-FA1B-D42E-FD88-CC2E3DA5A50A"/>
-</associations>
 </Column>
 <Column name="correoPersonal" id="60FC5227-4510-5416-B385-8AA02CE12723">
 <createdBy>Brisa</createdBy>
@@ -101,12 +97,11 @@
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>14A7AB45-AC54-F0CE-F091-C83C793798FB</generatorID>
 <ownerDesignName>Relacional</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>11</dataTypePrecision>
-<ownDataTypeParameters>,11,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="fechaIngreso" id="84E90130-74F3-4731-BA25-21E0621D52B8">
@@ -124,12 +119,10 @@
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-18 00:02:05 UTC</createdTime>
 <ownerDesignName>Relacional</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1 BYTE</dataTypeSize>
-<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
@@ -144,16 +137,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="299F7293-3AEF-0E47-EDA2-2FE41CE1D037"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="657A62E5-B113-8578-C528-9F7F5A8ADAC4" name="rol_FK">
-<createdBy>Brisa</createdBy>
-<createdTime>2025-01-17 23:38:55 UTC</createdTime>
-<ownerDesignName>Relacional</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="67199B14-C199-8D72-7A8F-98329E1BE066"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
