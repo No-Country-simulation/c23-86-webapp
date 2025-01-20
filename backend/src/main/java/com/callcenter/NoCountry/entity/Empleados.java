@@ -1,4 +1,4 @@
-package com.callcenter.callcenter.entity;
+package com.callcenter.NoCountry.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotBlank;
