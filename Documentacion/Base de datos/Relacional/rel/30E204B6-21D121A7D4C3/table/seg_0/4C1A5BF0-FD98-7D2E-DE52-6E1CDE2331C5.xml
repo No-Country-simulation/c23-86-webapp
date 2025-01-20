@@ -15,7 +15,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
+<logicalDatatype>69230305-AB6A-99EB-35A1-CC306D543604</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
@@ -39,7 +39,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -54,8 +54,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>7</dataTypePrecision>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -76,6 +75,7 @@
 <indexColumnUsage>
 <colUsage columnID="1E94707D-BB21-E2B7-B400-4279413FCFDA"/>
 <colUsage columnID="3454D0D0-0691-4C70-8014-8540289D4FBA"/>
+<colUsage columnID="4758671E-F677-AD34-D8A6-56D91C6D2E4E"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="40B3658F-7CA6-456C-C554-A67784876118" name="Servicio_FK">

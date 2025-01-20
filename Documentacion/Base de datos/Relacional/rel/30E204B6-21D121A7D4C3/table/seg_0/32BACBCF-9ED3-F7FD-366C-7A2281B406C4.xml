@@ -15,9 +15,8 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>7</dataTypePrecision>
-<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="fechaPago" id="8939D501-1B40-BB13-1934-497190C1E574">
@@ -25,7 +24,6 @@
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>0E384FDB-D916-B3A4-BED9-64737E3C63F4</generatorID>
 <ownerDesignName>Relacional</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
@@ -48,13 +46,12 @@
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>F410AE9F-574D-3AEF-AC61-2257EB9629CC</generatorID>
 <ownerDesignName>Relacional</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>7</dataTypePrecision>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
 <dataTypeScale>2</dataTypeScale>
-<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="id_cliente" id="5CEB2215-1C84-4CAA-530F-C9DC3196498A">
@@ -64,8 +61,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>7</dataTypePrecision>
+<logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -80,13 +76,26 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>7</dataTypePrecision>
-<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="FBA204E0-8082-C990-B39F-0DBDDF002B56" referredColumn="3454D0D0-0691-4C70-8014-8540289D4FBA"/>
+</associations>
+</Column>
+<Column name="id_fechaAlta" id="916398CE-95AD-3C5C-ADB2-293BA5D8008D">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-20 17:51:46 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FBA204E0-8082-C990-B39F-0DBDDF002B56" referredColumn="4758671E-F677-AD34-D8A6-56D91C6D2E4E"/>
 </associations>
 </Column>
 </columns>
@@ -122,6 +131,7 @@
 <indexColumnUsage>
 <colUsage columnID="5CEB2215-1C84-4CAA-530F-C9DC3196498A"/>
 <colUsage columnID="FDC59731-223D-A29F-3CEE-5A69CEA7DD63"/>
+<colUsage columnID="916398CE-95AD-3C5C-ADB2-293BA5D8008D"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
