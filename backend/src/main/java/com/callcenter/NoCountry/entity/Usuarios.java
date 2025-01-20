@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Entity
 @Table(name = "Usuarios")
 @Getter @Setter
