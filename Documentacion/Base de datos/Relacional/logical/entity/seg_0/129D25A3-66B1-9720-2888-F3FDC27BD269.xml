@@ -1,0 +1,148 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="129D25A3-66B1-9720-2888-F3FDC27BD269" name="Incidencias">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:06:52 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<shortName>inc</shortName>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id incidencia" id="BD626D70-1E59-1E2E-8F21-D17E40C7ED18">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:06:52 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<importedID>6B278C94-3778-EB0A-1624-ECFCDAAC82DF</importedID>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="4FD9F4E2-A6E3-40ED-DEFC-C4898A884765">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:06:52 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<importedID>33B3CE05-FF11-DAC6-D490-51BAC49A30D3</importedID>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250 CHAR</dataTypeSize>
+<ownDataTypeParameters>250 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="prioridad" id="EADE86C0-1D5B-D954-6BFE-E3B616784B3C">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:06:52 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<importedID>DEB51A26-8FBD-C101-3BC6-42527CDB776A</importedID>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5 CHAR</dataTypeSize>
+<ownDataTypeParameters>5 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fechaCreacion" id="0C731AF4-1FB9-D5E8-7D48-2903EF2A10D5">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:06:52 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<importedID>401F88FA-F8B5-539C-0179-44A9BD43F0BF</importedID>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fechaActualizacion" id="AB2DBF20-852B-67CD-14C9-5C496AA3771D">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:06:52 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<importedID>1BE43D4F-B3C1-0EA2-A556-681C71671506</importedID>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tipoIncidencia" id="642C5DB0-EE63-221E-3E4E-1207247DEB9A">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:06:52 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<importedID>8377C5BB-6650-A09C-40F8-6EE8D8F17E0A</importedID>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id Empleado" id="2A97C168-4E91-C085-2C33-19F3EABBC377">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:09 UTC</createdTime>
+<generatorID>E87C90B8-C195-B851-6883-2F61D3038E7D</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<referedAttribute>7B4CD47B-A25E-4FA2-5528-50EE196E2D89</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id Cliente" id="F5D8D21B-5D49-9ECC-04D3-1D9341DBD83C">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:14 UTC</createdTime>
+<generatorID>212B193B-9996-2626-4658-99A4C27C970B</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<referedAttribute>3DF71B35-2408-4740-1D66-2C5E4C517D1F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8FCAD93E-C885-ED87-CB2C-435DA884CE7F" name="Incidencias PK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:06:52 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BD626D70-1E59-1E2E-8F21-D17E40C7ED18</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,89 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BBD55928-C351-C09E-EE41-4BF5F87ED90E" name="Cliente Servicio">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:52:09 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="monto" id="AF0C6EF9-E04B-5FE0-41D0-52FFBD7C80A3">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:52:20 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fechaAlta" id="4D088CA5-8113-3CB9-9687-32D3B0951364">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:52:31 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id Servicio" id="092957E4-2668-A9A5-9EE3-2780133ABBE4">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:52:51 UTC</createdTime>
+<generatorID>8181C1F2-F848-670D-3940-145553EC1622</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<referedAttribute>7E6A4C76-295F-BAF1-5928-CE8FDED9333B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id Cliente" id="89203851-5C29-256C-12D8-53A11343D5AD">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:52:55 UTC</createdTime>
+<generatorID>C5DFA540-A0BE-4347-79B3-C328E26C8D78</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<referedAttribute>3DF71B35-2408-4740-1D66-2C5E4C517D1F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8136689A-5909-9C92-BD35-4C755988524F" name="idClienteServicio">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 22:53:03 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>89203851-5C29-256C-12D8-53A11343D5AD</attributeRef>
+<attributeRef>092957E4-2668-A9A5-9EE3-2780133ABBE4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

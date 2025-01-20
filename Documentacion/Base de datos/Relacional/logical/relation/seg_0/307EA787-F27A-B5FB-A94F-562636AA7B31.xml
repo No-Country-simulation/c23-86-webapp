@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="rol_FK" directorySegmentName="seg_0" id="307EA787-F27A-B5FB-A94F-562636AA7B31">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-18 00:21:50 UTC</createdTime>
+<generatorID>B852265F-34F5-1C26-4196-86878E8A0FDC</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<sourcePk>A84603B7-CBAC-18ED-FE9C-718C90279966</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>75EC7328-76A6-597B-ADCA-1F6D10534A1D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>2F906F94-EB7E-6766-413D-068279378E7D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
