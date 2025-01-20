@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_7" directorySegmentName="seg_0" id="C5DFA540-A0BE-4347-79B3-C328E26C8D78">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Cliente FK" directorySegmentName="seg_0" id="C5DFA540-A0BE-4347-79B3-C328E26C8D78">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 22:52:55 UTC</createdTime>
 <ownerDesignName>Relacional</ownerDesignName>
@@ -7,7 +7,7 @@
 <item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
 </engineerTo>
 <sourcePk>83E72125-4E4E-1A1E-B6E4-5442363F2902</sourcePk>
-<identifying>false</identifying>
+<identifying>true</identifying>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>

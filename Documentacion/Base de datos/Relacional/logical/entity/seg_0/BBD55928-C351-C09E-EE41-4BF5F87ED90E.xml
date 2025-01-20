@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BBD55928-C351-C09E-EE41-4BF5F87ED90E" name="Cliente_Servicio">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="BBD55928-C351-C09E-EE41-4BF5F87ED90E" name="Cliente Servicio">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 22:52:09 UTC</createdTime>
 <ownerDesignName>Relacional</ownerDesignName>
@@ -41,7 +41,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_Servicio" id="092957E4-2668-A9A5-9EE3-2780133ABBE4">
+<Attribute name="id Servicio" id="092957E4-2668-A9A5-9EE3-2780133ABBE4">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 22:52:51 UTC</createdTime>
 <generatorID>8181C1F2-F848-670D-3940-145553EC1622</generatorID>
@@ -55,7 +55,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_Cliente" id="89203851-5C29-256C-12D8-53A11343D5AD">
+<Attribute name="id Cliente" id="89203851-5C29-256C-12D8-53A11343D5AD">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 22:52:55 UTC</createdTime>
 <generatorID>C5DFA540-A0BE-4347-79B3-C328E26C8D78</generatorID>
@@ -72,7 +72,7 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="8136689A-5909-9C92-BD35-4C755988524F" name="Cliente_Servicio PK">
+<identifier id="8136689A-5909-9C92-BD35-4C755988524F" name="idClienteServicio">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 22:53:03 UTC</createdTime>
 <ownerDesignName>Relacional</ownerDesignName>

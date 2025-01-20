@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2F906F94-EB7E-6766-413D-068279378E7D" name="Empleado">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2F906F94-EB7E-6766-413D-068279378E7D" name="Empleados">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 22:33:32 UTC</createdTime>
 <ownerDesignName>Relacional</ownerDesignName>
@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_Empleado" id="7B4CD47B-A25E-4FA2-5528-50EE196E2D89">
+<Attribute name="id Empleado" id="7B4CD47B-A25E-4FA2-5528-50EE196E2D89">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 22:57:53 UTC</createdTime>
 <ownerDesignName>Relacional</ownerDesignName>
@@ -57,15 +57,17 @@
 <Attribute name="rol" id="91C17DD1-A975-6DE3-B3B4-EA62587E19C1">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:00:42 UTC</createdTime>
+<generatorID>307EA787-F27A-B5FB-A94F-562636AA7B31</generatorID>
 <ownerDesignName>Relacional</ownerDesignName>
 <engineerTo>
 <item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
 </engineerTo>
+<referedAttribute>82D59F23-8F86-3C0D-7C73-8E145CAC32DC</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>40 CHAR</dataTypeSize>
-<ownDataTypeParameters>40 CHAR,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="correoPersonal" id="25A37758-9E98-1C38-61BD-D7D64F5FE768">
 <createdBy>Brisa</createdBy>
@@ -131,6 +133,21 @@
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="activo" id="8C74C77E-E0AF-DB8A-9856-D2F9B3190D09">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-18 00:21:50 UTC</createdTime>
+<generatorID>EC82F8F0-11CD-2652-EDBC-7C69C1C94946</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

@@ -16,7 +16,7 @@
 <normalForm>Third</normalForm>
 <shortName>inc</shortName>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_incidencia" id="BD626D70-1E59-1E2E-8F21-D17E40C7ED18">
+<Attribute name="id incidencia" id="BD626D70-1E59-1E2E-8F21-D17E40C7ED18">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:06:52 UTC</createdTime>
 <ownerDesignName>Relacional</ownerDesignName>
@@ -99,7 +99,7 @@
 <dataTypeSize>30 CHAR</dataTypeSize>
 <ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_Empleado" id="2A97C168-4E91-C085-2C33-19F3EABBC377">
+<Attribute name="id Empleado" id="2A97C168-4E91-C085-2C33-19F3EABBC377">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:09 UTC</createdTime>
 <generatorID>E87C90B8-C195-B851-6883-2F61D3038E7D</generatorID>
@@ -114,7 +114,7 @@
 <dataTypePrecision>7</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_Cliente" id="F5D8D21B-5D49-9ECC-04D3-1D9341DBD83C">
+<Attribute name="id Cliente" id="F5D8D21B-5D49-9ECC-04D3-1D9341DBD83C">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:14 UTC</createdTime>
 <generatorID>212B193B-9996-2626-4658-99A4C27C970B</generatorID>
