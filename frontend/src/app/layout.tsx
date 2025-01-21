@@ -1,8 +1,8 @@
 // layout.tsx
-import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css"; // Si tienes tu archivo de estilos
 import Sidebar from "./components/Layout/Sidebar";
+import { Providers } from "./providers";
 
 // Definir fuentes personalizadas
 const geistSans = Geist({
@@ -24,7 +24,8 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700`}
-      >
+      ><Providers>
+          
         {/* Barra lateral */}
         <Sidebar />
 
@@ -34,6 +35,7 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+      </Providers>
       </body>
     </html>
   );

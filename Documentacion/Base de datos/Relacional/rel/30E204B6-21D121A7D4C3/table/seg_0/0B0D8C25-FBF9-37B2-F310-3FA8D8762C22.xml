@@ -1,0 +1,143 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0B0D8C25-FBF9-37B2-F310-3FA8D8762C22" name="Empleados">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>2F906F94-EB7E-6766-413D-068279378E7D</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<ordsAlias>empleado</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_Empleado" id="299F7293-3AEF-0E47-EDA2-2FE41CE1D037">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>7B4CD47B-A25E-4FA2-5528-50EE196E2D89</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="5B61FC94-14E8-4C73-B62A-A490E69029C5">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>7BCC9D49-C880-0F25-7E00-616320F83A19</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="apellido" id="E14E46A5-B301-48C6-FA31-C39E43CE70D2">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>4B83AAD8-5A96-67E4-C2B3-07CE95C5026B</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rol" id="67199B14-C199-8D72-7A8F-98329E1BE066">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>91C17DD1-A975-6DE3-B3B4-EA62587E19C1</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="correoPersonal" id="60FC5227-4510-5416-B385-8AA02CE12723">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>25A37758-9E98-1C38-61BD-D7D64F5FE768</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="correoEmpresarial" id="047BD414-FCEA-FD84-358F-E56AF835318B">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>1DDE3CF5-3F01-AF7F-5E93-7F6B2E518441</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="clave" id="19B67B35-C92C-2AF3-DB88-EC187A47DE2F">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>B8D21BEB-5559-D576-CE72-47FE265B6D6C</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telefono" id="2A9DEB15-A4E4-8614-74E7-F33FB3B74EA0">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>14A7AB45-AC54-F0CE-F091-C83C793798FB</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fechaIngreso" id="84E90130-74F3-4731-BA25-21E0621D52B8">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>B728D985-C415-84F6-1CA4-DA06646F7A40</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="activo" id="EC82F8F0-11CD-2652-EDBC-7C69C1C94946">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-18 00:02:05 UTC</createdTime>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT042</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9907BB2F-546D-9640-421D-91A86394856B" name="Empleado_PK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-17 23:07:55 UTC</createdTime>
+<generatorID>970F58AD-ED21-8571-49F1-2F2A5FED5351</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="299F7293-3AEF-0E47-EDA2-2FE41CE1D037"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
