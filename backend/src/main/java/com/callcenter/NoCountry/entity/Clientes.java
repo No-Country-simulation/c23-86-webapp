@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
+
 @Entity
 @Getter @Setter
 public class Clientes extends Usuarios{
@@ -22,5 +23,5 @@ public class Clientes extends Usuarios{
         this.estado = estado;
         this.metodoDePago = metodoDePago;
     }
-    
+
 }

@@ -1,16 +1,9 @@
--- Insertar datos en Roles
-INSERT INTO Roles (nombre, descripcion)
-VALUES
-('Administrador', 'Encargado de la administración general'),
-('Telefonista', 'Encargado de resolver incidencias'),
-('Supervisor', 'Encargado del equipo de telefonistas');
-
 -- Insertar datos en Empleados
 INSERT INTO Empleados (nombre, apellido, rol, correoPersonal, correoEmpresarial, clave, telefono, fechaIngreso)
 VALUES
-('Juan', 'Pérez', 1, 'juan.perez@gmail.com', 'jperez@empresa.com', 'clave123', 5523456789, '2023-01-10'),
-('María', 'García', 2, 'maria.garcia@gmail.com', 'mgarcia@empresa.com', 'clave456', 5529876543, '2022-05-15'),
-('Luis', 'López', 3, 'luis.lopez@gmail.com', 'llopez@empresa.com', 'clave789', 5521234567, '2023-06-20');
+('Juan', 'Pérez', 'Administrador', 'juan.perez@gmail.com', 'jperez@empresa.com', 'clave123', 5523456789, '2023-01-10'),
+('María', 'García', 'Telefonista', 'maria.garcia@gmail.com', 'mgarcia@empresa.com', 'clave456', 5529876543, '2022-05-15'),
+('Luis', 'López', 'Supervisor', 'luis.lopez@gmail.com', 'llopez@empresa.com', 'clave789', 5521234567, '2023-06-20');
 
 -- Insertar datos en Clientes
 INSERT INTO Clientes (nombre, apellido, correo, telefono, estado)
