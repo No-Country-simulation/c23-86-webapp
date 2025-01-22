@@ -54,8 +54,9 @@ CREATE TABLE HistorialPagos (
     fechaPago DATE NOT NULL,
     fechaVencimiento DATE NOT NULL,
     montoPagado DECIMAL(10,2) NOT NULL,
+    fechaAlta DATE NOT NULL,
     id_cliente INT NOT NULL,
     id_servicio INT NOT NULL,
     PRIMARY KEY (id_Pago),
-    FOREIGN KEY (id_cliente, id_servicio) REFERENCES Cliente_Servicio(id_Cliente, id_Servicio)
+    FOREIGN KEY (id_cliente, id_servicio, fechaAlta) REFERENCES Cliente_Servicio(id_Cliente, id_Servicio,fechaAlta)
 );

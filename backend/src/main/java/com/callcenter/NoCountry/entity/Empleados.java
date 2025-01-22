@@ -15,10 +15,10 @@ public class Empleados extends Usuarios{
     private String correoEmpresarial;
     @NotBlank(message = "ingresar contraseña")
     private String contraseña;
-    private Long supervisor;
+    private Empleados supervisor;
 
-    public Empleados(String nombre, String apellido, String correo, String telefono, LocalDateTime fechaAlta, LocalDateTime fechaBaja, String rol, String correoEmpresarial, String contraseña, Long supervisor) {
-        super(nombre, apellido, correo, telefono, fechaAlta, fechaBaja);
+    public Empleados(String nombre, String apellido, String correo, String telefono, LocalDateTime fechaAlta, LocalDateTime fechaBaja, String rol, String correoEmpresarial, String contraseña, Empleados supervisor) {
+        super(nombre, apellido, correo, telefono, fechaAlta);
         this.rol = rol;
         this.correoEmpresarial = correoEmpresarial;
         this.contraseña = contraseña;

@@ -27,14 +27,12 @@ public class Usuarios {
     @NotBlank(message = "ingresar telefono")
     private String telefono;
     private LocalDateTime fechaAlta;
-    private LocalDateTime fechaBaja;
     
-    protected Usuarios(String nombre, String apellido, String correo, String telefono, LocalDateTime fechaAlta, LocalDateTime fechaBaja){
+    protected Usuarios(String nombre, String apellido, String correo, String telefono, LocalDateTime fechaAlta){
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
         this.fechaAlta = fechaAlta;
-        this.fechaBaja = fechaBaja;
     }
 }

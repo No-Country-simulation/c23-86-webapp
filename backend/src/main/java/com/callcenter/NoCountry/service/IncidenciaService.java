@@ -3,7 +3,7 @@ package com.callcenter.NoCountry.service;
 import com.callcenter.NoCountry.DTO.IncidenciaDTO;
 import com.callcenter.NoCountry.entity.Clientes;
 import com.callcenter.NoCountry.entity.Incidencias;
-import com.callcenter.NoCountry.entity.Servicio;
+import com.callcenter.NoCountry.entity.Servicios;
 import com.callcenter.NoCountry.repository.ClienteRepository;
 import com.callcenter.NoCountry.repository.IncidenciaRepository;
 import com.callcenter.NoCountry.repository.ServicioRepository;
@@ -32,7 +32,7 @@ public class IncidenciaService {
                 .orElseThrow(() -> new IllegalArgumentException("Cliente no encontrado"));
 
         // Verifica que el servicio exista
-        Servicio servicio = (Servicio) servicioRepository.findById(incidenciaDTO.getIdServicio())
+        Servicios servicio = (Servicios) servicioRepository.findById(incidenciaDTO.getIdServicio())
                 .orElseThrow(() -> new IllegalArgumentException("Servicio no encontrado"));
 
         // Crea la nueva incidencia
