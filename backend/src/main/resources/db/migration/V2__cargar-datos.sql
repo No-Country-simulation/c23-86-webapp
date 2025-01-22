@@ -6,11 +6,11 @@ VALUES
 ('Luis', 'López', 'Supervisor', 'luis.lopez@gmail.com', 'llopez@empresa.com', 'clave789', 5521234567, '2023-06-20');
 
 -- Insertar datos en Clientes
-INSERT INTO Clientes (nombre, apellido, correo, telefono, estado)
+INSERT INTO Clientes (dni, nombre, apellido, correo, telefono, estado)
 VALUES
-('Ana', 'Martínez', 'ana.martinez@gmail.com', 5512345678, 'Activo'),
-('Carlos', 'Hernández', 'carlos.hernandez@gmail.com', 5598765432, 'Suspendido'),
-('Sofía', 'Rodríguez', 'sofia.rodriguez@gmail.com', 5587654321, 'De Baja');
+(123456, 'Ana', 'Martínez', 'ana.martinez@gmail.com', 5512345678, 'Activo'),
+(789456, 'Carlos', 'Hernández', 'carlos.hernandez@gmail.com', 5598765432, 'Suspendido'),
+(753694, 'Sofía', 'Rodríguez', 'sofia.rodriguez@gmail.com', 5587654321, 'De Baja');
 
 -- Insertar datos en Servicios
 INSERT INTO Servicios (nombre, descripcion, precio)
@@ -19,15 +19,7 @@ VALUES
 ('Llamadas ilimitadas', 'Paquete de llamadas ilimitadas', 299.99),
 ('Streaming HD', 'Servicio de streaming en HD', 199.99);
 
--- Insertar datos en Incidencias
-INSERT INTO Incidencias (descripcion, prioridad, fechaCreacion, fechaActualizacion, tipoIncidencia, id_Empleado, id_Cliente)
-VALUES
-('Internet no funciona', 'Alta', '2024-01-10', '2024-01-11', 'Técnico', 2, 1),
-('No puedo acceder a mi cuenta', 'Media', '2024-01-12', '2024-01-13', 'Cuenta', 2, 2),
-('Problemas con la facturación', 'Baja', '2024-01-14', '2024-01-14', 'Administrativo', 1, 1);
-
-
--- Insertar datos en Cliente_Servicio para asegurarnos de que las combinaciones existen
+-- Insertar datos en Cliente_Servicio
 INSERT INTO Cliente_Servicio (id_Cliente, id_Servicio, monto, fechaAlta)
 VALUES
 (1, 1, 499.99, '2023-12-01'),
@@ -37,20 +29,20 @@ VALUES
 (3, 2, 299.99, '2023-12-20'),
 (3, 3, 199.99, '2023-12-25');
 
--- Insertar datos en HistorialPagos (3 pagos por cada cliente)
-INSERT INTO HistorialPagos (fechaPago, fechaVencimiento, montoPagado, id_cliente, id_servicio)
+-- Insertar datos en HistorialPagos (3 pagos por cada cliente-servicio)
+INSERT INTO HistorialPagos (fechaPago, fechaVencimiento, montoPagado, id_ClienteServicio)
 VALUES
--- Pagos del Cliente 1
-('2024-01-01', '2024-01-10', 499.99, 1, 1),
-('2024-01-15', '2024-01-25', 299.99, 1, 2),
-('2024-02-01', '2024-02-10', 499.99, 1, 1),
+-- Pagos del Cliente_Servicio correspondiente a Cliente 1 y Servicio 1
+('2024-01-01', '2024-01-10', 499.99, 1),
+('2024-01-15', '2024-01-25', 299.99, 2),
+('2024-02-01', '2024-02-10', 499.99, 1),
 
--- Pagos del Cliente 2
-('2024-01-03', '2024-01-13', 199.99, 2, 3),
-('2024-01-20', '2024-01-30', 199.99, 2, 3),
-('2024-02-01', '2024-02-11', 199.99, 2, 3),
+-- Pagos del Cliente_Servicio correspondiente a Cliente 2 y Servicio 3
+('2024-01-03', '2024-01-13', 199.99, 3),
+('2024-01-20', '2024-01-30', 199.99, 3),
+('2024-02-01', '2024-02-11', 199.99, 3),
 
--- Pagos del Cliente 3
-('2024-01-05', '2024-01-15', 199.99, 3, 3),
-('2024-01-25', '2024-02-05', 499.99, 3, 1),
-('2024-02-10', '2024-02-20', 299.99, 3, 2);
+-- Pagos del Cliente_Servicio correspondiente a Cliente 3 y varios servicios
+('2024-01-05', '2024-01-15', 199.99, 6),
+('2024-01-25', '2024-02-05', 499.99, 4),
+('2024-02-10', '2024-02-20', 299.99, 5);
