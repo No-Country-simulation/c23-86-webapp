@@ -1,27 +1,46 @@
 package com.callcenter.NoCountry.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.util.Date;
 
 @Entity
-@Getter @Setter
-public class Empleados extends Usuarios{
-    @NotBlank(message = "ingresar rol")
-    private String rol;
-    @NotBlank(message = "ingresar correo empresarial")
-    private String correoEmpresarial;
-    @NotBlank(message = "ingresar contraseña")
-    private String contraseña;
-    private Empleados supervisor;
+@Table(name = "empleados")
+@Data
+public class Empleados {
 
-    public Empleados(String nombre, String apellido, String correo, String telefono, LocalDateTime fechaAlta, LocalDateTime fechaBaja, String rol, String correoEmpresarial, String contraseña, Empleados supervisor) {
-        super(nombre, apellido, correo, telefono, fechaAlta);
-        this.rol = rol;
-        this.correoEmpresarial = correoEmpresarial;
-        this.contraseña = contraseña;
-        this.supervisor = supervisor;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Empleado")
+    private Long id;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "apellido", nullable = false)
+    private String apellido;
+
+    @Column(name = "rol", nullable = false)
+    private String rol;
+
+    @Column(name = "correoPersonal", nullable = false, unique = true)
+    private String correoPersonal;
+
+    @Column(name = "correoEmpresarial", nullable = false, unique = true)
+    private String correoEmpresarial;
+
+    @Column(name = "clave", nullable = false)
+    private String clave;
+
+    @Column(name = "telefono", nullable = false, unique = true)
+    private String telefono;
+
+    @Column(name = "fechaIngreso", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date fechaIngreso;
+
+    @Column(name = "activo", nullable = false)
+    private boolean activo;
+
 }

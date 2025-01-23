@@ -43,6 +43,8 @@ public class IncidenciaService {
         incidencia.setEstado(incidenciaDTO.getEstado());
         incidencia.setDescripcion(incidenciaDTO.getDescripcion());
         incidencia.setFechaDeAlta(LocalDateTime.now());
+        System.out.println("*****************************");
+        System.out.println(incidencia);
 
         return incidenciaRepository.save(incidencia);
     }

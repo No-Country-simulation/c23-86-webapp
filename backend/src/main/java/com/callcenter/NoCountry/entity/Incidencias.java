@@ -7,15 +7,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "Incidencias")
+@Table(name = "incidencias")
 @Data
 public class Incidencias {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_Incidencia;
+    @Column(name = "id_incidencia")
+    private Long id;
     private int prioridad;
     private String estado;
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "fecha_de_alta")
     private LocalDateTime fechaDeAlta;
     private String descripcion;
     

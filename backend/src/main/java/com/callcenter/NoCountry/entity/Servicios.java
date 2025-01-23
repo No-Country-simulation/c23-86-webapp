@@ -5,16 +5,17 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "Servicios")
+@Table(name = "servicios")
 public class Servicios {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_Servicio;
+    @Column(name = "id_Servicio")
+    private Long id;
     private String nombre;
     private String descripcion;
     private BigDecimal precio;
     
-    @OneToMany(mappedBy = "id_Servicio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany
     private List<ClienteServicio> clienteServicios;
 
 }

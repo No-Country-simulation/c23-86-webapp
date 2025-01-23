@@ -1,34 +1,33 @@
 package com.callcenter.NoCountry.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
-import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
-
+import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
-@Getter @Setter
-public class Clientes extends Usuarios{
-    @NotBlank(message = "ingresar servicio")
-    private String servicio;
-    private String direccion;
+@Table(name = "clientes")
+@Data
+public class Clientes {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Cliente")
+    private Long id;
+
+    @Column(name = "dni", unique = true, nullable = false)
+    private Long dni;
+
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @Column(name = "apellido", nullable = false)
+    private String apellido;
+
+    @Column(name = "correo", nullable = false, unique = true)
+    private String correo;
+
+    @Column(name = "telefono", nullable = false, unique = true)
+    private String telefono;
+
+    @Column(name = "estado", nullable = false)
     private String estado;
-    private String metodoDePago;
-
-    @OneToMany(mappedBy = "id_Cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ClienteServicio> clienteServicios;
-    
-    public Clientes(String nombre, String apellido, String correo, String telefono,LocalDateTime fechaAlta, LocalDateTime fechaBaja, String servicio, String direccion, String estado, String metodoDePago) {
-        super(nombre, apellido, correo, telefono, fechaAlta);
-        this.servicio = servicio;
-        this.direccion = direccion;
-        this.estado = estado;
-        this.metodoDePago = metodoDePago;
-    }
-
 }
