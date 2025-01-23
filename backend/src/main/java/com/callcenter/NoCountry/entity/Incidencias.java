@@ -1,7 +1,10 @@
 package com.callcenter.NoCountry.entity;
 
+import com.callcenter.NoCountry.DTO.ClienteDTO;
+import com.callcenter.NoCountry.DTO.IncidenciaDTO;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,5 +34,32 @@ public class Incidencias {
     
     @OneToMany(mappedBy = "incidencia", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleIncidencias> detalles;
+
+//    // Constructor a partir de un incidenciaDTO
+//    public Incidencias(IncidenciaDTO incidenciaDTO) {
+//        if (incidenciaDTO.getCliente() == null || incidenciaDTO.getCliente().getId() == null) {
+//            throw new IllegalArgumentException("El cliente es obligatorio y debe tener un ID válido.");
+//        }
+//
+//        if (incidenciaDTO.getServicio() == null || incidenciaDTO.getServicio().getId() == null) {
+//            throw new IllegalArgumentException("El servicio es obligatorio y debe tener un ID válido.");
+//        }
+//
+//        this.prioridad = incidenciaDTO.getPrioridad();
+//        this.estado = incidenciaDTO.getEstado();
+//        this.descripcion = incidenciaDTO.getDescripcion();
+//        this.fechaDeAlta = incidenciaDTO.getFechaDeAlta();
+//
+//        // Asignar cliente
+//        Clientes cliente = new Clientes();
+//        cliente.setId(incidenciaDTO.getCliente().getId());
+//        this.cliente = cliente;
+//
+//        // Asignar servicio
+//        Servicios servicio = new Servicios();
+//        servicio.setId(incidenciaDTO.getServicio().getId());
+//        this.servicio = servicio;
+//    }
+
 
 }

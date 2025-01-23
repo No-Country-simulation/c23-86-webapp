@@ -1,13 +1,24 @@
 package com.callcenter.NoCountry.DTO;
 
+import com.callcenter.NoCountry.entity.DetalleIncidencias;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class DetalleIncidenciaDTO {
-    private Long idEmpleado;
-    private LocalDate fechaDeModificacion;
+    private String nombreEmpleado;
+    private String apellidoEmpleado;
+    private Date fechaDeModificacion;
     private String descripcion;
+
+    public DetalleIncidenciaDTO(DetalleIncidencias detalle) {
+        this.nombreEmpleado = detalle.getEmpleado().getNombre();
+        this.apellidoEmpleado = detalle.getEmpleado().getApellido();
+        this.fechaDeModificacion = detalle.getFechaDeModificacion();
+        this.descripcion = detalle.getDescripcion();
+    }
+
 }
 

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.NoSuchElementException;
+
 @RestController
 @RequestMapping("/incidencia")
 public class IncidenciaController {
@@ -32,14 +34,21 @@ public class IncidenciaController {
      *
      * @param incidenciaDTO el objeto que contiene los datos necesarios para crear una nueva incidencia.
      * @return una respuesta HTTP que incluye:
-     *         - Código de estado 201 (CREATED) si la incidencia se creó exitosamente.
-     *         - El objeto {@link Incidencias} recién creado en el cuerpo de la respuesta.
+     * - Código de estado 201 (CREATED) si la incidencia se creó exitosamente.
+     * - El objeto {@link Incidencias} recién creado en el cuerpo de la respuesta.
      */
+
 
     @PostMapping
     public ResponseEntity<Incidencias> crearIncidencia(@RequestBody IncidenciaDTO incidenciaDTO) {
         Incidencias nuevaIncidencia = incidenciaService.crearIncidencia(incidenciaDTO);
         return new ResponseEntity<>(nuevaIncidencia, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<IncidenciaDTO> obtenerIncidenciaPorId(@PathVariable Long id) {
+        IncidenciaDTO incidenciaDTO = incidenciaService.obtenerIncidenciaDTO(id);
+        return ResponseEntity.ok(incidenciaDTO);
     }
 
 
