@@ -1,25 +1,26 @@
 -- Crear tabla Incidencias
-CREATE TABLE Incidencias (
-    id_Incidencia INT NOT NULL AUTO_INCREMENT,
-    id_Cliente INT NOT NULL,
-    id_Servicio INT NOT NULL,
+
+CREATE TABLE incidencias (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    id_cliente BIGINT NOT NULL,
+    id_servicio BIGINT NOT NULL,
     prioridad INT NOT NULL,
     estado VARCHAR(30) NOT NULL,
-    fechaDeAlta DATE NOT NULL,
+    fecha_de_alta DATE NOT NULL,
     descripcion TEXT NOT NULL,
-    PRIMARY KEY (id_Incidencia),
-    FOREIGN KEY (id_Cliente) REFERENCES Clientes(id_Cliente),
-    FOREIGN KEY (id_Servicio) REFERENCES Servicios(id_Servicio)
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+    FOREIGN KEY (id_servicio) REFERENCES servicios(id)
 );
 
 -- Crear tabla DetalleIncidencias
-CREATE TABLE DetalleIncidencias (
-    id_Detalle INT NOT NULL AUTO_INCREMENT,
-    id_Incidencia INT NOT NULL,
-    id_Empleado INT NOT NULL, -- Corrección: Cambié IN a INT
-    fechaDeModificacion DATE NOT NULL,
+CREATE TABLE detalle_incidencias (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    id_incidencia BIGINT NOT NULL,
+    id_empleado BIGINT NOT NULL, -- Corrección: Cambié IN a INT
+    fecha_de_modificacion DATE NOT NULL,
     descripcion TEXT NOT NULL,
-    PRIMARY KEY (id_Detalle),
-    FOREIGN KEY (id_Incidencia) REFERENCES Incidencias(id_Incidencia),
-    FOREIGN KEY (id_Empleado) REFERENCES Empleados(id_Empleado)
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_incidencia) REFERENCES incidencias(id),
+    FOREIGN KEY (id_empleado) REFERENCES empleados(id)
 );

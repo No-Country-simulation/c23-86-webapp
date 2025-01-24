@@ -5,6 +5,7 @@ import com.callcenter.NoCountry.Exception.ServiceException;
 import com.callcenter.NoCountry.entity.Clientes;
 import com.callcenter.NoCountry.repository.ClienteRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +19,28 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
     
+    public Optional<Clientes> ObtenerPorId(Long id){
+        try{
+            Optional<Clientes> cliente = clienteRepository.findById(id);
+            if (cliente.isPresent()){
+                return cliente;
+            }
+            else{
+                return null;
+            }
+        }catch(Exception e){
+            throw new ServiceException("No se pudo obtener el ID", e);
+        }
+    }
+    
     public List<Clientes> buscarPorDni(Long dni){
         try{
             return clienteRepository.findByDni(dni);
         }catch(Exception e){
             throw new ServiceException("No se encuentra el DNI", e);
         }
-        
     }
+  
     
     public List<Clientes> buscarPorNombre(String nombre){
         try{
@@ -41,5 +56,5 @@ public class ClienteService {
         }catch(Exception e){
             throw new ServiceException("No se encuentra el apellido",e);
         }
-    }    
+    }
 }

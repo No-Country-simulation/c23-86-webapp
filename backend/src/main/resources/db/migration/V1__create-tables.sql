@@ -1,62 +1,66 @@
 -- Tabla Empleados
-CREATE TABLE Empleados (
-    id_Empleado INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE empleados (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    dni BIGINT NOT NULL,
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(30) NOT NULL,
     rol VARCHAR(30) NOT NULL,
-    correoPersonal VARCHAR(50) NOT NULL,
-    correoEmpresarial VARCHAR(50) NOT NULL,
+    correo VARCHAR(50) NOT NULL,
+    correo_empresarial VARCHAR(50) NOT NULL,
     clave VARCHAR(30) NOT NULL,
     telefono VARCHAR(30) NOT NULL,
-    fechaIngreso DATE NOT NULL,
+    id_supervisor BIGINT,
     -- Campo para borrado logico
     activo TINYINT NOT NULL DEFAULT 1,
-    PRIMARY KEY (id_Empleado)
+    PRIMARY KEY (id),
+    FOREIGN KEY(id_supervisor) REFERENCES empleados(id)
+
 );
 
 -- Tabla Clientes
-CREATE TABLE Clientes (
-    id_Cliente INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE clientes (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     dni BIGINT NOT NULL,
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(30) NOT NULL,
     correo VARCHAR(50) NOT NULL,
-    telefono BIGINT NOT NULL,
+    telefono VARCHAR(30) NOT NULL,
+    direccion VARCHAR(50) NOT NULL,
     estado VARCHAR(30) NOT NULL,
     -- Campo para borrado logico
     activo TINYINT NOT NULL DEFAULT 1,
-    PRIMARY KEY (id_Cliente)
+    PRIMARY KEY (id)
 );
 
 -- Tabla Servicios
-CREATE TABLE Servicios (
-    id_Servicio INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE servicios (
+    id BIGINT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(30) NOT NULL,
     descripcion VARCHAR(200) NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (id_Servicio)
+    PRIMARY KEY (id)
 );
 
--- Tabla Cliente_Servicio
-CREATE TABLE Cliente_Servicio (
-    id_ClienteServicio INT NOT NULL AUTO_INCREMENT,
-    id_Cliente INT NOT NULL,
-    id_Servicio INT NOT NULL,
-    fechaAlta DATE NOT NULL,
+CREATE TABLE cliente_servicio (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    id_cliente BIGINT NOT NULL,
+    id_servicio BIGINT NOT NULL,
+    fecha_alta DATE NOT NULL,
     monto DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (id_ClienteServicio),
-    FOREIGN KEY (id_Cliente) REFERENCES Clientes(id_Cliente),
-    FOREIGN KEY (id_Servicio) REFERENCES Servicios(id_Servicio),
-    UNIQUE (id_Cliente, id_Servicio, fechaAlta)
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+    FOREIGN KEY (id_servicio) REFERENCES servicios(id),
+    UNIQUE (id_cliente, id_servicio, fecha_alta)
 );
 
 -- Tabla HistorialPagos referenciando la clave primaria subrogada
-CREATE TABLE HistorialPagos (
-    id_Pago INT NOT NULL AUTO_INCREMENT,
-    fechaPago DATE NOT NULL,
-    fechaVencimiento DATE NOT NULL,
-    montoPagado DECIMAL(10,2) NOT NULL,
-    id_ClienteServicio INT NOT NULL,
-    PRIMARY KEY (id_Pago),
-    FOREIGN KEY (id_ClienteServicio) REFERENCES Cliente_Servicio(id_ClienteServicio)
+CREATE TABLE historial_pagos (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    fecha_pago DATE NOT NULL,
+    fecha_vencimiento DATE NOT NULL,
+    monto_pagado DECIMAL(10,2) NOT NULL,
+    id_cliente_servicio BIGINT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_cliente_servicio) REFERENCES cliente_servicio(id)
 );
+

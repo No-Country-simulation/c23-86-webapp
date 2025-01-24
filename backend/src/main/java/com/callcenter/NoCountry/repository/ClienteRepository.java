@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClienteRepository extends JpaRepository<Clientes, Long> {
     Optional<Object> findById(Integer idCliente);
+    @Override
+    Optional<Clientes> findById(Long id);
     List<Clientes> findByDni(Long dni);
     List<Clientes> findByNombreContainingIgnoreCase(String nombre);
     List<Clientes> findByApellidoContainingIgnoreCase(String apellido);

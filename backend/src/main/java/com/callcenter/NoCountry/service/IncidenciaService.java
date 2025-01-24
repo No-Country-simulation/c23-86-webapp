@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class IncidenciaService {
     @Autowired
-    private IncidenciaRepository incidenciaRepository;
+    private final IncidenciaRepository incidenciaRepository;
 
     @Autowired
     private final ClienteRepository clienteRepository;
