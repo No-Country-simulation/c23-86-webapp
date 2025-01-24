@@ -3,8 +3,13 @@ package com.callcenter.NoCountry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
+/**
+ * Entidad que representa el detalle de una incidencia.
+ * Cada detalle está asociado a una incidencia y registra la información
+ * sobre modificaciones realizadas por empleados, incluyendo la descripción de dichas modificaciones.
+ */
 @Data
 @Entity
 @Table(name = "detalle_de_incidencias")
@@ -25,7 +30,7 @@ public class DetalleIncidencias {
 
     @Column(name = "fechaDeModificacion", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaDeModificacion;
+    private LocalDateTime fechaDeModificacion;
 
     @Column(name = "descripcion", nullable = false, columnDefinition = "TEXT")
     private String descripcion;

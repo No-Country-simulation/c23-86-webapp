@@ -4,6 +4,10 @@ import com.callcenter.NoCountry.entity.Clientes;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Data Transfer Object (DTO) para representar los datos del cliente.
+ * Esta clase sirve como un objeto intermedio para transferir información entre capas de la aplicación.
+ */
 @Data
 @NoArgsConstructor
 public class ClienteDTO {
@@ -15,6 +19,11 @@ public class ClienteDTO {
     private String telefono;
     private String estado;
 
+    /**
+     * Constructor que crea un ClienteDTO a partir de una entidad {@link Clientes}.
+     *
+     * @param cliente Entidad {@link Clientes} de la cual se copiarán los datos para este DTO.
+     */
     public ClienteDTO(Clientes cliente) {
         this.id = cliente.getId();
         this.nombre = cliente.getNombre();

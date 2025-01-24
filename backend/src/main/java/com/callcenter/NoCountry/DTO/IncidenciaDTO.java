@@ -9,6 +9,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Data Transfer Object (DTO) para representar una incidencia y sus detalles asociados.
+ * Esta clase sirve para transferir información de la entidad {@link Incidencias} al cliente.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +28,11 @@ public class IncidenciaDTO {
     private LocalDateTime fechaDeAlta;
     private List<DetalleIncidenciaDTO> detalles;
 
-    // Constructor
+    /**
+     * Constructor que crea un objeto IncidenciaDTO a partir de una entidad {@link Incidencias}.
+     *
+     * @param incidencia Entidad {@link Incidencias} que contiene los datos necesarios para inicializar este DTO.
+     */
     public IncidenciaDTO(Incidencias incidencia) {
         this.id = incidencia.getId();
         this.idCliente = incidencia.getCliente().getId();
@@ -33,8 +41,6 @@ public class IncidenciaDTO {
         this.estado = incidencia.getEstado();
         this.descripcion = incidencia.getDescripcion();
         this.fechaDeAlta = incidencia.getFechaDeAlta();
-
-        // Mapear Cliente
         this.cliente = new ClienteDTO(incidencia.getCliente());
 
         // Mapear Servicio

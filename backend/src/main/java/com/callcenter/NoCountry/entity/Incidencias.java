@@ -1,14 +1,16 @@
 package com.callcenter.NoCountry.entity;
 
-import com.callcenter.NoCountry.DTO.ClienteDTO;
-import com.callcenter.NoCountry.DTO.IncidenciaDTO;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Entidad que representa una incidencia, AKA: reclamo, en el sistema.
+ * Las incidencias registran problemas o situaciones reportadas por clientes
+ * relacionadas con un servicio específico.
+ */
 @Entity
 @Table(name = "incidencias")
 @Data
@@ -60,6 +62,4 @@ public class Incidencias {
 //        servicio.setId(incidenciaDTO.getServicio().getId());
 //        this.servicio = servicio;
 //    }
-
-
 }
