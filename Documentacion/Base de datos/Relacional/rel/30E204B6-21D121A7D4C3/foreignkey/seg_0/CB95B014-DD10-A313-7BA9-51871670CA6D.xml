@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A165FDD3-1130-063D-A7AA-BA990311E78D" containerWithKeyObject="4C1A5BF0-FD98-7D2E-DE52-6E1CDE2331C5" localFKIndex="40B3658F-7CA6-456C-C554-A67784876118" name="Cliente_Servicio_Servicios_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="CB95B014-DD10-A313-7BA9-51871670CA6D" containerWithKeyObject="1DA1243E-26D8-025D-48F4-1AE5D5F166A2" localFKIndex="F23079D9-6675-D4E4-F02A-8AF8787F4B91" name="Incidencias_Servicios_FK">
 <createdBy>Brisa</createdBy>
-<createdTime>2025-01-17 23:07:55 UTC</createdTime>
-<generatorID>8181C1F2-F848-670D-3940-145553EC1622</generatorID>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>8324C609-C2D0-CE5E-3681-015F8B5371A1</generatorID>
 <ownerDesignName>Relacional</ownerDesignName>
 <referredTableLongName>Servicios</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>

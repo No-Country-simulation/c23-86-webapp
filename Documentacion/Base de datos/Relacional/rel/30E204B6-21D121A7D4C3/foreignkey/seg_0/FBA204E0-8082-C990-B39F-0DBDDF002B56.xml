@@ -10,7 +10,7 @@
 <keyObject>8368738F-E66D-EBA8-7C5F-E0C41C0DFA4A</keyObject>
 <referredKeyID>8368738F-E66D-EBA8-7C5F-E0C41C0DFA4A</referredKeyID>
 <mandatory>true</mandatory>
-<refColNames>id_Cliente,id_Servicio</refColNames>
+<refColNames>id_Cliente,id_Servicio,fechaAlta</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>

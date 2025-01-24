@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Cliente_Servicio_FK" directorySegmentName="seg_0" id="0588A1C7-147C-1699-E23E-B079C26AFC75">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:54:29 UTC</createdTime>
+<generatorID>FBA204E0-8082-C990-B39F-0DBDDF002B56</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<engineerTo>
+<item key="30E204B6-6B0A-DE30-FCD2-21D121A7D4C3" value="true"/>
+</engineerTo>
+<sourcePk>052E5093-D6A4-81B1-7349-1B551A62C2C6</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>2E872556-0C77-362F-0FBE-2DD12EAD4EF9</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>0383DD4D-731D-F0CB-53F2-651AE1C3732D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

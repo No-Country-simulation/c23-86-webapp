@@ -15,10 +15,10 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>69230305-AB6A-99EB-35A1-CC306D543604</logicalDatatype>
-<dataTypePrecision>10</dataTypePrecision>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>11</dataTypePrecision>
 <dataTypeScale>2</dataTypeScale>
-<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<ownDataTypeParameters>,11,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="fechaAlta" id="4758671E-F677-AD34-D8A6-56D91C6D2E4E">
@@ -39,7 +39,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -54,7 +54,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -64,7 +64,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="8368738F-E66D-EBA8-7C5F-E0C41C0DFA4A" name="idClienteServicio">
+<ind_PK_UK id="8368738F-E66D-EBA8-7C5F-E0C41C0DFA4A" name="Cliente_Servicio_PK">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>8136689A-5909-9C92-BD35-4C755988524F</generatorID>
@@ -78,7 +78,7 @@
 <colUsage columnID="4758671E-F677-AD34-D8A6-56D91C6D2E4E"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="40B3658F-7CA6-456C-C554-A67784876118" name="Servicio_FK">
+<ind_PK_UK id="40B3658F-7CA6-456C-C554-A67784876118" name="Cliente_Servicio_Servicios_FK">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>8181C1F2-F848-670D-3940-145553EC1622</generatorID>
@@ -89,7 +89,7 @@
 <colUsage columnID="3454D0D0-0691-4C70-8014-8540289D4FBA"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="075954F2-F59C-7AEA-4B61-23D70936113C" name="Cliente_FK">
+<ind_PK_UK id="075954F2-F59C-7AEA-4B61-23D70936113C" name="Cliente_Servicio_Clientes_FK">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>C5DFA540-A0BE-4347-79B3-C328E26C8D78</generatorID>

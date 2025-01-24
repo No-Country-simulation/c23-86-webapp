@@ -16,7 +16,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -31,7 +31,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="prioridad" id="EB0156E2-C534-04B3-B5B1-410D28556824">
+<Column name="estado" id="EB0156E2-C534-04B3-B5B1-410D28556824">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>EADE86C0-1D5B-D954-6BFE-E3B616784B3C</generatorID>
@@ -39,11 +39,11 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>5 CHAR</dataTypeSize>
-<ownDataTypeParameters>5 CHAR,,</ownDataTypeParameters>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="fechaCreacion" id="29B83947-8822-BC6A-782B-15DDAD53748B">
+<Column name="fechaDeAlta" id="29B83947-8822-BC6A-782B-15DDAD53748B">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>0C731AF4-1FB9-D5E8-7D48-2903EF2A10D5</generatorID>
@@ -85,7 +85,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -93,19 +93,34 @@
 <colAssociation fkAssociation="9FF722F7-B500-CA5D-D351-C4C5CB39211F" referredColumn="299F7293-3AEF-0E47-EDA2-2FE41CE1D037"/>
 </associations>
 </Column>
-<Column name="id_Cliente" id="DBB98788-0A48-06CD-A1A4-D7C92F353256">
+<Column name="Clientes_id_Cliente" id="DBB98788-0A48-06CD-A1A4-D7C92F353256">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>F5D8D21B-5D49-9ECC-04D3-1D9341DBD83C</generatorID>
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="319F6981-7F51-EEB1-41C4-24983E55A442" referredColumn="B6389C13-81A1-5ABE-92A4-C251702BB2D4"/>
+</associations>
+</Column>
+<Column name="Servicios_id_Servicio" id="EAA3321A-7135-9534-2D70-6AF533641975">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>328A990F-EC44-5EC3-5BB3-730C66DAA078</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CB95B014-DD10-A313-7BA9-51871670CA6D" referredColumn="02D4EDAB-5FC0-F5BF-D54C-C2BB57BB6E95"/>
 </associations>
 </Column>
 </columns>
@@ -122,7 +137,7 @@
 <colUsage columnID="A794A8DF-C296-284F-6789-6ED8835AA878"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="B5883670-C5F3-001C-337B-32C54BA0F44C" name="Incidencias_Cliente_FK">
+<ind_PK_UK id="B5883670-C5F3-001C-337B-32C54BA0F44C" name="Incidencias_Clientes_FK">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>212B193B-9996-2626-4658-99A4C27C970B</generatorID>
@@ -142,6 +157,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="6D61FD78-B81B-FE94-C8DB-C4967049FB3E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F23079D9-6675-D4E4-F02A-8AF8787F4B91" name="Incidencias_Servicios_FK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>8324C609-C2D0-CE5E-3681-015F8B5371A1</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EAA3321A-7135-9534-2D70-6AF533641975"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

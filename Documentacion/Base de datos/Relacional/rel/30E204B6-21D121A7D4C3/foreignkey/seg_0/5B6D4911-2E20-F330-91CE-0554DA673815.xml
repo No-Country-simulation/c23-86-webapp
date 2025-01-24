@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5B6D4911-2E20-F330-91CE-0554DA673815" containerWithKeyObject="2960CE5F-135F-F29E-3ECD-C6807F4071D0" localFKIndex="905058DC-CB1E-EB30-BE87-79DC9D6BFE27" name="DetalleIncidencias_Incidencias_FK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>AC93C98F-D441-BEF8-9DE3-0FF3E213A9D2</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<referredTableLongName>Incidencias</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>1DA1243E-26D8-025D-48F4-1AE5D5F166A2</referredTableID>
+<keyObject>7FE57B95-F7AC-A9DC-73A2-E233F87F3FBF</keyObject>
+<referredKeyID>7FE57B95-F7AC-A9DC-73A2-E233F87F3FBF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_incidencia</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

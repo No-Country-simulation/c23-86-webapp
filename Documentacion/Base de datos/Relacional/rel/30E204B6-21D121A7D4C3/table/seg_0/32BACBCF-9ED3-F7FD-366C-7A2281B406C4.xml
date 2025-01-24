@@ -15,7 +15,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -54,14 +54,14 @@
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="id_cliente" id="5CEB2215-1C84-4CAA-530F-C9DC3196498A">
+<Column name="id_Cliente" id="5CEB2215-1C84-4CAA-530F-C9DC3196498A">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>C6E6605C-EB63-6FE6-A1F0-DB60175BEB6B</generatorID>
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -69,14 +69,14 @@
 <colAssociation fkAssociation="FBA204E0-8082-C990-B39F-0DBDDF002B56" referredColumn="1E94707D-BB21-E2B7-B400-4279413FCFDA"/>
 </associations>
 </Column>
-<Column name="id_servicio" id="FDC59731-223D-A29F-3CEE-5A69CEA7DD63">
+<Column name="id_Servicio" id="FDC59731-223D-A29F-3CEE-5A69CEA7DD63">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>3DF3938D-9164-624D-C770-9C1770BE0004</generatorID>
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
@@ -84,7 +84,7 @@
 <colAssociation fkAssociation="FBA204E0-8082-C990-B39F-0DBDDF002B56" referredColumn="3454D0D0-0691-4C70-8014-8540289D4FBA"/>
 </associations>
 </Column>
-<Column name="id_fechaAlta" id="916398CE-95AD-3C5C-ADB2-293BA5D8008D">
+<Column name="fechaAlta" id="916398CE-95AD-3C5C-ADB2-293BA5D8008D">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-20 17:51:46 UTC</createdTime>
 <ownerDesignName>Relacional</ownerDesignName>

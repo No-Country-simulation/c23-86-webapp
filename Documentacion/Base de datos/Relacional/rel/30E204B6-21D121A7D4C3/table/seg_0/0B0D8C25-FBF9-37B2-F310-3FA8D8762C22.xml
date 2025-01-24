@@ -16,7 +16,7 @@
 <ownerDesignName>Relacional</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
@@ -127,7 +127,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="9907BB2F-546D-9640-421D-91A86394856B" name="Empleado_PK">
+<ind_PK_UK id="9907BB2F-546D-9640-421D-91A86394856B" name="Empleados_PK">
 <createdBy>Brisa</createdBy>
 <createdTime>2025-01-17 23:07:55 UTC</createdTime>
 <generatorID>970F58AD-ED21-8571-49F1-2F2A5FED5351</generatorID>

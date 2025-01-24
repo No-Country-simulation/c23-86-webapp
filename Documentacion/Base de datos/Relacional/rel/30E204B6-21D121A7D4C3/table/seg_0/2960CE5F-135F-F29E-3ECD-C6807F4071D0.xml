@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2960CE5F-135F-F29E-3ECD-C6807F4071D0" name="DetalleIncidencias">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>7EFF020D-E136-FAAF-6804-B4AAE1786C14</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_Detalle" id="F0BF9D47-345B-E76F-321A-52EE92EDB114">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>5297F56F-91BE-CC43-CDA0-A74288F77C00</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fechaDeModificacion" id="8FE68341-C8DF-5419-44DF-8858B10EDD91">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>E61955C6-55C7-9A6F-B323-8FB8DC518C5D</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="34AF5E67-2D7F-2504-A123-CF8DF865B59E">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>5230F3C0-96D5-D683-FE56-79049705D010</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Incidencias_id_incidencia" id="346F23C2-9B12-B26B-DE4B-398ACC7A8A20">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>05B8592B-CD10-C8E5-A62F-3D9C729091A3</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5B6D4911-2E20-F330-91CE-0554DA673815" referredColumn="A794A8DF-C296-284F-6789-6ED8835AA878"/>
+</associations>
+</Column>
+<Column name="Empleados_id_Empleado" id="78D7F0C1-3B8F-DD8F-AA83-74BA14878072">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>D30407A5-5F15-25A8-7C0B-F140F325FDEE</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D994FBFB-57D1-79FE-4755-01AEDF8A5B4A" referredColumn="299F7293-3AEF-0E47-EDA2-2FE41CE1D037"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DF6DCA0E-3D73-6F3F-B5CE-1ED74E4AE026" name="DetalleIncidencias_PK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>98AC53F7-FD75-91D0-DE98-8D40A9C7AE52</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F0BF9D47-345B-E76F-321A-52EE92EDB114"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="905058DC-CB1E-EB30-BE87-79DC9D6BFE27" name="DetalleIncidencias_Incidencias_FK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>AC93C98F-D441-BEF8-9DE3-0FF3E213A9D2</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="346F23C2-9B12-B26B-DE4B-398ACC7A8A20"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7FED56B3-6E36-4FF7-56F9-A45DCD855C49" name="DetalleIncidencias_Empleados_FK">
+<createdBy>Brisa</createdBy>
+<createdTime>2025-01-21 22:59:31 UTC</createdTime>
+<generatorID>A9B371FB-4FF3-1C4C-6E63-6BFB3B0E315D</generatorID>
+<ownerDesignName>Relacional</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="78D7F0C1-3B8F-DD8F-AA83-74BA14878072"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
