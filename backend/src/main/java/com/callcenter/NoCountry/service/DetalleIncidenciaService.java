@@ -45,6 +45,7 @@ public class DetalleIncidenciaService {
      *
      * Este método crea y persiste un nuevo detalle de incidencia, asociando
      * una incidencia, un empleado, prioridad y estado.
+     * La fecha de modificacion se setea a la fecha actual.
      *
      * @param idIncidencia El ID de la incidencia a la que se le asociará el detalle.
      * @param detalleDTO    El objeto que contiene la información del detalle a crear.
