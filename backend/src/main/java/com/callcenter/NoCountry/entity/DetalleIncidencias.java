@@ -34,7 +34,14 @@ public class DetalleIncidencias {
 
     @Column(name = "descripcion", nullable = false, columnDefinition = "TEXT")
     private String descripcion;
+
+    @Column(name = "estado", nullable = false, length = 30) // Nuevo campo: estado
+    private String estado;
+
+    @Column(name = "prioridad", nullable = false) // Nuevo campo: prioridad
+    private int prioridad;
 }
+
 
 
 

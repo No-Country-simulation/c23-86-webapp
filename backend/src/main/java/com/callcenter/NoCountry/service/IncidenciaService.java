@@ -27,8 +27,9 @@ import java.util.NoSuchElementException;
 @Service
 @AllArgsConstructor
 public class IncidenciaService {
+
     @Autowired
-    private IncidenciaRepository incidenciaRepository;
+    private final IncidenciaRepository incidenciaRepository;
 
     @Autowired
     private final ClienteRepository clienteRepository;
@@ -37,13 +38,11 @@ public class IncidenciaService {
     private final ServicioRepository servicioRepository;
 
     @Autowired
-    private DetalleIncidenciaRepository detalleIncidenciaRepository;
+    private final DetalleIncidenciaRepository detalleIncidenciaRepository;
 
     /**
      * Crea una nueva incidencia en el sistema y la persiste en la base de datos.
-     *
-     * Este método verifica que el cliente y el servicio asociados a la incidencia existan,
-     * y luego crea y persiste una nueva incidencia en la base de datos.
+     * También crea un detalle inicial para registrar la prioridad y el estado inicial de la incidencia.
      *
      * @param incidenciaDTO Objeto DTO que contiene los datos necesarios para crear una incidencia.
      * @return La incidencia creada y guardada en la base de datos.
@@ -51,29 +50,27 @@ public class IncidenciaService {
      */
     public Incidencias crearIncidencia(IncidenciaDTO incidenciaDTO) {
         // Verifica que el cliente exista
-        Clientes cliente = clienteRepository.findById(incidenciaDTO.getIdCliente()).orElseThrow(() -> new IllegalArgumentException("Cliente no encontrado"));
+        Clientes cliente = clienteRepository.findById(incidenciaDTO.getIdCliente())
+                .orElseThrow(() -> new IllegalArgumentException("Cliente no encontrado"));
 
         // Verifica que el servicio exista
-        Servicios servicio = servicioRepository.findById(incidenciaDTO.getIdServicio()).orElseThrow(() -> new IllegalArgumentException("Servicio no encontrado"));
+        Servicios servicio = servicioRepository.findById(incidenciaDTO.getIdServicio())
+                .orElseThrow(() -> new IllegalArgumentException("Servicio no encontrado"));
 
         // Crea la nueva incidencia
         Incidencias incidencia = new Incidencias();
         incidencia.setCliente(cliente);
         incidencia.setServicio(servicio);
-        incidencia.setPrioridad(incidenciaDTO.getPrioridad());
-        incidencia.setEstado(incidenciaDTO.getEstado());
         incidencia.setDescripcion(incidenciaDTO.getDescripcion());
         incidencia.setFechaDeAlta(LocalDateTime.now());
 
-        // Guarda la incidencia en la base de datos
-        return incidenciaRepository.save(incidencia);
+        // Guarda la incidencia
+        incidencia = incidenciaRepository.save(incidencia);
+        return incidencia;
     }
 
     /**
      * Obtiene una incidencia junto con los detalles asociados.
-     *
-     * Este método busca una incidencia por su ID y asigna los detalles de la incidencia
-     * a la instancia de la incidencia.
      *
      * @param idIncidencia El ID de la incidencia a recuperar.
      * @return La incidencia con los detalles asociados.
@@ -81,7 +78,8 @@ public class IncidenciaService {
      */
     public Incidencias obtenerIncidenciaConDetalles(Long idIncidencia) {
         // Buscar la incidencia
-        Incidencias incidencia = incidenciaRepository.findById(idIncidencia).orElseThrow(() -> new NoSuchElementException("Incidencia no encontrada"));
+        Incidencias incidencia = incidenciaRepository.findById(idIncidencia)
+                .orElseThrow(() -> new NoSuchElementException("Incidencia no encontrada"));
 
         // Obtener los detalles asociados
         List<DetalleIncidencias> detalles = detalleIncidenciaRepository.findByIncidenciaId(idIncidencia);
@@ -95,15 +93,13 @@ public class IncidenciaService {
     /**
      * Obtiene la representación DTO de una incidencia.
      *
-     * Este método convierte una incidencia en su representación DTO para ser utilizada
-     * en otras partes de la aplicación, como en la capa de presentación.
-     *
      * @param id El ID de la incidencia a convertir en DTO.
      * @return El DTO correspondiente a la incidencia.
      * @throws RuntimeException Si la incidencia con el ID proporcionado no existe.
      */
     public IncidenciaDTO obtenerIncidenciaDTO(Long id) {
-        Incidencias incidencia = incidenciaRepository.findById(id).orElseThrow(() -> new RuntimeException("La incidencia con ID " + id + " no existe."));
+        Incidencias incidencia = incidenciaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("La incidencia con ID " + id + " no existe."));
 
         return new IncidenciaDTO(incidencia);
     }

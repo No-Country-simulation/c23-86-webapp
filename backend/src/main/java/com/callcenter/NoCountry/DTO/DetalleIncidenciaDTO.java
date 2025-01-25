@@ -19,6 +19,8 @@ public class DetalleIncidenciaDTO {
     private String apellidoEmpleado;
     private LocalDateTime fechaDeModificacion;
     private String descripcion;
+    private String estado; // Nuevo campo para el estado de la incidencia
+    private int prioridad; // Nuevo campo para la prioridad de la incidencia
 
     /**
      * Constructor que crea un DetalleIncidenciaDTO a partir de una entidad {@link DetalleIncidencias}.
@@ -31,7 +33,9 @@ public class DetalleIncidenciaDTO {
         this.apellidoEmpleado = detalle.getEmpleado().getApellido();
         this.fechaDeModificacion = detalle.getFechaDeModificacion();
         this.descripcion = detalle.getDescripcion();
+        this.estado = detalle.getEstado(); // Asignación del nuevo campo
+        this.prioridad = detalle.getPrioridad(); // Asignación del nuevo campo
     }
-
 }
+
 

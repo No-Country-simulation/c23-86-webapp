@@ -50,9 +50,10 @@ public class IncidenciaController {
             @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     })
     @PostMapping
-    public ResponseEntity<Incidencias> crearIncidencia(@RequestBody IncidenciaDTO incidenciaDTO) {
+    public ResponseEntity<IncidenciaDTO> crearIncidencia(@RequestBody IncidenciaDTO incidenciaDTO) {
         Incidencias nuevaIncidencia = incidenciaService.crearIncidencia(incidenciaDTO);
-        return new ResponseEntity<>(nuevaIncidencia, HttpStatus.CREATED);
+        IncidenciaDTO incidenciaDTO1 = new IncidenciaDTO(nuevaIncidencia);
+        return new ResponseEntity<>(incidenciaDTO1, HttpStatus.CREATED);
     }
 
     /**
@@ -96,6 +97,7 @@ public class IncidenciaController {
     public ResponseEntity<?> agregarDetalle(@PathVariable Long idIncidencia, @RequestBody DetalleIncidenciaDTO detalleDTO) {
         try {
             detalleIncidenciaService.crearDetalle(idIncidencia, detalleDTO);
+
             IncidenciaDTO incidenciaDTO = incidenciaService.obtenerIncidenciaDTO(idIncidencia);
             return ResponseEntity.status(HttpStatus.CREATED).body(incidenciaDTO);
         } catch (IllegalArgumentException e) {
@@ -103,5 +105,37 @@ public class IncidenciaController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
         }
-    }
+        }
+//    }    /**
+//     * Endpoint para agregar un detalle a una incidencia existente.
+//     *
+//     * @param idIncidencia ID de la incidencia a la que se desea agregar un detalle.
+//     * @param detalleDTO   Objeto que contiene los datos del detalle que se va a agregar.
+//     * @return Respuesta HTTP con la incidencia actualizada o un mensaje de error en caso de fallo.
+//     *         Retorna:
+//     *         <ul>
+//     *             <li>{@code 201 (CREATED)} si el detalle se agregó correctamente.</li>
+//     *             <li>{@code 400 (BAD REQUEST)} si hay un error en los datos proporcionados.</li>
+//     *             <li>{@code 500 (INTERNAL SERVER ERROR)} si ocurre un error interno en el servidor.</li>
+//     *         </ul>
+//     */
+//    @Operation(summary = "Agregar un detalle a una incidencia", description = "Agrega un detalle a una incidencia existente")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "201", description = "Detalle agregado exitosamente"),
+//            @ApiResponse(responseCode = "400", description = "Datos inválidos o incidencia no encontrada"),
+//            @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+//    })
+//    @PostMapping("/{idIncidencia}/detalles")
+//    public ResponseEntity<?> agregarDetalle(@PathVariable Long idIncidencia, @RequestBody DetalleIncidenciaDTO detalleDTO) {
+//        try {
+//            detalleIncidenciaService.crearDetalle(idIncidencia, detalleDTO);
+//
+//            IncidenciaDTO incidenciaDTO = incidenciaService.obtenerIncidenciaDTO(idIncidencia);
+//            return ResponseEntity.status(HttpStatus.CREATED).body(incidenciaDTO);
+//        } catch (IllegalArgumentException e) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
+//        }
+//    }
 }

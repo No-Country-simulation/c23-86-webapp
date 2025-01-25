@@ -28,5 +28,9 @@ public class ClienteDTO {
         this.id = cliente.getId();
         this.nombre = cliente.getNombre();
         this.apellido = cliente.getApellido();
+        this.dni = cliente.getDni();
+        this.correo = cliente.getCorreo();
+        this.telefono = cliente.getTelefono();
+        this.estado = cliente.getEstado();
     }
 }
