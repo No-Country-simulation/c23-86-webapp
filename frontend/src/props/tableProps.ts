@@ -1,30 +1,5 @@
-// type Column ={
-//     name: string;
-//     uid: string;
-//     sortable?: boolean;
-// }
-// type Status = {
-//     uid: string;
-//     name: string;
-// }
-// export type Data = {
-//     id: number;
-//     name: string;
-//     role: string;
-//     team: string;
-//     status: string;
-//     age: string;
-//     avatar: string;
-//     email: string;
-// }
 
-// export type TableProps = {
-//     initialVisibleColumns: string[];
-//     columns: Column[];
-//     statuses: Status[];
-//     data: Data[];
 
-// }
 type Column = {
 	name: string;
 	uid: string;
@@ -44,4 +19,7 @@ export type TableProps<T = Record<string, any>> = {
 	columns: Column[];
 	statuses: Status[];
 	data: Data<T>[];
+	editClick?: (data: Data<T>) => void;
+	viewClick?: (data: Data<T>) => void;
+	deleteClick?: (data: Data<T>) => void;
 };
