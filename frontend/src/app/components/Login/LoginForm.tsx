@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Input from "@/app/components/Input";
 import Button from "@/app/components/Button";
+import ItemButton from "@/app/components/Login/ItemButton";
 import LinkComponent from "@/app/components/LinkComponent";
 import HidePassword from "@/app/components/Login/HidePassword";
 import ShowPassword from "@/app/components/Login/ShowPassword";
@@ -47,9 +48,9 @@ const LoginForm= () => {
 		setShowPassword(!showPassword);
 	};
 	return (
-		<form>
+		<form className="flex  flex-col  justify-center items-center">
 			<Input
-				nombre='Email'
+				nombre='tucorreo@gmail.com'
 				value={email}
 				error={emailError ?? ""}
 				cambio={validateEmail}
@@ -63,7 +64,7 @@ const LoginForm= () => {
 				cambio={validatePassword}
 				inputType={showPassword ? "text" : "password"}
 				item={
-					<Button
+					<ItemButton
 						type='button'
 						disableOptions={false}
 						handler={showPasswordHandler}
@@ -71,14 +72,16 @@ const LoginForm= () => {
 					/>
 				}
 			/>
+			<div className="font-montserrat font-normal text-[14px] leading-[17px] italic"> 
 			<LinkComponent
-				nombre='He olvidado la contraseña'
+				nombre='Olvidé mi contraseña'
 				redireccion='/regis'
 				target='_blank'></LinkComponent>
+				</div>
 			<Button
 				type='submit'
 				disableOptions={!!emailError || !!passwordError}
-				buttonName='Enviar'
+				buttonName='Iniciar sesión'
 			/>
 		</form>
 	);

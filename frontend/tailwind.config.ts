@@ -1,4 +1,5 @@
 import {heroui} from '@heroui/theme';
+import { Montserrat } from 'next/font/google';
 import type { Config } from "tailwindcss";
 
 export default {
@@ -10,6 +11,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        roboto: ["var(--font-roboto)"],
+        montserrat: ["var(--font-montserrat)"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

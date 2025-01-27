@@ -16,16 +16,17 @@ const Input = ({
 	};
 
 	return (
-		<div className='flex flex-row gap-2  '>
-			<label htmlFor={inputType}>{nombre}</label>
+		<div className='flex flex-col gap-2  '>
+		
 			<div className='relative flex items-center '>
 				<input
-					className=' w-full  border border-solid box-border '
+					className=' w-[318px] h-[37px] rounded-[4px] border border-solid font-normal  box-border text-[14px] leading-[17px]   italic font-montserrat '
 					type={inputType}
 					id={inputType}
 					name={nombre}
 					value={value}
 					onChange={handleChange}
+					placeholder={nombre}
 				/>
 				{item && (
 					<div className='hover:cursor-pointer hover:transform hover:scale-110 absolute right-0 top-[3px] w-auto h-full flex items-center justify-end  '>
@@ -33,7 +34,10 @@ const Input = ({
 					</div>
 				)}
 			</div>
+			<div>
+
 			{error && <span className='error-message'>{error}</span>}
+			</div>
 		</div>
 	);
 };
