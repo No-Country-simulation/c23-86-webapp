@@ -1,5 +1,7 @@
 import { users } from "@/utils/Data/data";
 import Table from "../components/Table/Table";
+import handlerViewClick from "@/utils/functions/handlerViewClick";
+
 
 
 export default function Reports() {
@@ -13,6 +15,7 @@ export default function Reports() {
     { name: "STATUS", uid: "status", sortable: true },
     { name: "ACTIONS", uid: "actions" },
   ]
+
     return (
 			<div>
 				<h1 className='text-2xl font-bold'>Reportes</h1>
@@ -33,8 +36,10 @@ export default function Reports() {
 						{ uid: "active", name: "Active" },
 						{ uid: "paused", name: "Paused" },
 						{ uid: "vacation", name: "Vacation" },
-					]}></Table>
-		
+					]}
+				viewClick={handlerViewClick}
+			></Table>
+			
 			</div>
 		);
   }
