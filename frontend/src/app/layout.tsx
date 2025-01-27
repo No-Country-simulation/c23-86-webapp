@@ -51,7 +51,7 @@ export default function RootLayout({
 					{/* {children} */}
 					<div
 						className={`flex  flex-grow`}>
-						<main className=' flex  bg-opacity-90 rounded-lg m-6 p-6 shadow-md overflow-hidden'>
+						<main className=' flex  bg-opacity-90 rounded-lg shadow-md overflow-hidden'>
 							{children}
 						</main>
 					</div>
