@@ -1,14 +1,11 @@
-
-
 import LoginForm from "@/app/components/Login/LoginForm";
+import LoginHead from "../components/Login/LoginHead";
 
 const Login = () => {
 	return (
-		<div className='flex items-center justify-center h-full w-full '>
-			<div className='border border-solid border-black'>
-
+		<div className='flex flex-col justify-center items-center  w-screen h-screen '>
+			<LoginHead/>
 			<LoginForm />
-			</div>
 		</div>
 	);
 };
