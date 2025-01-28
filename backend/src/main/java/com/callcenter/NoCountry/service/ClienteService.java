@@ -40,7 +40,14 @@ public class ClienteService {
             throw new ServiceException("No se encuentra el DNI", e);
         }
     }
-  
+    
+    public List<Clientes> buscarPorNombreYApellido(String nombre, String apellido){
+        try{
+            return clienteRepository.findByNombreIgnoreCaseAndApellidoIgnoreCase(nombre, apellido);
+        }catch(Exception e){
+            throw new ServiceException("No se encuentra ningun usuario por nombre y apellido", e);
+        }
+    }
     
     public List<Clientes> buscarPorNombre(String nombre){
         try{

@@ -1,11 +1,13 @@
 package com.callcenter.NoCountry.controller;
 
+import com.callcenter.NoCountry.DTO.ClienteDTO;
 import com.callcenter.NoCountry.Exception.ControllerException;
 import com.callcenter.NoCountry.entity.Clientes;
 import com.callcenter.NoCountry.service.ClienteService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,19 +29,19 @@ public class ClienteController {
     }
     
     @PostMapping
-    public ResponseEntity<List<Clientes>> buscarCliente(
-                                                @RequestParam Long dni,
-                                                @RequestParam String nombre,
-                                                @RequestParam String apellido)
+    public ResponseEntity<List<ClienteDTO>> buscarCliente(
+                                                @RequestParam(required = false) Long dni,
+                                                @RequestParam(required = false) String nombre,
+                                                @RequestParam(required = false) String apellido)
     {
         try{
         List<Clientes> clientes = new ArrayList<>();
         if (dni != null ){
              clientes = clienteService.buscarPorDni(dni);
         }else{
-           /* if(nombre != null && apellido != null){
-                    clientes = clienteService.BuscarPorNombreYApellido(nombre, apellido);
-                    }*/
+            if(nombre != null && apellido != null){
+                    clientes = clienteService.buscarPorNombreYApellido(nombre, apellido);
+                    }
             if(nombre != null){
                 clientes = clienteService.buscarPorNombre(nombre);
             }
@@ -50,18 +52,37 @@ public class ClienteController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
         }
-        return ResponseEntity.ok(clientes);
+        List<ClienteDTO> clienteDTOs = clientes.stream()
+                .map(cliente -> new ClienteDTO(
+                        cliente.getId(),
+                        cliente.getDni(), 
+                        cliente.getNombre(), 
+                        cliente.getApellido())
+                ).collect(Collectors.toList());
+        
+        return ResponseEntity.ok(clienteDTOs);
         }catch(Exception e){
             throw new ControllerException("Cliente no encontrado", e);
         }
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Clientes> obtenerClientePorId(@PathVariable Long id){
+    public ResponseEntity<ClienteDTO> obtenerClientePorId(@PathVariable Long id){
         try{
             Optional<Clientes> cliente = clienteService.ObtenerPorId(id);
             if (cliente.isPresent()){
-                return ResponseEntity.ok(cliente.get());
+                ClienteDTO clienteDto = new ClienteDTO();
+                
+                clienteDto.setId(cliente.get().getId());
+                clienteDto.setDni(cliente.get().getDni());
+                clienteDto.setNombre(cliente.get().getNombre());
+                clienteDto.setApellido(cliente.get().getApellido());
+                clienteDto.setCorreo(cliente.get().getCorreo());
+                clienteDto.setDireccion(cliente.get().getDireccion());
+                clienteDto.setTelefono(cliente.get().getTelefono());
+                clienteDto.setEstado(cliente.get().getEstado());
+                
+                return ResponseEntity.ok(clienteDto);
             }
             else{
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

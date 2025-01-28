@@ -12,6 +12,7 @@ public interface ClienteRepository extends JpaRepository<Clientes, Long> {
     @Override
     Optional<Clientes> findById(Long id);
     List<Clientes> findByDni(Long dni);
+    List<Clientes> findByNombreIgnoreCaseAndApellidoIgnoreCase(String nombre, String apellido);
     List<Clientes> findByNombreContainingIgnoreCase(String nombre);
     List<Clientes> findByApellidoContainingIgnoreCase(String apellido);
 }
