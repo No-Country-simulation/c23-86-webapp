@@ -76,6 +76,7 @@ const LoginForm = () => {
 			/>
 			<div className='font-montserrat font-normal text-[14px] leading-[17px] italic'>
 				<LinkComponent
+					cssClass="underline"
 					nombre='Olvidé mi contraseña'
 					redireccion='/regis'
 					target='_blank'></LinkComponent>
