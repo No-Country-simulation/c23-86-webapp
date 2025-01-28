@@ -1,4 +1,6 @@
-export default function Home() {
+import withAuth from "./components/WithAuth";
+
+const Home=()=> {
 	return (
 		<div>
 			<h1 className='text-2xl font-bold'>Dashboard</h1>
@@ -6,3 +8,4 @@ export default function Home() {
 		</div>
 	);
 }
+export default withAuth(Home)
