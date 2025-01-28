@@ -48,13 +48,12 @@ export default function RootLayout({
 				className={`${montserratFont.className} ${robotoFont.className} ${montserratItalicFont.variable} ${robotoItalicFont.variable} antialiased  h-screen flex w-screen bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700`}>
 				<Providers>
 					{!isLoginPage && <Sidebar />}
-					{/* {children} */}
-					<div
-						className={`flex  flex-grow`}>
+					{children}
+					{/* <div className={`flex  flex-grow`}>
 						<main className=' flex  bg-opacity-90 rounded-lg shadow-md overflow-hidden'>
 							{children}
 						</main>
-					</div>
+					</div> */}
 				</Providers>
 			</body>
 		</html>

@@ -1,11 +1,10 @@
-import LoginForm from "@/app/components/Login/LoginForm";
-import LoginHead from "../components/Login/LoginHead";
+
+import LoginComponent from "../components/Login/LoginComponent";
 
 const Login = () => {
 	return (
-		<div className='flex flex-col justify-center items-center  w-screen h-screen '>
-			<LoginHead/>
-			<LoginForm />
+		<div className='flex flex-col justify-center items-center  w-screen h-screen  '>
+			<LoginComponent/>	
 		</div>
 	);
 };
