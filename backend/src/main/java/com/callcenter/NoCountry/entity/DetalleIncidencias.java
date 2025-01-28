@@ -17,18 +17,18 @@ public class DetalleIncidencias {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Detalle")
+    @Column(name = "id")
     private Integer idDetalle;
 
     @ManyToOne
-    @JoinColumn(name = "id_Incidencia", nullable = false)
+    @JoinColumn(name = "id_incidencia", nullable = false)
     private Incidencias incidencia;
 
     @ManyToOne
-    @JoinColumn(name = "id_Empleado", nullable = false)
+    @JoinColumn(name = "id_empleado", nullable = false)
     private Empleados empleado;
 
-    @Column(name = "fechaDeModificacion", nullable = false)
+    @Column(name = "fecha_de_modificacion", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fechaDeModificacion;
 

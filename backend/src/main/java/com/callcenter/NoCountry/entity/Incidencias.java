@@ -18,7 +18,7 @@ public class Incidencias {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_incidencia")
+    @Column(name = "id")
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -29,11 +29,11 @@ public class Incidencias {
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "id_Cliente", nullable = false)
+    @JoinColumn(name = "id_cliente", nullable = false)
     private Clientes cliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_Servicio", nullable = false)
+    @JoinColumn(name = "id_servicio", nullable = false)
     private Servicios servicio;
 
     @OneToMany(mappedBy = "incidencia", cascade = CascadeType.ALL, orphanRemoval = true)

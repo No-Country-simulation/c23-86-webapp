@@ -3,6 +3,8 @@ package com.callcenter.NoCountry.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "clientes")
 @Data
@@ -10,7 +12,7 @@ public class Clientes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Cliente")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "dni", unique = true, nullable = false)
@@ -30,4 +32,10 @@ public class Clientes {
 
     @Column(name = "estado", nullable = false)
     private String estado;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<ClienteServicio> servicios;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Incidencias> incidencias;
 }

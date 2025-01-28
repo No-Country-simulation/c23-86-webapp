@@ -7,6 +7,8 @@ import com.callcenter.NoCountry.repository.ClienteRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +45,10 @@ public class ClienteService {
         }catch(Exception e){
             throw new ServiceException("No se encuentra el apellido",e);
         }
-    }    
+    }
+
+    public Clientes getClienteInfo(int idCliente) {
+        Optional<Clientes> cliente = clienteRepository.findById(idCliente);
+        return cliente.orElse(null);
+    }
 }

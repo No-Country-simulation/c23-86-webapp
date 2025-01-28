@@ -12,9 +12,15 @@ import java.util.List;
 public class Servicios {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_Servicio")
+    @Column(name = "id")
     private Long id;
     private String nombre;
     private String descripcion;
     private BigDecimal precio;
+
+    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
+    private List<ClienteServicio> clientes;
+
+    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
+    private List<Incidencias> incidencias;
 }

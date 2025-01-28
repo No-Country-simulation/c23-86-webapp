@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "empleados")
@@ -12,7 +13,7 @@ public class Empleados {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_Empleado")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "nombre", nullable = false)
@@ -24,10 +25,10 @@ public class Empleados {
     @Column(name = "rol", nullable = false)
     private String rol;
 
-    @Column(name = "correoPersonal", nullable = false, unique = true)
+    @Column(name = "correo_personal", nullable = false, unique = true)
     private String correoPersonal;
 
-    @Column(name = "correoEmpresarial", nullable = false, unique = true)
+    @Column(name = "correo_empresarial", nullable = false, unique = true)
     private String correoEmpresarial;
 
     @Column(name = "clave", nullable = false)
@@ -36,11 +37,14 @@ public class Empleados {
     @Column(name = "telefono", nullable = false, unique = true)
     private String telefono;
 
-    @Column(name = "fechaIngreso", nullable = false)
+    @Column(name = "fecha_ingreso", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fechaIngreso;
 
     @Column(name = "activo", nullable = false)
     private boolean activo;
+
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL)
+    private List<DetalleIncidencias> detallesIncidencias;
 
 }

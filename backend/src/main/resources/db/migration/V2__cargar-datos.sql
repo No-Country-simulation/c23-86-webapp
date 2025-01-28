@@ -1,5 +1,5 @@
 -- Insertar datos en Empleados
-INSERT INTO empleados (nombre, apellido, rol, correoPersonal, correoEmpresarial, clave, telefono, fechaIngreso)
+INSERT INTO empleados (nombre, apellido, rol, correo_personal, correo_empresarial, clave, telefono, fecha_ingreso)
 VALUES
 ('Juan', 'Pérez', 'Administrador', 'juan.perez@gmail.com', 'jperez@empresa.com', 'clave123', 5523456789, '2023-01-10'),
 ('María', 'García', 'Telefonista', 'maria.garcia@gmail.com', 'mgarcia@empresa.com', 'clave456', 5529876543, '2022-05-15'),
@@ -20,7 +20,7 @@ VALUES
 ('Streaming HD', 'Servicio de streaming en HD', 199.99);
 
 -- Insertar datos en Cliente_Servicio
-INSERT INTO cliente_servicio (id_Cliente, id_Servicio, monto, fechaAlta)
+INSERT INTO cliente_servicio (id_cliente, id_servicio, monto, fecha_alta)
 VALUES
 (1, 1, 499.99, '2023-12-01'),
 (1, 2, 299.99, '2023-12-05'),
@@ -30,7 +30,7 @@ VALUES
 (3, 3, 199.99, '2023-12-25');
 
 -- Insertar datos en HistorialPagos (3 pagos por cada cliente-servicio)
-INSERT INTO historial_de_pagos (fechaPago, fechaVencimiento, montoPagado, id_ClienteServicio)
+INSERT INTO historial_de_pagos (fecha_pago, fecha_vencimiento, monto_pagado, id_cliente_servicio)
 VALUES
 -- Pagos del Cliente_Servicio correspondiente a Cliente 1 y Servicio 1
 ('2024-01-01', '2024-01-10', 499.99, 1),

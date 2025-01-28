@@ -4,10 +4,10 @@ ADD COLUMN estado VARCHAR(30) NOT NULL,
 ADD COLUMN prioridad INT NOT NULL;
 
 -- Paso 2: Insertar datos desde incidencias hacia detalle_de_incidencias, asignando id_Empleado = 1
-INSERT INTO detalle_de_incidencias (id_Incidencia, id_Empleado, fecha_de_modificacion, descripcion, estado, prioridad)
+INSERT INTO detalle_de_incidencias (id_incidencia, id_empleado, fecha_de_modificacion, descripcion, estado, prioridad)
 SELECT
-    i.id_Incidencia,
-    1 AS id_Empleado, -- Se asigna el valor 1 a id_Empleado
+    i.id,
+    1 AS id_empleado, -- Se asigna el valor 1 a id_Empleado
     i.fecha_de_alta AS fecha_de_modificacion, -- Usamos la fecha de alta como fecha inicial de modificación
     'Migración inicial de estado y prioridad' AS descripcion,
     i.estado,
