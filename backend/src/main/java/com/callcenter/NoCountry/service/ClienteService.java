@@ -4,6 +4,7 @@ package com.callcenter.NoCountry.service;
 import com.callcenter.NoCountry.Exception.ServiceException;
 import com.callcenter.NoCountry.entity.Clientes;
 import com.callcenter.NoCountry.repository.ClienteRepository;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class ClienteService {
     
     public List<Clientes> buscarPorDni(Long dni){
         try{
-            return clienteRepository.findByDni(dni);
+            return Collections.unmodifiableList(clienteRepository.findByDni(dni));
         }catch(Exception e){
             throw new ServiceException("No se encuentra el DNI", e);
         }
@@ -64,4 +65,9 @@ public class ClienteService {
             throw new ServiceException("No se encuentra el apellido",e);
         }
     }
+/*
+    public Clientes getClienteInfo(int idCliente) {
+        Optional<Clientes> cliente = clienteRepository.findById(idCliente);
+        return cliente.orElse(null);
+    }*/
 }

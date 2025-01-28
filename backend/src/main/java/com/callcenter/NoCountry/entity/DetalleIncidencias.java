@@ -3,9 +3,14 @@ package com.callcenter.NoCountry.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import lombok.Data;
-
 import lombok.AllArgsConstructor;
 
+
+/**
+ * Entidad que representa el detalle de una incidencia.
+ * Cada detalle está asociado a una incidencia y registra la información
+ * sobre modificaciones realizadas por empleados, incluyendo la descripción de dichas modificaciones.
+ */
 @Data
 @Entity
 @Table(name = "detalle_incidencias")
@@ -14,7 +19,9 @@ public class DetalleIncidencias {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
 
     @ManyToOne
     @JoinColumn(name = "id_incidencia", nullable = false)
@@ -31,10 +38,18 @@ public class DetalleIncidencias {
     @Column(name = "descripcion", nullable = false, columnDefinition = "TEXT")
     private String descripcion;
     
+    @Column(name = "estado", nullable = false, length = 30) // Nuevo campo: estado
+    private String estado;
+    
+    @Column(name = "prioridad", nullable = false) // Nuevo campo: prioridad
+    private int prioridad;
+        
     public DetalleIncidencias(){
         
     }
+
 }
+
 
 
 

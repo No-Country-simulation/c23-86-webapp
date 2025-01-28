@@ -1,23 +1,33 @@
 package com.callcenter.NoCountry.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
 @Table(name = "servicios")
+@Data
 public class Servicios {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+    
+    @Column(name = "nombre", nullable = false)
     private String nombre;
+    
+    @Column(name = "descripcion", nullable = false)
     private String descripcion;
+    
+    @Column(name = "precio", nullable = false)
     private BigDecimal precio;
     
-    @OneToMany(mappedBy = "idServicio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ClienteServicio> clienteServicios;
+    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
+    private List<ClienteServicio> clientes;
     
-    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
     private List<Incidencias> incidencias;
     
     public Servicios(){   

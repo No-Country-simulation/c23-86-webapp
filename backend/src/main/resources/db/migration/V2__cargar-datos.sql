@@ -6,7 +6,6 @@ VALUES
 (6451245,'Luis', 'López', 'Supervisor', 'luis.lopez@gmail.com', 'llopez@empresa.com', 'clave789', '5521234567');
 
 -- Insertar datos en Clientes
-
 INSERT INTO clientes (dni, nombre, apellido, correo, telefono, direccion, estado, activo)
 VALUES
 (13223456, 'Ana', 'Martínez', 'ana.martinez@gmail.com', '5512345678', 'Calle Falsa 1234', 'Activo', 1),
@@ -22,7 +21,6 @@ VALUES
 ('Streaming HD', 'Servicio de streaming en HD', 199.99);
 
 -- Insertar datos en Cliente_Servicio
-
 INSERT INTO cliente_servicio (id_cliente, id_servicio, monto, fecha_alta)
 VALUES
 (1, 1, 499.99, '2023-12-01'),
@@ -33,7 +31,6 @@ VALUES
 (3, 3, 199.99, '2023-12-25');
 
 -- Insertar datos en HistorialPagos (3 pagos por cada cliente-servicio)
-
 INSERT INTO historial_pagos (fecha_pago, fecha_vencimiento, monto_pagado, id_cliente_servicio)
 VALUES
 -- Pagos del Cliente_Servicio correspondiente a Cliente 1 y Servicio 1

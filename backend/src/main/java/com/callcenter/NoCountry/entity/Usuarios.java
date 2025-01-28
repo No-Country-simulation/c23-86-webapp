@@ -11,7 +11,6 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Getter @Setter
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -19,21 +18,27 @@ public class Usuarios {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     @NotBlank(message = "Ingresar dni")
     @Column(name = "dni")
     private Long dni;
+    
     @NotBlank(message = "ingresar nombre")
     @Column(name = "nombre")
     private String nombre;
+    
     @NotBlank(message = "ingresar apellido")
     @Column(name ="apellido")
     private String apellido;
+    
     @NotBlank(message = "ingresar correo")
     @Column(name = "correo")
     private String correo;
+    
     @NotBlank(message = "ingresar telefono")
     @Column(name = "telefono")
     private String telefono;
+    
     @Column(name = "activo")
     private boolean activo = true;
     

@@ -6,12 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Getter;
@@ -23,17 +21,18 @@ import lombok.Setter;
 public class HistorialPagos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    @Column(name = "fecha_pago")
-    @NotBlank(message = "fecha de pago")
+    
+    @Column(name = "fecha_pago", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fechaPago;
-    @Column(name = "fecha_vencimiento")
-    @NotBlank(message = "ingrese fecha de vencimiento")
+    
+    @Column(name = "fecha_vencimiento", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fechaVencimiento;
-    @Column(name = "monto_pagado")
-    @NotBlank(message = "ingrese monto pagado")
+    
+    @Column(name = "monto_pagado", nullable = false)
     private BigDecimal montoPagado;
     
     @ManyToOne

@@ -2,14 +2,13 @@ package com.callcenter.NoCountry.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -17,12 +16,14 @@ import lombok.Setter;
 public class Clientes extends Usuarios{
     @NotBlank(message = "Ingrese direccion")
     private String direccion;
+    
     private String estado = "activo";
 
-    @OneToMany(mappedBy = "idCliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ClienteServicio> clienteServicios;
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<ClienteServicio> servicios;
     
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
+    
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Incidencias> incidencias;
     
     public Clientes(Long dni, String nombre, String apellido, String correo, String telefono,String direccion) {
@@ -32,5 +33,6 @@ public class Clientes extends Usuarios{
     
     public Clientes(){
     }
+
 
 }

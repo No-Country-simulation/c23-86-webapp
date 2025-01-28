@@ -20,36 +20,38 @@ import java.util.Set;
 @Entity
 @Table(name="cliente_servicio")
 public class ClienteServicio {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    @NotBlank(message = "Ingrese monto")
+    
+    @Column(name = "monto", nullable = false, precision = 10, scale = 2)
     private BigDecimal monto;
-    @Column(name = "fecha_alta")
-    @NotBlank(message = "Ingrese fecha del alta")
+    
+    @Column(name = "fecha_alta", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime fechaAlta;
     
     @ManyToOne
-    @JoinColumn( name = "id_servicio", nullable = false)
-    private Servicios idServicio;
+    @JoinColumn(name = "id_servicio", nullable = false)
+    private Servicios servicio;
     
     @ManyToOne
     @JoinColumn(name = "id_cliente", nullable = false)
-    private Clientes idCliente;
+    private Clientes cliente;
     
-    @OneToMany(mappedBy = "clienteServicio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<HistorialPagos> historialPagos;
+    //@OneToMany(mappedBy = "clienteServicio", cascade = CascadeType.ALL, orphanRemoval = true)
+    //private Set<HistorialPagos> historialPagos;
 
     
     public ClienteServicio(){
     }
     
-    public ClienteServicio(BigDecimal monto, LocalDateTime fechaAlta, Servicios idServicio, Clientes idCliente){
+    public ClienteServicio(BigDecimal monto, LocalDateTime fechaAlta, Servicios servicio, Clientes cliente){
         this.monto = monto;
         this.fechaAlta = fechaAlta;
-        this.idServicio = idServicio;
-        this.idCliente = idCliente;
+        this.servicio = servicio;
+        this.cliente = cliente;
     }
-    
 }

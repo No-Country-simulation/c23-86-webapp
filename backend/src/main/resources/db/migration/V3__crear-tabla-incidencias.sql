@@ -1,5 +1,4 @@
 -- Crear tabla Incidencias
-
 CREATE TABLE incidencias (
     id BIGINT NOT NULL AUTO_INCREMENT,
     id_cliente BIGINT NOT NULL,

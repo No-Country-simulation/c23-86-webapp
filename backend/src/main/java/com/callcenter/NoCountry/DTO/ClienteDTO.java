@@ -1,12 +1,17 @@
 package com.callcenter.NoCountry.DTO;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
+
+import com.callcenter.NoCountry.entity.Clientes;
+
+/**
+ * Data Transfer Object (DTO) para representar los datos del cliente.
+ * Esta clase sirve como un objeto intermedio para transferir información entre capas de la aplicación.
+ */
 
 @Getter
 @Setter
@@ -20,20 +25,25 @@ public class ClienteDTO {
     private String correo;
     private String telefono;
     private String direccion;
-    private String estado = "activo";
+    private String estado;
     
-    public ClienteDTO(){
-        
+     /**
+     * Constructor que crea un ClienteDTO a partir de una entidad {@link Clientes}.
+     *
+     * @param cliente Entidad {@link Clientes} de la cual se copiarán los datos para este DTO.
+     */
+    
+    public ClienteDTO(){ 
     }
     
-    public ClienteDTO(Long id, Long dni, String nombre, String apellido, String correo, String telefono, String direccion){
-        this.id = id;
-        this.dni = dni;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.direccion = direccion;
+    public ClienteDTO(Clientes cliente) {
+        this.id = cliente.getId();
+        this.nombre = cliente.getNombre();
+        this.apellido = cliente.getApellido();
+        this.dni = cliente.getDni();
+        this.correo = cliente.getCorreo();
+        this.telefono = cliente.getTelefono();
+        this.estado = cliente.getEstado();
     }
     
     public ClienteDTO(Long id, Long dni, String nombre, String apellido){

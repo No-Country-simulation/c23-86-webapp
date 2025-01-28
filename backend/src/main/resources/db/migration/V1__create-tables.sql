@@ -14,7 +14,6 @@ CREATE TABLE empleados (
     activo TINYINT NOT NULL DEFAULT 1,
     PRIMARY KEY (id),
     FOREIGN KEY(id_supervisor) REFERENCES empleados(id)
-
 );
 
 -- Tabla Clientes
@@ -41,6 +40,7 @@ CREATE TABLE servicios (
     PRIMARY KEY (id)
 );
 
+-- Tabla cliente_servicio
 CREATE TABLE cliente_servicio (
     id BIGINT NOT NULL AUTO_INCREMENT,
     id_cliente BIGINT NOT NULL,
