@@ -1,5 +1,6 @@
 import { useState } from "react";
 import StatisticsSummary from "../../components/StatisticsSummary";
+import TicketsTable from "../TicketsTable";
 import useTicketsStats from "@/hooks/useTicketsStats";
 
 export default function Dashboard() {
