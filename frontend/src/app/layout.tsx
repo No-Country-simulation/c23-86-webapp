@@ -1,42 +1,57 @@
 // layout.tsx
-import { Geist, Geist_Mono } from "next/font/google";
+"use client";
+import { Montserrat, Roboto } from "next/font/google";
 import "./globals.css"; // Si tienes tu archivo de estilos
 import Sidebar from "./components/Layout/Sidebar";
 import { Providers } from "./providers";
+import { usePathname } from "next/navigation";
+
 
 // Definir fuentes personalizadas
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const montserratFont = Montserrat({
+	subsets: ["latin"],
+	weight: ["400", "700"], // Sin italic
+	variable: "--font-montserrat",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const robotoFont = Roboto({
+	subsets: ["latin"],
+	weight: ["400", "700"],
+	variable: "--font-roboto",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700`}
-      ><Providers>
-          
-        {/* Barra lateral */}
-        <Sidebar />
+// Fuentes en cursiva (italic)
+const montserratItalicFont = Montserrat({
+	subsets: ["latin"],
+	style: "italic",
+	weight: ["400", "700"],
+	variable: "--font-montserrat-italic",
+});
 
-        {/* Contenido principal */}
-        <div className="flex flex-grow">
-          <main className="flex-grow bg-white bg-opacity-90 rounded-lg m-6 p-6 shadow-md overflow-auto">
-            {children}
-          </main>
-        </div>
-      </Providers>
-      </body>
-    </html>
-  );
-}
+const robotoItalicFont = Roboto({
+	subsets: ["latin"],
+	style: "italic",
+	weight: ["400", "700"],
+	variable: "--font-roboto-italic",
+});
+
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
+	const pathname = usePathname();
+	const isLoginPage = pathname === "/login";
+	return (
+		<html lang="en" className="h-full">
+      <body className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full flex`}>
+			
+				<Providers>
+					{!isLoginPage && <Sidebar />}
+					<main className="ml-64 flex-grow h-screen w-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 dark:bg-background3 flex flex-col overflow-hidden">
+					<div className="flex-grow w-full h-full p-8 bg-white shadow-lg rounded-lg overflow-auto">
+					{children}
+						</div>
+					</main>
+				</Providers>
+			</body>
+		</html>
+	);
+};
+export default RootLayout;

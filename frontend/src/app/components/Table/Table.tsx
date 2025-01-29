@@ -37,7 +37,7 @@ const Table = ({
 	initialVisibleColumns,
 	columns,
 	statuses,
-	data
+	data, editClick, viewClick, deleteClick
 }: TableProps) => {
 	//?iinitialVisibleColumns  indica un array de strings que representan las columnas visibles  de la tabla al iniciar la aplicación
 	/* La propiedad Colimn es un array de objetos que representan las columnas de la tabla. Cada objeto tiene una propiedad llamada name que indica el nombre de la columna y una propiedad uid que indica el identificador único de la columna.
@@ -52,6 +52,11 @@ const Table = ({
 	{ name: "ACTIONS", uid: "actions" },
 ];*
 La propiedad status recibe un array de objetos con las propiedades uid y name. Estas propiedades se utilizan para identificar y mostrar el estado de la fila en la tabla.
+	statuses={[
+						{ uid: "active", name: "Active" },
+						{ uid: "paused", name: "Paused" },
+						{ uid: "vacation", name: "Vacation" },
+					]} el valor active se muestra en verde, el valor paused se muestra en rojo y el valor vacation se muestra en amarillo.
 
 La propiedad data recibe un json con la data a renderizar.
 
@@ -129,17 +134,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 
 		switch (columnKey) {
 			case "name":
-				return (
-					<User
-						avatarProps={{ radius: "full", size: "sm", src: data.avatar }}
-						classNames={{
-							description: "text-default-500",
-						}}
-						description={data.email}
-						name={cellValue}>
-						{data.email}
-					</User>
-				);
+				return <div className='flex flex-col'></div>;
 			case "role":
 				return (
 					<div className='flex flex-col'>
@@ -162,16 +157,22 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 			case "actions":
 				return (
 					<div className='relative flex justify-end items-center gap-2'>
-						<Dropdown className='bg-background border-1 border-default-200'>
+						<Dropdown>
 							<DropdownTrigger>
 								<Button isIconOnly radius='full' size='sm' variant='light'>
-									<VerticalDotsIcon className='text-default-400' />
+									<VerticalDotsIcon className='text-default-400 ' />
 								</Button>
 							</DropdownTrigger>
 							<DropdownMenu>
-								<DropdownItem key='view'>View</DropdownItem>
-								<DropdownItem key='edit'>Edit</DropdownItem>
-								<DropdownItem key='delete'>Delete</DropdownItem>
+								<DropdownItem onPress={viewClick} key='view'>
+									View
+								</DropdownItem>
+								<DropdownItem onPress={editClick} key='edit'>
+									Edit
+								</DropdownItem>
+								<DropdownItem onPress={deleteClick} key='delete'>
+									Delete
+								</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
 					</div>
@@ -324,7 +325,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 
 	const classNames = React.useMemo(
 		() => ({
-			wrapper: ["max-h-[382px]", "max-w-3xl"],
+			wrapper: ["w-full", "flex-grow", "overflow-auto"],
 			th: ["bg-transparent", "text-default-500", "border-b", "border-divider"],
 			td: [
 				// changing the rows border radius
@@ -343,8 +344,6 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 
 	return (
 		<HerouiTable
-			isCompact
-			removeWrapper
 			aria-label='Example table with custom cells, pagination and sorting'
 			bottomContent={bottomContent}
 			bottomContentPlacement='outside'
