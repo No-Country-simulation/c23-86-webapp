@@ -4,16 +4,18 @@ import { useState } from "react";
 import useTicketsStats from "@/hooks/useTicketsStats";
 import StatisticsSummary from "./components/StatisticsSummary";
 import TicketsTable from "./components/TicketsTable";
+import withAuth from "./components/WithAuth";
+import useAuthStore from "@/stores/authStore";
 import { users } from "@/utils/Data/data";
 import Table from "./components/Table/Table";
 import handlerViewClick from "@/utils/functions/handlerViewClick";
 import { Data } from "@/props/tableProps";
 import Notifications from "./components/Notifications/Notifications";
 
-export default function Home() {
+const Dashboard = () => {
 	// Hook personalizado para obtener datos de estadísticas y tickets
 	const { stats, recentTickets } = useTicketsStats();
-
+	//?const { user } = useAuthStore(); user en el estado global. 
 	// Estado para manejar la estadística seleccionada
 	const [selectedState, setSelectedState] = useState<string | null>(null);
 
@@ -43,12 +45,12 @@ export default function Home() {
 	];
 
 	return (
-		<section className="flex flex-grow w-full min-h-screen bg-background1 text-primary3 dark:bg-background3 dark:text-primary2">
+		<section className='flex flex-grow w-full min-h-screen bg-background1 text-primary3 dark:bg-background3 dark:text-primary2'>
 			<Notifications />
 
-			<div className="w-3/5 flex flex-col px-6 py-4 overflow-auto">
-			{/* Título de la página */}
-				<h1 className="text-3xl font-bold text-primary1 dark:text-primary2 mb-6">
+			<div className='w-3/5 flex flex-col px-6 py-4 overflow-auto'>
+				{/* Título de la página */}
+				<h1 className='text-3xl font-bold text-primary1 dark:text-primary2 mb-6'>
 					Dashboard y Reportes
 				</h1>
 				{/* Sección de Estadísticas */}
@@ -56,8 +58,8 @@ export default function Home() {
 
 				{/* Tabla de Tickets según el estado seleccionado */}
 				{selectedState && recentTickets[selectedState] && (
-					<div className="mt-6">
-						<h2 className="text-xl font-semibold mb-4 text-accent1 dark:text-accent3">
+					<div className='mt-6'>
+						<h2 className='text-xl font-semibold mb-4 text-accent1 dark:text-accent3'>
 							Tickets: {selectedState}
 						</h2>
 						<TicketsTable tickets={recentTickets[selectedState]} />
@@ -65,36 +67,39 @@ export default function Home() {
 				)}
 
 				{/* Separador Visual */}
-				<hr className="my-8 border-secondary1" />
+				<hr className='my-8 border-secondary1' />
 
 				{/* Sección de Reportes */}
-				<div className="w-full flex-grow">
-				<h1 className="text-2xl font-bold mb-4 text-primary1 dark:text-primary2">
+				<div className='w-full flex-grow'>
+					<h1 className='text-2xl font-bold mb-4 text-primary1 dark:text-primary2'>
 						Reportes
 					</h1>
-					<p className="text-secondary1">Bienvenido a la sección de reportes.</p>
+					<p className='text-secondary1'>
+						Bienvenido a la sección de reportes.
+					</p>
 
-						<Table
-							columns={columnas}
-							data={users}
-							initialVisibleColumns={[
-								"id",
-								"name",
-								"age",
-								"role",
-								"team",
-								"email",
-								"status",
-							]}
-							statuses={[
-								{ uid: "active", name: "Active" },
-								{ uid: "paused", name: "Paused" },
-								{ uid: "vacation", name: "Vacation" },
-							]}
-							viewClick={handleViewClick}
-						/>
-					</div>
+					<Table
+						columns={columnas}
+						data={users}
+						initialVisibleColumns={[
+							"id",
+							"name",
+							"age",
+							"role",
+							"team",
+							"email",
+							"status",
+						]}
+						statuses={[
+							{ uid: "active", name: "Active" },
+							{ uid: "paused", name: "Paused" },
+							{ uid: "vacation", name: "Vacation" },
+						]}
+						viewClick={handleViewClick}
+					/>
 				</div>
+			</div>
 		</section>
 	);
-}
+};
+export default withAuth(Dashboard);

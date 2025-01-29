@@ -5,7 +5,7 @@ import "./globals.css"; // Si tienes tu archivo de estilos
 import Sidebar from "./components/Layout/Sidebar";
 import { Providers } from "./providers";
 import { usePathname } from "next/navigation";
-import LoginForm from "./components/Login/LoginForm";
+
 
 // Definir fuentes personalizadas
 const montserratFont = Montserrat({
@@ -35,11 +35,7 @@ const robotoItalicFont = Roboto({
 	variable: "--font-roboto-italic",
 });
 
-export default function RootLayout({
-	children,
-}: {
-	children: React.ReactNode;
-}) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	const pathname = usePathname();
 	const isLoginPage = pathname === "/login";
 	return (
@@ -57,4 +53,5 @@ export default function RootLayout({
 			</body>
 		</html>
 	);
-}
+};
+export default RootLayout;
