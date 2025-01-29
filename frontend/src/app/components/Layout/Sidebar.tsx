@@ -17,11 +17,11 @@ const navLinks = [
 
 export default function Sidebar() {
   return (
-    <nav className="w-20 bg-gray-900 text-white flex flex-col items-center py-4 shadow-lg">
+    <nav className="h-screen w-64 bg-primary1 text-white flex flex-col items-center py-6 shadow-lg fixed left-0 top-0">
       {/* Logo */}
       <NavbarLogo />
 
-      <ul className="space-y-6 mt-6">
+      <ul className="mt-10 w-full">
         {navLinks.map((link) => (
           <NavItem key={link.href} href={link.href} label={link.label} />
         ))}

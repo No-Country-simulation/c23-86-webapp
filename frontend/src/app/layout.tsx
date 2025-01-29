@@ -39,17 +39,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	const pathname = usePathname();
 	const isLoginPage = pathname === "/login";
 	return (
-		<html lang='en'>
-			<body
-				className={`${montserratFont.className} ${robotoFont.className} ${montserratItalicFont.variable} ${robotoItalicFont.variable} antialiased  h-screen flex w-screen bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700`}>
+		<html lang="en" className="h-full">
+      <body className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full flex`}>
+			
 				<Providers>
 					{!isLoginPage && <Sidebar />}
+					<main className="ml-64 flex-grow h-screen w-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 dark:bg-background3 flex flex-col overflow-hidden">
+					<div className="flex-grow w-full h-full p-8 bg-white shadow-lg rounded-lg overflow-auto">
 					{children}
-					{/* <div className={`flex  flex-grow`}>
-						<main className=' flex  bg-opacity-90 rounded-lg shadow-md overflow-hidden'>
-							{children}
-						</main>
-					</div> */}
+						</div>
+					</main>
 				</Providers>
 			</body>
 		</html>
