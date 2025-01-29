@@ -7,9 +7,14 @@ type NavItemProps = {
 
 export default function NavItem({ href, label } : NavItemProps) {
   return (
-    <li>
-      <Link href={href} className="hover:text-gray-400">
-        {label}
+    <li className="w-full">
+      <Link
+       href={href}
+       className="flex items-center justify-start p-3 w-full text-lg hover:bg-secondary1 hover:text-primary3 transition-all duration-300 rounded-lg"
+
+        aria-label={`Ir a ${label}`}
+        >
+          {label}
       </Link>
     </li>
   );

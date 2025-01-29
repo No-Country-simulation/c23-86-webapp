@@ -325,7 +325,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 
 	const classNames = React.useMemo(
 		() => ({
-			wrapper: ["max-h-[382px]", "max-w-3xl"],
+			wrapper: ["w-full", "flex-grow", "overflow-auto"],
 			th: ["bg-transparent", "text-default-500", "border-b", "border-divider"],
 			td: [
 				// changing the rows border radius
@@ -344,8 +344,6 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 
 	return (
 		<HerouiTable
-			isCompact
-			removeWrapper
 			aria-label='Example table with custom cells, pagination and sorting'
 			bottomContent={bottomContent}
 			bottomContentPlacement='outside'
