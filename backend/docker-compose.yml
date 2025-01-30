@@ -1,39 +1,13 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:8.0.33
-    container_name: mysql-db
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-    ports:
-      - "3306:3306"
-    volumes:
-      - mysql_data:/var/lib/mysql
-    networks:
-      - mi_red
-
   app:
     build: .
     container_name: springboot-app
     restart: always
-    depends_on:
-      - mysql
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydatabase?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: user
-      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATASOURCE_URL: jdbc:mysql://c23-86-webapp-callcenter-nocountry.b.aivencloud.com:14364/defaultdb?useSSL=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: avnadmin
+      SPRING_DATASOURCE_PASSWORD: AVNS_MDsQWSiEuB9jbvaV6zh
     ports:
       - "8080:8080"
-    networks:
-      - mi_red
-
-volumes:
-  mysql_data:
-
-networks:
-  mi_red:
