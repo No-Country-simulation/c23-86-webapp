@@ -1,5 +1,5 @@
 'use client'; // components/withAuth.tsx
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useRouter } from "next/navigation";
 import useAuthStore from "@/stores/authStore";
 

@@ -14,7 +14,7 @@ import {
 	DropdownMenu,
 	DropdownItem,
 	Chip,
-	User,
+
 	Pagination,
 	Selection,
 	ChipProps,
@@ -27,6 +27,8 @@ import { VerticalDotsIcon } from "./VerticalDotsIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { capitalize } from "@/utils/functions/capitalize";
 import { TableProps, Data } from "@/props/tableProps";
+import { generateTableColumns } from "@/utils/functions/GenerateColumnsTable";
+
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
 	active: "success",
@@ -35,25 +37,19 @@ const statusColorMap: Record<string, ChipProps["color"]> = {
 };
 const Table = ({
 	initialVisibleColumns,
-	columns,
+	sortable,
 	statuses,
-	data, editClick, viewClick, deleteClick
+	data,
+	actions,
+	editClick,
+	viewClick,
+	deleteClick,
 }: TableProps) => {
 	//?iinitialVisibleColumns  indica un array de strings que representan las columnas visibles  de la tabla al iniciar la aplicación
-	/* La propiedad Colimn es un array de objetos que representan las columnas de la tabla. Cada objeto tiene una propiedad llamada name que indica el nombre de la columna y una propiedad uid que indica el identificador único de la columna.
-	const columns = [
-	{ name: "ID", uid: "id", sortable: true },
-	{ name: "NAME", uid: "name", sortable: true },
-	{ name: "AGE", uid: "age", sortable: true },
-	{ name: "ROLE", uid: "role", sortable: true },
-	{ name: "TEAM", uid: "team" },
-	{ name: "EMAIL", uid: "email" },
-	{ name: "STATUS", uid: "status", sortable: true },
-	{ name: "ACTIONS", uid: "actions" },
-];*
+	/* 
 La propiedad status recibe un array de objetos con las propiedades uid y name. Estas propiedades se utilizan para identificar y mostrar el estado de la fila en la tabla.
 	statuses={[
-						{ uid: "active", name: "Active" },
+						{ uid: "active", name: "Active" }, cambiar el nombre en funcion de lo que se desea mostrar, el uid asigna el color
 						{ uid: "paused", name: "Paused" },
 						{ uid: "vacation", name: "Vacation" },
 					]} el valor active se muestra en verde, el valor paused se muestra en rojo y el valor vacation se muestra en amarillo.
@@ -83,6 +79,8 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 	const pages = Math.ceil(data.length / rowsPerPage);
 
 	const hasSearchFilter = Boolean(filterValue);
+	const columns = generateTableColumns(data, sortable);
+    if (actions) columns.push({ name: "ACTIONS", uid: "actions", sortable: false });
 
 	const headerColumns = React.useMemo(() => {
 		if (visibleColumns === "all") return columns;
@@ -164,13 +162,15 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 								</Button>
 							</DropdownTrigger>
 							<DropdownMenu>
-								<DropdownItem onPress={viewClick} key='view'>
+								<DropdownItem onClick={() => viewClick?.(data.id)} key='view'>
 									View
 								</DropdownItem>
-								<DropdownItem onPress={editClick} key='edit'>
+								<DropdownItem onClick={() => editClick?.(data.id)} key='edit'>
 									Edit
 								</DropdownItem>
-								<DropdownItem onPress={deleteClick} key='delete'>
+								<DropdownItem
+									onClick={() => deleteClick?.(data.id)}
+									key='delete'>
 									Delete
 								</DropdownItem>
 							</DropdownMenu>
@@ -325,7 +325,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 
 	const classNames = React.useMemo(
 		() => ({
-			wrapper: ["w-full","max-w-full", "flex-grow", "overflow-auto"],
+			wrapper: ["w-full", "max-w-full", "flex-grow", "overflow-auto"],
 			th: ["bg-transparent", "text-default-500", "border-b", "border-divider"],
 			td: [
 				// changing the rows border radius
