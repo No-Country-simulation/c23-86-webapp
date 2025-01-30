@@ -27,6 +27,7 @@ import { VerticalDotsIcon } from "./VerticalDotsIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { capitalize } from "@/utils/functions/capitalize";
 import { TableProps, Data } from "@/props/tableProps";
+import { generateTableColumns } from "@/utils/functions/GenerateColumnsTable";
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
 	active: "success",
@@ -35,7 +36,7 @@ const statusColorMap: Record<string, ChipProps["color"]> = {
 };
 const Table = ({
 	initialVisibleColumns,
-	columns,
+	// columns,
 	statuses,
 	data, editClick, viewClick, deleteClick
 }: TableProps) => {
@@ -83,6 +84,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 	const pages = Math.ceil(data.length / rowsPerPage);
 
 	const hasSearchFilter = Boolean(filterValue);
+	const columns = generateTableColumns(data)
 
 	const headerColumns = React.useMemo(() => {
 		if (visibleColumns === "all") return columns;

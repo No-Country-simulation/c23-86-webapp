@@ -16,7 +16,7 @@ export type Data<T = Record<string, any>> = T;
 
 export type TableProps<T = Record<string, any>> = {
 	initialVisibleColumns: string[];
-	columns: Column[];
+	// columns: Column[];
 	statuses: Status[];
 	data: Data<T>[];
 	editClick?: (data: Data<T>) => void;

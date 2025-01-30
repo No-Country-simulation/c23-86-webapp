@@ -6,7 +6,6 @@ import Sidebar from "./components/Layout/Sidebar";
 import { Providers } from "./providers";
 import { usePathname } from "next/navigation";
 
-
 // Definir fuentes personalizadas
 const montserratFont = Montserrat({
 	subsets: ["latin"],
@@ -39,16 +38,20 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	const pathname = usePathname();
 	const isLoginPage = pathname === "/login";
 	return (
-		<html lang="en" className="h-full">
-      <body className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full flex`}>
-			
+		<html lang='en'>
+			<body
+				// className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full flex`}>
+				className={`${montserratFont.variable} ${robotoFont.variable} `}>
+				{/* className={`${montserratFont.variable} ${robotoFont.variable} antialiased flex flex-grow h-screen w-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 dark:bg-background3 overflow-hidden`}> */}
 				<Providers>
-					{!isLoginPage && <Sidebar />}
-					<main className="ml-64 flex-grow h-screen w-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 dark:bg-background3 flex flex-col overflow-hidden">
-					<div className="flex-grow w-full h-full p-8 bg-white shadow-lg rounded-lg overflow-auto">
-					{children}
-						</div>
-					</main>
+					<div className='antialiased flex flex-row h-screen w-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 dark:bg-background3 overflow-hidden'>
+						<div className="">{!isLoginPage && <Sidebar />}</div>
+
+						{/* <main className='flex-grow h-screen w-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 dark:bg-background3 flex flex-col overflow-hidden'> */}
+						{/* <div className='flex-grow w-full h-full bg-white shadow-lg rounded-lg overflow-auto'> */}
+						<div className="">{children}</div>
+						{/* </div> */}
+					</div>
 				</Providers>
 			</body>
 		</html>

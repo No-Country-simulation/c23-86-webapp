@@ -11,11 +11,13 @@ import Table from "./components/Table/Table";
 import handlerViewClick from "@/utils/functions/handlerViewClick";
 import { Data } from "@/props/tableProps";
 import Notifications from "./components/Notifications/Notifications";
+import { users2 } from "@/utils/Data/data2";
+import { div } from "framer-motion/client";
 
 const Dashboard = () => {
 	// Hook personalizado para obtener datos de estadísticas y tickets
 	const { stats, recentTickets } = useTicketsStats();
-	//?const { user } = useAuthStore(); user en el estado global. 
+	//?const { user } = useAuthStore(); user en el estado global.
 	// Estado para manejar la estadística seleccionada
 	const [selectedState, setSelectedState] = useState<string | null>(null);
 
@@ -45,8 +47,11 @@ const Dashboard = () => {
 	];
 
 	return (
-		<section className='flex flex-grow w-full min-h-screen bg-background1 text-primary3 dark:bg-background3 dark:text-primary2'>
-			<Notifications />
+		// <div className='flex-grow w-full h-full bg-white shadow-lg rounded-lg overflow-auto'>
+		<section className='flex flex-grow  min-h-screen shadow-lg rounded-lg bg-red-900 text-primary3 dark:bg-background3 dark:text-primary2  '>
+			<div className='w-1/5 flex flex-col px-6 py-4 overflow-auto'>
+				<Notifications />
+			</div>
 
 			<div className='w-3/5 flex flex-col px-6 py-4 overflow-auto'>
 				{/* Título de la página */}
@@ -79,8 +84,8 @@ const Dashboard = () => {
 					</p>
 
 					<Table
-						columns={columnas}
-						data={users}
+						// columns={columnas}
+						data={users2}
 						initialVisibleColumns={[
 							"id",
 							"name",
@@ -100,6 +105,7 @@ const Dashboard = () => {
 				</div>
 			</div>
 		</section>
+		// </div>
 	);
 };
 export default withAuth(Dashboard);

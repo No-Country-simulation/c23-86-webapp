@@ -2,7 +2,7 @@
 
 export default function Notifications() {
   return (
-    <div className="w-1/4 min-h-screen bg-white dark:bg-gray-800 shadow-lg p-4">
+    <div className="h-full bg-blue-800 dark:bg-gray-800 shadow-lg p-4">
       <h2 className="text-lg font-semibold text-primary1 dark:text-primary2">
         Notificaciones
       </h2>
