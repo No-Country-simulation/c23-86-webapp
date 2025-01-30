@@ -39,8 +39,8 @@ export default function Notifications() {
   };
 
   return (
-    <div className="w-1/4 min-h-screen bg-white dark:bg-gray-800 shadow-lg p-4">
-      <h2 className="text-lg font-semibold text-primary1 dark:text-primary2">
+<div className="fixed left-20 top-0 h-screen w-64 bg-white dark:bg-gray-800 shadow-lg p-4 z-50">
+<h2 className="text-lg font-semibold text-primary1 dark:text-primary2">
         Notificaciones
       </h2>
       <p className="text-secondary1 dark:text-secondary2">

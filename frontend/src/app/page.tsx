@@ -45,11 +45,11 @@ const Dashboard = () => {
 	];
 
 	return (
-		<section className='flex flex-grow w-full min-h-screen bg-background1 text-primary3 dark:bg-background3 dark:text-primary2'>
+		<section className="flex flex-grow w-full min-h-screen bg-background1 text-primary3 dark:bg-background3 dark:text-primary2 ml-80">
 			<Notifications />
 
-			<div className='w-3/5 flex flex-col px-6 py-4 overflow-auto'>
-				{/* Título de la página */}
+			<div className="flex flex-col flex-grow w-full px-6 py-4 overflow-auto">
+			{/* Título de la página */}
 				<h1 className='text-3xl font-bold text-primary1 dark:text-primary2 mb-6'>
 					Dashboard y Reportes
 				</h1>
@@ -77,26 +77,28 @@ const Dashboard = () => {
 					<p className='text-secondary1'>
 						Bienvenido a la sección de reportes.
 					</p>
+					<div className="w-full flex-grow overflow-auto">
 
-					<Table
-						columns={columnas}
-						data={users}
-						initialVisibleColumns={[
-							"id",
-							"name",
-							"age",
-							"role",
-							"team",
-							"email",
-							"status",
-						]}
-						statuses={[
-							{ uid: "active", name: "Active" },
-							{ uid: "paused", name: "Paused" },
-							{ uid: "vacation", name: "Vacation" },
-						]}
-						viewClick={handleViewClick}
-					/>
+						<Table
+							columns={columnas}
+							data={users}
+							initialVisibleColumns={[
+								"id",
+								"name",
+								"age",
+								"role",
+								"team",
+								"email",
+								"status",
+							]}
+							statuses={[
+								{ uid: "active", name: "Active" },
+								{ uid: "paused", name: "Paused" },
+								{ uid: "vacation", name: "Vacation" },
+							]}
+							viewClick={handleViewClick}
+						/>
+					</div>
 				</div>
 			</div>
 		</section>
