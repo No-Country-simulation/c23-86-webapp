@@ -1,29 +1,39 @@
-#version: '3'
+version: '3.8'
 
 services:
-  app_callcenter:
-    build: .
-    #mem_limit: 512m
-    ports:
-      - "8081:8080"
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
     environment:
-      DB_URL: jdbc:mysql://callcenter:3306/c23-86-webapp?createDatabaseIfNotExist=true&serverTimeZone=UTC
-      DATASOURCE_USERNAME: root
-      DATASOURCE_PASSWORD: root123456
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: mi_basededatos
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - mi_red
+
+  app:
+    build: .
+    container_name: springboot-app
     restart: always
     depends_on:
-      callcenter:
-        condition: service_healthy
-  callcenter:
-    image: mysql:8.0.33
-    ports:
-      - "3308:3306"
+      - mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root123456
-      MYSQL_PASSWORD: root123456
-      MYSQL_DATABASE: c23-86-webapp
-    restart: always
-    healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 10s
-      retries: 10
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mi_basededatos?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+    ports:
+      - "8080:8080"
+    networks:
+      - mi_red
+
+volumes:
+  mysql_data:
+
+networks:
+  mi_red:
