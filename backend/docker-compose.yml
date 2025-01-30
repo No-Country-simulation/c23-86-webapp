@@ -1,0 +1,29 @@
+#version: '3'
+
+services:
+  app_callcenter:
+    build: .
+    #mem_limit: 512m
+    ports:
+      - "8081:8080"
+    environment:
+      DB_URL: jdbc:mysql://callcenter:3306/c23-86-webapp?createDatabaseIfNotExist=true&serverTimeZone=UTC
+      DATASOURCE_USERNAME: root
+      DATASOURCE_PASSWORD: root123456
+    restart: always
+    depends_on:
+      callcenter:
+        condition: service_healthy
+  callcenter:
+    image: mysql:8.0.33 
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+      MYSQL_PASSWORD: root123456
+      MYSQL_DATABASE: c23-86-webapp
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
