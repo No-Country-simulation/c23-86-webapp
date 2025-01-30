@@ -1,10 +1,7 @@
-
-
-type Column = {
-	name: string;
-	uid: string;
-	sortable?: boolean;
-};
+type Handler = {
+	apiUrl: string;
+	id: string;
+}
 
 type Status = {
 	uid: string;
@@ -16,10 +13,11 @@ export type Data<T = Record<string, any>> = T;
 
 export type TableProps<T = Record<string, any>> = {
 	initialVisibleColumns: string[];
-	// columns: Column[];
 	statuses: Status[];
+	sortable: string[];
 	data: Data<T>[];
-	editClick?: (data: Data<T>) => void;
-	viewClick?: (data: Data<T>) => void;
-	deleteClick?: (data: Data<T>) => void;
-};
+	actions?: boolean;
+	viewClick?: (id: string) => void;
+	editClick?: (id: string) => void;
+	deleteClick?: (id: string) => void;
+}
