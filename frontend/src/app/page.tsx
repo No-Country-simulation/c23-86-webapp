@@ -20,10 +20,12 @@ const Dashboard = () => {
 	//?const { user } = useAuthStore(); user en el estado global.
 	// Estado para manejar la estadística seleccionada
 	const [selectedState, setSelectedState] = useState<string | null>(null);
+	const [showNotifications, setShowNotifications] = useState(false);
 
 	// Función para manejar clics en las tarjetas de estadísticas
 	const handleCardClick = (state: string) => {
 		setSelectedState(state);
+		setShowNotifications(!showNotifications)
 	};
 
 	const handleViewClick = (data: Data) => {
@@ -48,34 +50,36 @@ const Dashboard = () => {
 
 	return (
 		// <div className='flex-grow w-full h-full bg-white shadow-lg rounded-lg overflow-auto'>
-		<section className='flex flex-grow  min-h-screen shadow-lg rounded-lg bg-red-900 text-primary3 dark:bg-background3 dark:text-primary2  '>
+		<section className='flex flex-grow  min-h-screen shadow-lg rounded-lg text-primary3 dark:bg-background3 dark:text-primary2  '>
 			<div className='w-1/5 flex flex-col px-6 py-4 overflow-auto'>
 				<Notifications />
 			</div>
 
-			<div className='w-3/5 flex flex-col px-6 py-4 overflow-auto'>
+			<div className='w-4/5 flex flex-col px-6 py-4 overflow-auto '>
 				{/* Título de la página */}
-				<h1 className='text-3xl font-bold text-primary1 dark:text-primary2 mb-6'>
-					Dashboard y Reportes
-				</h1>
-				{/* Sección de Estadísticas */}
-				<StatisticsSummary stats={stats} onCardClick={handleCardClick} />
+				<div className='bg-background1 rounded-lg shadow-lg p-4'>
+					<h1 className='text-3xl bg-backgorund1 font-bold text-primary1 dark:text-primary2 mb-6'>
+						Dashboard y Reportes
+					</h1>
+					{/* Sección de Estadísticas */}
+					<StatisticsSummary stats={stats} onCardClick={handleCardClick} />
 
-				{/* Tabla de Tickets según el estado seleccionado */}
-				{selectedState && recentTickets[selectedState] && (
-					<div className='mt-6'>
-						<h2 className='text-xl font-semibold mb-4 text-accent1 dark:text-accent3'>
-							Tickets: {selectedState}
-						</h2>
-						<TicketsTable tickets={recentTickets[selectedState]} />
-					</div>
-				)}
+					{/* Tabla de Tickets según el estado seleccionado */}
+					{showNotifications && selectedState && recentTickets[selectedState] && (
+						<div className='mt-6'>
+							<h2 className='text-xl font-semibold mb-4 text-accent1 dark:text-accent3'>
+								Tickets: {selectedState}
+							</h2>
+							<TicketsTable tickets={recentTickets[selectedState]} />
+						</div>
+					)}
+				</div>
 
 				{/* Separador Visual */}
 				<hr className='my-8 border-secondary1' />
 
 				{/* Sección de Reportes */}
-				<div className='w-full flex-grow'>
+				<div className='w-full flex-grow bg-background1 rounded-lg shadow-lg p-4'>
 					<h1 className='text-2xl font-bold mb-4 text-primary1 dark:text-primary2'>
 						Reportes
 					</h1>

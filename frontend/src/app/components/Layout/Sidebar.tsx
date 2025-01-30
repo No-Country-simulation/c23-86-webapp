@@ -17,7 +17,7 @@ const navLinks = [
 
 export default function Sidebar() {
   return (
-    <nav className="h-screen  bg-primary1 text-white flex flex-col items-center py-6 shadow-lg fixed left-0 top-0">
+    <nav className="h-screen  bg-primary1 text-white flex flex-col items-center py-6 shadow-lg ">
       {/* Logo */}
       <NavbarLogo />
 
