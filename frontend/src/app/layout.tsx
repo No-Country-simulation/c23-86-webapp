@@ -2,7 +2,6 @@
 import { Montserrat, Roboto } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/Layout/Sidebar";
-import Notifications from "./components/Notifications/Notifications";
 import { Providers } from "./providers";
 import { usePathname } from "next/navigation";
 
@@ -25,26 +24,20 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <html lang="en" className="h-full">
-      <body
-        className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full flex`}
-      >
+      <body className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full`}>
         <Providers>
           {!isLoginPage && (
-            <div className="flex">
-              {/* Sidebar */}
+            <>
+              {/* Sidebar Fijo */}
               <Sidebar />
 
-              {/* Contenedor de notificaciones + contenido principal */}
-              <div className="flex">
-                {/* Notificaciones pegadas al Sidebar */}
-                <Notifications />
+              {/* Notificaciones Eliminadas */}
 
-                {/* Contenido principal: Ajustamos `flex-grow` y `w-full` para que ocupe todo el espacio restante */}
-				<main className="flex-grow w-full min-h-screen bg-white shadow-lg p-8">
-				{children}
-                </main>
-              </div>
-            </div>
+              {/* Contenedor Principal */}
+			  <main className="ml-80 flex-grow max-w-[calc(100vw-10px)] min-h-screen bg-white shadow-lg p-2 overflow-hidden">
+			  {children}
+              </main>
+            </>
           )}
 
           {isLoginPage && <main className="w-full min-h-screen">{children}</main>}

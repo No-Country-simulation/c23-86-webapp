@@ -325,7 +325,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 
 	const classNames = React.useMemo(
 		() => ({
-			wrapper: ["w-full", "flex-grow", "overflow-auto"],
+			wrapper: ["w-full","max-w-full", "flex-grow", "overflow-auto"],
 			th: ["bg-transparent", "text-default-500", "border-b", "border-divider"],
 			td: [
 				// changing the rows border radius

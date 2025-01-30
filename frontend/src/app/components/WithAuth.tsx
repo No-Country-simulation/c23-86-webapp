@@ -11,15 +11,15 @@ const withAuth = <P extends object>(
 		const { isLoggedIn } = useAuthStore();
 		useEffect(() => {
 			
-			if(!isLoggedIn){
-			//	if (!isLoggedIn === false) { // NO BORRAR ESTE COMENTARIO
+		//	if(!isLoggedIn){
+				if (!isLoggedIn === false) { // NO BORRAR ESTE COMENTARIO
 				router.replace("/login"); // Redirigir a la página de login si no está autenticado
 			}
 		}, [isLoggedIn, router]);
 
 
-		return	isLoggedIn ?<WrappedComponent {...props} /> : null;
-		//return	/*isLoggedIn ?*/<WrappedComponent {...props} />/* : null*/; // NO BORRAR ESTE COMENTARIO
+		//return	isLoggedIn ?<WrappedComponent {...props} /> : null;
+		return	/*isLoggedIn ?*/<WrappedComponent {...props} />/* : null*/; // NO BORRAR ESTE COMENTARIO
 
 	};
 
