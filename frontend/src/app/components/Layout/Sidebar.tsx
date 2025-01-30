@@ -1,10 +1,8 @@
-import Link from "next/link";
-import NavbarLogo from "./NavbarLogo";
-import NavItem from "./NavItem";
-import { AlertTriangle, FileText, Home, Phone, UserCog } from "lucide-react";
+"use client";
 import { useState } from "react";
-
-{/*lista de enlaces*/ }
+import { Home, Phone, FileText, AlertTriangle, UserCog } from "lucide-react";
+import NavbarLogo from "./NavbarLogo";
+import Link from "next/link";
 
 const navLinks = [
   { href: "/", label: "Dashboard", icon: <Home size={24} /> },
@@ -14,33 +12,27 @@ const navLinks = [
   { href: "/admin", label: "Admin", icon: <UserCog size={24} /> },
 ];
 
-
 export default function Sidebar() {
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-<nav className="h-screen w-20 bg-primary1 text-white flex flex-col items-center py-6 shadow-lg fixed left-0 top-0 transition-all duration-300">
-{/* Logo */}
+    <nav
+      className={`h-screen ${isExpanded ? "w-64" : "w-20"} bg-primary1 text-white flex flex-col py-6 shadow-lg fixed left-0 top-0 transition-all duration-300 z-50`}
+      onMouseEnter={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+    >
       <NavbarLogo />
 
-      <ul className="mt-10 w-full flex flex-col gap-4 items-center">
+      <ul className="mt-10 flex flex-col gap-4">
         {navLinks.map(({ href, label, icon }) => (
-          <li
-            key={href}
-            className="relative flex items-center group"
-            onMouseEnter={() => setHoveredItem(label)}
-            onMouseLeave={() => setHoveredItem(null)}
-          >
-            <Link href={href} className="flex items-center justify-center w-12 h-12 rounded-md hover:bg-primary3 transition duration-300">
+          <li key={href}>
+            <Link
+              href={href}
+              className="flex items-center gap-4 px-4 py-2 rounded-md hover:bg-primary3 transition duration-300"
+            >
               {icon}
+              {isExpanded && <span className="text-sm">{label}</span>}
             </Link>
-            
-            {/* Texto emergente con animación */}
-            {hoveredItem === label && (
-              <span className="absolute left-16 bg-primary3 text-white px-3 py-1 rounded-md text-sm transition-opacity duration-300 opacity-100">
-                {label}
-              </span>
-            )}
           </li>
         ))}
       </ul>
