@@ -45,21 +45,24 @@ const Dashboard = () => {
 	];
 
 	return (
-		<section className='flex flex-grow w-full min-h-screen bg-background1 text-primary3 dark:bg-background3 dark:text-primary2'>
+		<section className="flex flex-grow max-w-[calc(100vw-50px)] overflow-hidden min-h-screen bg-background1 text-primary3 dark:bg-background3 dark:text-primary2">
+			{/* Notificaciones dentro del layout */}
 			<Notifications />
 
-			<div className='w-3/5 flex flex-col px-6 py-4 overflow-auto'>
+			{/* Contenedor Principal */}
+			<div className="flex flex-col flex-grow w-full px-6 py-4 overflow-hidden">
 				{/* Título de la página */}
-				<h1 className='text-3xl font-bold text-primary1 dark:text-primary2 mb-6'>
+				<h1 className="text-3xl font-bold text-primary1 dark:text-primary2 mb-6">
 					Dashboard y Reportes
 				</h1>
+
 				{/* Sección de Estadísticas */}
 				<StatisticsSummary stats={stats} onCardClick={handleCardClick} />
 
 				{/* Tabla de Tickets según el estado seleccionado */}
 				{selectedState && recentTickets[selectedState] && (
-					<div className='mt-6'>
-						<h2 className='text-xl font-semibold mb-4 text-accent1 dark:text-accent3'>
+					<div className="mt-6">
+						<h2 className="text-xl font-semibold mb-4 text-accent1 dark:text-accent3">
 							Tickets: {selectedState}
 						</h2>
 						<TicketsTable tickets={recentTickets[selectedState]} />
@@ -67,36 +70,39 @@ const Dashboard = () => {
 				)}
 
 				{/* Separador Visual */}
-				<hr className='my-8 border-secondary1' />
+				<hr className="my-8 border-secondary1" />
 
 				{/* Sección de Reportes */}
-				<div className='w-full flex-grow'>
-					<h1 className='text-2xl font-bold mb-4 text-primary1 dark:text-primary2'>
+				<div className="w-full flex-grow">
+					<h1 className="text-2xl font-bold mb-4 text-primary1 dark:text-primary2">
 						Reportes
 					</h1>
-					<p className='text-secondary1'>
-						Bienvenido a la sección de reportes.
-					</p>
+					<p className="text-secondary1">Bienvenido a la sección de reportes.</p>
 
-					<Table
-						columns={columnas}
-						data={users}
-						initialVisibleColumns={[
-							"id",
-							"name",
-							"age",
-							"role",
-							"team",
-							"email",
-							"status",
-						]}
-						statuses={[
-							{ uid: "active", name: "Active" },
-							{ uid: "paused", name: "Paused" },
-							{ uid: "vacation", name: "Vacation" },
-						]}
-						viewClick={handleViewClick}
-					/>
+					{/* 🔥 Contenedor de la Tabla Ajustado */}
+					<div className="max-w-full overflow-x-auto">
+						<div className="min-w-[800px]">
+							<Table
+								columns={columnas}
+								data={users}
+								initialVisibleColumns={[
+									"id",
+									"name",
+									"age",
+									"role",
+									"team",
+									"email",
+									"status",
+								]}
+								statuses={[
+									{ uid: "active", name: "Active" },
+									{ uid: "paused", name: "Paused" },
+									{ uid: "vacation", name: "Vacation" },
+								]}
+								viewClick={handleViewClick}
+							/>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>

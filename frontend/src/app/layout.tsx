@@ -1,57 +1,50 @@
-// layout.tsx
 "use client";
 import { Montserrat, Roboto } from "next/font/google";
-import "./globals.css"; // Si tienes tu archivo de estilos
+import "./globals.css";
 import Sidebar from "./components/Layout/Sidebar";
 import { Providers } from "./providers";
 import { usePathname } from "next/navigation";
 
-
-// Definir fuentes personalizadas
+// Fuentes
 const montserratFont = Montserrat({
-	subsets: ["latin"],
-	weight: ["400", "700"], // Sin italic
-	variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-montserrat",
 });
 
 const robotoFont = Roboto({
-	subsets: ["latin"],
-	weight: ["400", "700"],
-	variable: "--font-roboto",
-});
-
-// Fuentes en cursiva (italic)
-const montserratItalicFont = Montserrat({
-	subsets: ["latin"],
-	style: "italic",
-	weight: ["400", "700"],
-	variable: "--font-montserrat-italic",
-});
-
-const robotoItalicFont = Roboto({
-	subsets: ["latin"],
-	style: "italic",
-	weight: ["400", "700"],
-	variable: "--font-roboto-italic",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-roboto",
 });
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-	const pathname = usePathname();
-	const isLoginPage = pathname === "/login";
-	return (
-		<html lang="en" className="h-full">
-      <body className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full flex`}>
-			
-				<Providers>
-					{!isLoginPage && <Sidebar />}
-					<main className="ml-64 flex-grow h-screen w-full bg-gradient-to-r from-blue-500 via-indigo-600 to-purple-700 dark:bg-background3 flex flex-col overflow-hidden">
-					<div className="flex-grow w-full h-full p-8 bg-white shadow-lg rounded-lg overflow-auto">
-					{children}
-						</div>
-					</main>
-				</Providers>
-			</body>
-		</html>
-	);
+  const pathname = usePathname();
+  const isLoginPage = pathname === "/login";
+
+  return (
+    <html lang="en" className="h-full">
+      <body className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full`}>
+        <Providers>
+          {!isLoginPage && (
+            <>
+              {/* Sidebar Fijo */}
+              <Sidebar />
+
+              {/* Notificaciones Eliminadas */}
+
+              {/* Contenedor Principal */}
+			  <main className="ml-80 flex-grow max-w-[calc(100vw-10px)] min-h-screen bg-white shadow-lg p-2 overflow-hidden">
+			  {children}
+              </main>
+            </>
+          )}
+
+          {isLoginPage && <main className="w-full min-h-screen">{children}</main>}
+        </Providers>
+      </body>
+    </html>
+  );
 };
+
 export default RootLayout;
