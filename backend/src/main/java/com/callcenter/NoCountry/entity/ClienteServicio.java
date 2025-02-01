@@ -1,6 +1,7 @@
 package com.callcenter.NoCountry.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "cliente_servicio")
+@Data
 public class ClienteServicio {
 
     @Id
@@ -30,8 +32,8 @@ public class ClienteServicio {
     @Column(name = "monto", nullable = false, precision = 10, scale = 2)
     private BigDecimal monto;
 
-//    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
-//    private List<HistorialPagos> pagos;
+    @OneToMany(mappedBy = "id_pago", cascade = CascadeType.ALL)
+    private List<HistorialPagos> historialPagos;
 
 
 }

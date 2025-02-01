@@ -1,6 +1,7 @@
 package com.callcenter.NoCountry.DTO;
 
 import com.callcenter.NoCountry.entity.Clientes;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +18,7 @@ public class ClienteDTO {
     private Long dni;
     private String correo;
     private String telefono;
+    @JsonIgnore
     private String estado;
 
     /**

@@ -17,5 +17,22 @@ public class ClienteCompletoDTO {
         this.incidenciaDTOS = clientes.getIncidencias().stream()
                 .map(IncidenciaSinDatosClienteDTO::new)
                 .collect(Collectors.toList());
+        //mapear servicios
+        this.servicioDTOS = clientes.getServicios().stream()
+                .map(clienteServicio -> new ServicioDTO(
+                        clienteServicio.getServicio().getNombre(),
+                        clienteServicio.getServicio().getDescripcion(),
+                        clienteServicio.getServicio().getPrecio(),
+                        clienteServicio.getFechaAlta(),
+                        clienteServicio.getMonto(),
+                        clienteServicio.getHistorialPagos().stream()
+                                .map(pago -> new HistorialPagoDTO(
+                                        pago.getFechaPago(),
+                                        pago.getFechaVencimiento(),
+                                        pago.getMontoPagado()
+                                ))
+                                .collect(Collectors.toList())
+                ))
+                .collect(Collectors.toList());
     }
 }

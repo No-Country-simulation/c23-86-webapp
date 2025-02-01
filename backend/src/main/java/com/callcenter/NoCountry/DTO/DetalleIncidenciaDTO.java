@@ -1,6 +1,7 @@
 package com.callcenter.NoCountry.DTO;
 
 import com.callcenter.NoCountry.entity.DetalleIncidencias;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,9 +15,13 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 public class DetalleIncidenciaDTO {
+    @JsonProperty("id_empleado")
     private Long idEmpleado;
+    @JsonProperty("Nombre_del_empleado")
     private String nombreEmpleado;
+    @JsonProperty("Apellido_del_empleado")
     private String apellidoEmpleado;
+    @JsonProperty("Fecha_de_Modificacion")
     private LocalDateTime fechaDeModificacion;
     private String descripcion;
     private String estado; // Nuevo campo para el estado de la incidencia
