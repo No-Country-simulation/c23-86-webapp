@@ -5,9 +5,20 @@ services:
     build: .
     container_name: springboot-app
     restart: always
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://c23-86-webapp-callcenter-nocountry.b.aivencloud.com:14364/defaultdb?useSSL=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: avnadmin
-      SPRING_DATASOURCE_PASSWORD: AVNS_MDsQWSiEuB9jbvaV6zh
     ports:
       - "8080:8080"
+    volumes:
+      - h2-data:/app/data  # Volumen para persistencia en H2 (modo archivo)
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:file:/app/data/testdb
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD:
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.H2Dialect
+      SPRING_H2_CONSOLE_ENABLED: "true"
+      SPRING_H2_CONSOLE_PATH: /h2-console
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+volumes:
+  h2-data:  # Volumen para persistencia de datos
+
