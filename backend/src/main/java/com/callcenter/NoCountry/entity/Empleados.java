@@ -23,13 +23,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "empleados")
 public class Empleados extends Usuarios{
+    
     @Enumerated(EnumType.STRING)
     @NotBlank(message = "ingresar rol")
     @Column(name = "rol")
     private Rol rol;
+    
     @NotBlank(message = "ingresar correo empresarial")
     @Column(name = "correo_empresarial")
     private String correoEmpresarial;
+    
     @NotBlank(message = "ingresar contraseña")
     @Column(name = "clave")
     private String clave;

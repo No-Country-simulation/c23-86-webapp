@@ -20,6 +20,7 @@ public interface DetalleIncidenciaRepository extends JpaRepository<DetalleIncide
      * @param idIncidencia el identificador de la incidencia cuyos detalles se desean recuperar.
      * @return una lista de {@link DetalleIncidencias} asociadas a la incidencia especificada.
      */
-    List<DetalleIncidencias> findByIncidenciaId(Long idIncidencia);
+    List<DetalleIncidencias> findByIncidencia_Id(Long idIncidencia);
+    //List<DetalleIncidencias> findByCliente_id(Long id);
 }
 

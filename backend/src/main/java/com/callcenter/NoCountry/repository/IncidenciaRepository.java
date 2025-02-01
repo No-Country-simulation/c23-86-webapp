@@ -1,6 +1,7 @@
 package com.callcenter.NoCountry.repository;
 
 import com.callcenter.NoCountry.entity.Incidencias;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -21,4 +22,6 @@ public interface IncidenciaRepository extends JpaRepository<Incidencias, Long> {
      * @return un {@link Optional} que contiene la incidencia si se encuentra, o vacío si no existe.
      */
     Optional<Object> findById(Integer id);
+    List<Incidencias> findByCliente_Id(Long id);
+    
 }

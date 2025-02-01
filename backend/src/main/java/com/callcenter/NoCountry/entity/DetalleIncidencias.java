@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 
 /**
@@ -11,9 +13,9 @@ import lombok.AllArgsConstructor;
  * Cada detalle está asociado a una incidencia y registra la información
  * sobre modificaciones realizadas por empleados, incluyendo la descripción de dichas modificaciones.
  */
-@Data
 @Entity
 @Table(name = "detalle_incidencias")
+@Getter @Setter
 @AllArgsConstructor
 public class DetalleIncidencias {
 
@@ -21,7 +23,6 @@ public class DetalleIncidencias {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
 
     @ManyToOne
     @JoinColumn(name = "id_incidencia", nullable = false)
@@ -43,14 +44,18 @@ public class DetalleIncidencias {
     
     @Column(name = "prioridad", nullable = false) // Nuevo campo: prioridad
     private int prioridad;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_cliente", nullable = false)
+    private Clientes cliente;
         
     public DetalleIncidencias(){
-        
     }
-
+    
+    public void setEmpleado(Empleados empleado){
+        this.empleado = empleado;
+    }
+    public void setCliente(Clientes cliente){
+        this.cliente = cliente;
+    }
 }
-
-
-
-
-

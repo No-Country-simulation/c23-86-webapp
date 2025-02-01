@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Servicio encargado de gestionar los detalles de las incidencias.
@@ -81,9 +82,11 @@ public class DetalleIncidenciaService {
      * @return Lista de detalles de la incidencia.
      */
     public List<DetalleIncidencias> obtenerDetallesPorIncidencia(Long idIncidencia) {
-        return detalleIncidenciaRepository.findByIncidenciaId(idIncidencia);
+        return detalleIncidenciaRepository.findByIncidencia_Id(idIncidencia);
     }
-
+    public Optional<DetalleIncidencias> obtenerPorId(Long id){
+        return detalleIncidenciaRepository.findById(id);
+    }
     /**
      * Actualiza un detalle de una incidencia.
      *

@@ -1,6 +1,7 @@
 package com.callcenter.NoCountry.controller;
 
 import com.callcenter.NoCountry.DTO.ClienteDTO;
+import com.callcenter.NoCountry.DTO.IncidenciaDTO;
 import com.callcenter.NoCountry.Exception.ControllerException;
 import com.callcenter.NoCountry.entity.Clientes;
 import com.callcenter.NoCountry.service.ClienteService;
@@ -19,6 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.callcenter.NoCountry.entity.Clientes;
 import com.callcenter.NoCountry.service.ClienteService;
+import com.callcenter.NoCountry.service.ClienteServicioService;
+import com.callcenter.NoCountry.service.IncidenciaService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,11 +32,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/clientes")
 public class ClienteController {
     
+    private final Logger logger = LoggerFactory.getLogger(ClienteController.class);
+    
     private final ClienteService clienteService;
+    
+    private final ClienteServicioService servicios;
+    
+    private final IncidenciaService incidenciaService;
     @Autowired
-    public ClienteController(ClienteService clienteService){
+    public ClienteController(ClienteService clienteService, ClienteServicioService servicios,IncidenciaService incidenciaService){
         this.clienteService = clienteService;
+        this.servicios = servicios;
+        this.incidenciaService = incidenciaService;
     }
+    
+    
     
     @PostMapping
     public ResponseEntity<List<ClienteDTO>> buscarCliente(
@@ -86,6 +101,13 @@ public class ClienteController {
                 clienteDto.setDireccion(cliente.get().getDireccion());
                 clienteDto.setTelefono(cliente.get().getTelefono());
                 clienteDto.setEstado(cliente.get().getEstado());
+                //agregar servicios asociados al cliente
+                clienteDto.setServicios(servicios.getClienteServicio(id));
+                //Ahora necesito agregar una lista con todas sus insidencias junto con detalle incidencias
+                List<IncidenciaDTO> incidenciaDto = incidenciaService.getIncidenciasFull(id);
+                clienteDto.setIncidencias(incidenciaDto);
+                //Ademas debo agregar los datelles de cada incidencia que tambien sera una lista
+                
                 
                 return ResponseEntity.ok(clienteDto);
             }
@@ -93,7 +115,7 @@ public class ClienteController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
         }catch(Exception e){
-            throw new ControllerException("No se encontro el Id", e);
+            throw new ControllerException("No se encontro el Id", e.getCause());
         }
     }
 }

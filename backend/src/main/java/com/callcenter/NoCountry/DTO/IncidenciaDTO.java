@@ -1,6 +1,5 @@
 package com.callcenter.NoCountry.DTO;
 
-import com.callcenter.NoCountry.entity.DetalleIncidencias;
 import com.callcenter.NoCountry.entity.Incidencias;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +19,9 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class IncidenciaDTO {
     private Long id;
+    private String nombreServicio;
+    private String nombreCliente;
+    private String apellidoCliente;
     private Long idCliente;
     private Long idServicio;
     private ClienteDTO cliente;
@@ -40,13 +41,30 @@ public class IncidenciaDTO {
         this.idServicio = incidencia.getServicio().getId();
         this.descripcion = incidencia.getDescripcion();
         this.fechaDeAlta = incidencia.getFechaDeAlta();
+        // Mapear Servicio
+        this.servicio = new ServicioDTO(incidencia.getServicio());
+
+        // Mapear Detalles
+       this.detalles = incidencia.getDetalles() == null || incidencia.getDetalles().isEmpty()
+                ? Collections.emptyList()
+                : incidencia.getDetalles().stream()
+                .map(DetalleIncidenciaDTO::new) // Usar constructor de DetalleIncidenciaDTO
+                .collect(Collectors.toList());
+    }
+    public IncidenciaDTO(Incidencias incidencia, List<DetalleIncidenciaDTO> detalles) {
+        this.id = incidencia.getId();
+        this.idCliente = incidencia.getCliente().getId();
+        this.idServicio = incidencia.getServicio().getId();
+        this.descripcion = incidencia.getDescripcion();
+        this.fechaDeAlta = incidencia.getFechaDeAlta();
+        this.detalles = detalles;
         this.cliente = new ClienteDTO(incidencia.getCliente());
 
         // Mapear Servicio
         this.servicio = new ServicioDTO(incidencia.getServicio());
 
         // Mapear Detalles
-        this.detalles = incidencia.getDetalles() == null || incidencia.getDetalles().isEmpty()
+       this.detalles = incidencia.getDetalles() == null || incidencia.getDetalles().isEmpty()
                 ? Collections.emptyList()
                 : incidencia.getDetalles().stream()
                 .map(DetalleIncidenciaDTO::new) // Usar constructor de DetalleIncidenciaDTO

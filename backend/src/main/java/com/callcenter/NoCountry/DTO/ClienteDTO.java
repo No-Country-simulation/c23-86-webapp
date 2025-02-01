@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import com.callcenter.NoCountry.entity.Clientes;
+import java.util.List;
 
 /**
  * Data Transfer Object (DTO) para representar los datos del cliente.
@@ -27,7 +28,10 @@ public class ClienteDTO {
     private String direccion;
     private String estado;
     
-     /**
+    private List<ClienteServicioDTO> servicios;
+    
+    private List<IncidenciaDTO> incidencias;
+     /**incidencias
      * Constructor que crea un ClienteDTO a partir de una entidad {@link Clientes}.
      *
      * @param cliente Entidad {@link Clientes} de la cual se copiarán los datos para este DTO.
@@ -46,10 +50,19 @@ public class ClienteDTO {
         this.estado = cliente.getEstado();
     }
     
+    public ClienteDTO(Long id, Long dni, String nombre, String apellido, List<ClienteServicioDTO> servicios){
+        this.id = id;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.servicios = servicios;
+    }
+    
     public ClienteDTO(Long id, Long dni, String nombre, String apellido){
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
     }
+    
 }

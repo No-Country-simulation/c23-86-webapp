@@ -12,13 +12,15 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="cliente_servicio")
+@Getter @Setter
 public class ClienteServicio {
     
     @Id
@@ -41,8 +43,8 @@ public class ClienteServicio {
     @JoinColumn(name = "id_cliente", nullable = false)
     private Clientes cliente;
     
-    //@OneToMany(mappedBy = "clienteServicio", cascade = CascadeType.ALL, orphanRemoval = true)
-    //private Set<HistorialPagos> historialPagos;
+    @OneToMany(mappedBy = "clienteServicio", cascade = CascadeType.ALL)
+    private Set<HistorialPagos> historialPagos;
 
     
     public ClienteServicio(){

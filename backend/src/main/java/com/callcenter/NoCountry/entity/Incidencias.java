@@ -27,9 +27,11 @@ public class Incidencias {
     private Long id;
     
     @NotBlank(message = "ingrese prioridad")
+    @Column(name = "prioridad")
     private int prioridad;
     
     @NotBlank(message = "ingrese estado")
+    @Column(name = "estado")
     private String estado;
     
     @Temporal(TemporalType.TIMESTAMP)
@@ -47,7 +49,7 @@ public class Incidencias {
     @JoinColumn(name = "id_servicio", nullable = false)
     private Servicios servicio;
 
-    @OneToMany(mappedBy = "incidencia", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "incidencia", cascade = CascadeType.ALL)
     private List<DetalleIncidencias> detalles;
     
     public Incidencias(){

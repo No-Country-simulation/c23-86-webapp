@@ -1,14 +1,15 @@
 package com.callcenter.NoCountry.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "servicios")
-@Data
+@Getter @Setter
 public class Servicios {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,11 +25,11 @@ public class Servicios {
     @Column(name = "precio", nullable = false)
     private BigDecimal precio;
     
-    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
-    private List<ClienteServicio> clientes;
+    //@OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
+    //private List<ClienteServicio> clientes;
     
-    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
-    private List<Incidencias> incidencias;
+    //@OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
+    //private List<Incidencias> incidencias;
     
     public Servicios(){   
     }
