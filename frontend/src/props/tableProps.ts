@@ -20,4 +20,6 @@ export type TableProps<T = Record<string, any>> = {
 	viewClick?: (id: string) => void;
 	editClick?: (id: string) => void;
 	deleteClick?: (id: string) => void;
+	handleAddClick?: () => void;
+	modalPost?: React.ReactNode;
 }

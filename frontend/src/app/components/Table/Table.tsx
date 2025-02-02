@@ -44,6 +44,8 @@ const Table = ({
 	editClick,
 	viewClick,
 	deleteClick,
+	handleAddClick,
+	modalPost
 }: TableProps) => {
 	//?iinitialVisibleColumns  indica un array de strings que representan las columnas visibles  de la tabla al iniciar la aplicación
 	/* 
@@ -132,7 +134,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 
 		switch (columnKey) {
 			case "name":
-				return <div className='flex flex-col'></div>;
+				return <div className='flex flex-col'>{cellValue}</div>;
 			case "role":
 				return (
 					<div className='flex flex-col'>
@@ -265,6 +267,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 							</DropdownMenu>
 						</Dropdown>
 						<Button
+							onClick={handleAddClick}
 							className='bg-foreground text-background'
 							endContent={<PlusIcon />}
 							size='sm'>
