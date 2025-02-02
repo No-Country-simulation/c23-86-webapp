@@ -29,4 +29,7 @@ export interface Incidence {
 	descripcion: string;
 	fechaDeAlta: string;
 	detalles: Details[];
+	[key: string]: any;
 }
+
+export type PostIncidenceProps = Omit<Incidence, "id" | "idCliente" >;

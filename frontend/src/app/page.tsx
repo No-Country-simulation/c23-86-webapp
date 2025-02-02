@@ -14,10 +14,42 @@ import Notifications from "./components/Notifications/Notifications";
 import { users2 } from "@/utils/Data/data2";
 import handlerDeleteClick from "@/utils/functions/handlerDeleteClick";
 import handlerEditClick from "@/utils/functions/handlerEditClick";
-import { Incidence } from "@/props/IncidenceProps";
-import IncidencePostModal from "./components/Modales/IncidencePostModal";
+import { Incidence, PostIncidenceProps } from "@/props/IncidenceProps";
+import IncidencePostModal from "./components/NewIncidenceModal/IncidencePostModal";
+
 
 const Dashboard = () => {
+	const initialState = {
+		id: 0,
+		idCliente: "",
+		cliente: {
+			id: 0,
+			nombre: "",
+			apellido: "",
+			dni: 0,
+			correo: "",
+			telefono: "",
+			estado: "",
+		},
+		servicio: {
+			id: 0,
+			nombre: "",
+			descripcion: "",
+		},
+		descripcion: "",
+		fechaDeAlta: "",
+		detalles: [
+			{
+				idEmpleado: 0,
+				nombreEmpleado: "",
+				apellidoEmpleado: "",
+				fechaDeModificacion: "",
+				descripcion: "",
+				estado: "",
+				prioridad: "",
+			},
+		],
+	};
 	// Hook personalizado para obtener datos de estadísticas y tickets
 	const { stats, recentTickets } = useTicketsStats();
 	//?const { user } = useAuthStore(); user en el estado global.
@@ -25,8 +57,7 @@ const Dashboard = () => {
 	const [selectedState, setSelectedState] = useState<string | null>(null);
 	const [showNotifications, setShowNotifications] = useState(false);
 	const [modalOpen, setModalOpen] = useState(false);
-	const [formData, setFormData] = useState<Record<string, any>>({});
-
+	const [formData, setFormData] = useState(initialState);
 
 	// Función para manejar clics en las tarjetas de estadísticas
 	const handleCardClick = (state: string) => {
@@ -41,10 +72,7 @@ const Dashboard = () => {
 	}, []);
 	console.log(incidences);
 
-	const handleModalInputAndTextareaChange = (
-		field: string,
-		value: string
-	) => {
+	const handleModalInputAndTextareaChange = (field: string, value: string) => {
 		setFormData((prev) => ({
 			...prev,
 			[field]: value,
@@ -61,11 +89,11 @@ const Dashboard = () => {
 		}
 
 		setModalOpen(false);
-		setFormData({});
+		setFormData(initialState);
 	};
 	const handleDeclineForm = () => {
 		setModalOpen(false);
-		setFormData({});
+		setFormData(initialState);
 	};
 
 	const handleViewClick = async (id: string) => {
