@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import useTicketsStats from "@/hooks/useTicketsStats";
 import StatisticsSummary from "./components/StatisticsSummary";
 import TicketsTable from "./components/TicketsTable";
 import withAuth from "./components/WithAuth";
-import useAuthStore from "@/stores/authStore";
+import useIncidenceStore from "@/stores/incidenceStore";
 import { users } from "@/utils/Data/data";
 import Table from "./components/Table/Table";
 import handlerViewClick from "@/utils/functions/handlerViewClick";
@@ -14,6 +14,8 @@ import Notifications from "./components/Notifications/Notifications";
 import { users2 } from "@/utils/Data/data2";
 import handlerDeleteClick from "@/utils/functions/handlerDeleteClick";
 import handlerEditClick from "@/utils/functions/handlerEditClick";
+import { Incidence } from "@/props/IncidenceProps";
+import IncidencePostModal from "./components/Modales/IncidencePostModal";
 
 const Dashboard = () => {
 	// Hook personalizado para obtener datos de estadísticas y tickets
@@ -22,13 +24,49 @@ const Dashboard = () => {
 	// Estado para manejar la estadística seleccionada
 	const [selectedState, setSelectedState] = useState<string | null>(null);
 	const [showNotifications, setShowNotifications] = useState(false);
+	const [modalOpen, setModalOpen] = useState(false);
+	const [formData, setFormData] = useState<Record<string, any>>({});
+
 
 	// Función para manejar clics en las tarjetas de estadísticas
 	const handleCardClick = (state: string) => {
 		setSelectedState(state);
 		setShowNotifications(!showNotifications);
 	};
-	const apiUrlForIncidences = process.env.apiForIncidence || "";
+
+	const { incidences, getIncidences, postIncidences } = useIncidenceStore();
+	const detalles = incidences.map((incidence) => incidence.detalles);
+	useEffect(() => {
+		getIncidences();
+	}, []);
+	console.log(incidences);
+
+	const handleModalInputAndTextareaChange = (
+		field: string,
+		value: string
+	) => {
+		setFormData((prev) => ({
+			...prev,
+			[field]: value,
+		}));
+	};
+
+	const handleFormSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+
+		if (formData) {
+			postIncidences(formData as Incidence);
+		} else {
+			console.error("FormData is undefined");
+		}
+
+		setModalOpen(false);
+		setFormData({});
+	};
+	const handleDeclineForm = () => {
+		setModalOpen(false);
+		setFormData({});
+	};
 
 	const handleViewClick = async (id: string) => {
 		const apiUrlForIncidences = process.env.apiForIncidence || "";
@@ -45,6 +83,22 @@ const Dashboard = () => {
 
 	return (
 		<section className='flex flex-grow max-w-[calc(100vw-50px)] overflow-hidden min-h-screen bg-background1 text-primary3 dark:bg-background3 dark:text-primary2'>
+			{/* Modal adicion de incidencia*/}
+			{modalOpen && (
+				<IncidencePostModal
+					handleInputChange={handleModalInputAndTextareaChange}
+					formData={formData}
+					statuses={[
+						{ uid: "active", name: "Active" },
+						{ uid: "paused", name: "Paused" },
+						{ uid: "vacation", name: "Vacation" },
+					]}
+					cambio={handleModalInputAndTextareaChange}
+					handleFormSubmit={handleFormSubmit}
+					handleDecline={handleDeclineForm}
+				/>
+			)}
+
 			{/* Notificaciones dentro del layout */}
 			<Notifications />
 
@@ -84,17 +138,9 @@ const Dashboard = () => {
 					<div className='max-w-full overflow-x-auto'>
 						<div className='min-w-[800px]'>
 							<Table
-								sortable = {["name", "status"]}
-								data={users}
-								initialVisibleColumns={[
-									"id",
-									"name",
-									"age",
-									"role",
-									"team",
-									"email",
-									"status",
-								]}
+								sortable={["name", "status"]}
+								data={detalles}
+								initialVisibleColumns={["all"]}
 								statuses={[
 									{ uid: "active", name: "Active" },
 									{ uid: "paused", name: "Paused" },
@@ -103,7 +149,8 @@ const Dashboard = () => {
 								viewClick={handleViewClick}
 								editClick={handleEditClick}
 								deleteClick={handleDeleteClick}
-								actions= {true}
+								actions={true}
+								handleAddClick={() => setModalOpen(true)}
 							/>
 						</div>
 					</div>
