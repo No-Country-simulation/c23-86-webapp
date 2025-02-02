@@ -1,14 +1,17 @@
 package com.callcenter.NoCountry.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "empleados")
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Empleados {
 
     @Id
@@ -44,7 +47,8 @@ public class Empleados {
     @Column(name = "activo", nullable = false)
     private boolean activo;
 
-    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL)
-    private List<DetalleIncidencias> detallesIncidencias;
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    private List<DetalleIncidencias> detalles;
 
 }

@@ -1,7 +1,7 @@
 package com.callcenter.NoCountry.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -10,9 +10,12 @@ import java.time.LocalDateTime;
  * Cada detalle está asociado a una incidencia y registra la información
  * sobre modificaciones realizadas por empleados, incluyendo la descripción de dichas modificaciones.
  */
-@Data
 @Entity
 @Table(name = "detalle_de_incidencias")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class DetalleIncidencias {
 
     @Id
@@ -40,6 +43,7 @@ public class DetalleIncidencias {
 
     @Column(name = "prioridad", nullable = false) // Nuevo campo: prioridad
     private int prioridad;
+
 }
 
 

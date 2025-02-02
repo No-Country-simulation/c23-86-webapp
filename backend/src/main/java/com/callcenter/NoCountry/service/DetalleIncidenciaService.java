@@ -70,9 +70,11 @@ public class DetalleIncidenciaService {
         detalle.setPrioridad(detalleDTO.getPrioridad());
         detalle.setEstado(detalleDTO.getEstado());
 
+        System.out.println("detalle = " + detalle);
         // Guardar el detalle en la base de datos
         return detalleIncidenciaRepository.save(detalle);
     }
+
 
     /**
      * Obtiene todos los detalles asociados a una incidencia.

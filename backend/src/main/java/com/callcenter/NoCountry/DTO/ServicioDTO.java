@@ -2,7 +2,6 @@ package com.callcenter.NoCountry.DTO;
 
 import com.callcenter.NoCountry.entity.ClienteServicio;
 import com.callcenter.NoCountry.entity.Servicios;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +23,6 @@ public class ServicioDTO {
     private String nombre;
     private String descripcion;
     private BigDecimal precio;
-    @JsonProperty("Fecha_de_alta")
     private LocalDateTime fechaAlta;
     private BigDecimal monto;
     private List<HistorialPagoDTO> historialPagos;

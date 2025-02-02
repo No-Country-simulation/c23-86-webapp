@@ -1,7 +1,6 @@
 package com.callcenter.NoCountry.DTO;
 
 import com.callcenter.NoCountry.entity.Incidencias;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,12 +18,10 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class IncidenciaSinDatosClienteDTO {
-    @JsonProperty("Numero_de_reclamo")
     private Long id;
     private Long idServicio;
     private ServicioDTO servicio;
     private String descripcion;
-    @JsonProperty("Fecha_de_alta")
     private LocalDateTime fechaDeAlta;
     private List<DetalleIncidenciaDTO> detalles;
 
