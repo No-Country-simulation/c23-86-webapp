@@ -1,6 +1,6 @@
 // stores/authStore.ts
 import { create } from "zustand";
-import { Incidence } from "@/props/IncidenceProps";
+import { Incidence, PostIncidenceProps } from "@/props/IncidenceProps";
 
 
 
@@ -29,7 +29,7 @@ const useIncidenceStore = create<IncidencesState>((set) => ({
         const data = await response.json();
         set({ incidences: data });
     },
-    postIncidences: async (incidence: Incidence) => {
+    postIncidences: async (incidence: PostIncidenceProps) => {
         const response = await fetch(`${endpoint}`, {
             method: "POST",
             headers: {
