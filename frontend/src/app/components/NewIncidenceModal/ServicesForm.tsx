@@ -5,7 +5,7 @@ import { PostIncidenceProps } from '@/props/IncidenceProps';
 
 const ServicesForm = ({formData, handleInputChange}:{ formData: PostIncidenceProps, handleInputChange:(field: string, value: string) => void;}) => {
   return (
-		<div>
+	<div className="p-4 bg-background1 border border-secondary1 rounded-md shadow-md">
 			<Input
 				nombre='Nombre'
 				inputType='text'
