@@ -3,12 +3,13 @@ import Button from "@/app/components/Button";
 import Textarea from "../Textarea";
 import Input from "../Input";
 import { IncidencePostModalProps } from "@/props/IncidencePostModalProps";
-import { capitalize } from "@/utils/functions/capitalize";
+
 import { generateColumns } from "@/utils/functions/GenerateColumnsTable";
 import Section from "./FormSections";
 import ClientsForm from "./ClientsForm";
 import ServicesForm from "./ServicesForm";
 import DetailsForm from "./DetailsForm";
+
 
 const IncidencePostModal = ({
 	formData,

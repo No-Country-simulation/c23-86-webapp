@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import useTicketsStats from "@/hooks/useTicketsStats";
 import StatisticsSummary from "./components/StatisticsSummary";
 import TicketsTable from "./components/TicketsTable";
@@ -16,40 +16,12 @@ import handlerDeleteClick from "@/utils/functions/handlerDeleteClick";
 import handlerEditClick from "@/utils/functions/handlerEditClick";
 import { Incidence, PostIncidenceProps } from "@/props/IncidenceProps";
 import IncidencePostModal from "./components/NewIncidenceModal/IncidencePostModal";
+import postIncidences from "@/utils/functions/postIncidence";
+import postIncidenceInitialState from "@/utils/state/postIncidenceInitialState";
 
 
 const Dashboard = () => {
-	const initialState = {
-		id: 0,
-		idCliente: "",
-		cliente: {
-			id: 0,
-			nombre: "",
-			apellido: "",
-			dni: 0,
-			correo: "",
-			telefono: "",
-			estado: "",
-		},
-		servicio: {
-			id: 0,
-			nombre: "",
-			descripcion: "",
-		},
-		descripcion: "",
-		fechaDeAlta: "",
-		detalles: [
-			{
-				idEmpleado: 0,
-				nombreEmpleado: "",
-				apellidoEmpleado: "",
-				fechaDeModificacion: "",
-				descripcion: "",
-				estado: "",
-				prioridad: "",
-			},
-		],
-	};
+	const initialState = postIncidenceInitialState;
 	// Hook personalizado para obtener datos de estadísticas y tickets
 	const { stats, recentTickets } = useTicketsStats();
 	//?const { user } = useAuthStore(); user en el estado global.
@@ -65,7 +37,7 @@ const Dashboard = () => {
 		setShowNotifications(!showNotifications);
 	};
 
-	const { incidences, getIncidences, postIncidences } = useIncidenceStore();
+	const { incidences, getIncidences } = useIncidenceStore();
 	const detalles = incidences.map((incidence) => incidence.detalles);
 	useEffect(() => {
 		getIncidences();
@@ -83,7 +55,7 @@ const Dashboard = () => {
 		e.preventDefault();
 
 		if (formData) {
-			postIncidences(formData as Incidence);
+			postIncidences(formData);
 		} else {
 			console.error("FormData is undefined");
 		}
