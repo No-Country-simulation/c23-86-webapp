@@ -18,7 +18,7 @@ const Textarea = ({
 		<div className='flex flex-col gap-2  '>
 			<div className='relative flex items-center '>
 				<textarea
-					className=' w-[318px] h-[37px] rounded-[4px] border border-solid font-normal  box-border text-[14px] leading-[17px]   italic font-montserrat '
+					className="w-full h-24 border border-secondary1 bg-background2 p-2 rounded font-montserrat text-primary3 text-sm resize-none"
 					id={nombre}
 					name={nombre}
 					value={value}
@@ -26,12 +26,12 @@ const Textarea = ({
 					placeholder={nombre}
 				/>
 				{item && (
-					<div className='hover:cursor-pointer hover:transform hover:scale-110 absolute right-0 top-[3px] w-auto h-full flex items-center justify-end  '>
+					<div className="hover:cursor-pointer hover:scale-110 absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center">
 						{item}
 					</div>
 				)}
 			</div>
-			<div>{error && <span className='error-message'>{error}</span>}</div>
+			{error && <span className="text-error font-montserrat text-xs">{error}</span>}
 		</div>
 	);
 };
