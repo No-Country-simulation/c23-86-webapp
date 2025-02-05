@@ -2,6 +2,7 @@ package com.callcenter.NoCountry.controller;
 
 import com.callcenter.NoCountry.DTO.DetalleIncidenciaDTO;
 import com.callcenter.NoCountry.DTO.IncidenciaDTO;
+import com.callcenter.NoCountry.DTO.IncidenciaSinDatosClienteDTO;
 import com.callcenter.NoCountry.entity.Incidencias;
 import com.callcenter.NoCountry.repository.IncidenciaRepository;
 import com.callcenter.NoCountry.service.DetalleIncidenciaService;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -62,6 +64,11 @@ public class IncidenciaController {
         Incidencias nuevaIncidencia = incidenciaService.crearIncidencia(incidenciaDTO);
         IncidenciaDTO incidenciaDTO1 = new IncidenciaDTO(nuevaIncidencia);
         return new ResponseEntity<>(incidenciaDTO1, HttpStatus.CREATED);
+    }
+
+    @GetMapping
+    public List<IncidenciaDTO> getIncidencias() {
+        return incidenciaService.getIncidencias();
     }
 
     /**

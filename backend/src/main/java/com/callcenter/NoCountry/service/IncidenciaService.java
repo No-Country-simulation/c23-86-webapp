@@ -1,6 +1,8 @@
 package com.callcenter.NoCountry.service;
 
+import com.callcenter.NoCountry.DTO.ClienteDTO;
 import com.callcenter.NoCountry.DTO.IncidenciaDTO;
+import com.callcenter.NoCountry.DTO.IncidenciaSinDatosClienteDTO;
 import com.callcenter.NoCountry.entity.Clientes;
 import com.callcenter.NoCountry.entity.DetalleIncidencias;
 import com.callcenter.NoCountry.entity.Incidencias;
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 /**
  * Servicio encargado de gestionar las incidencias, incluyendo la creación de nuevas incidencias,
@@ -102,5 +105,11 @@ public class IncidenciaService {
                 .orElseThrow(() -> new RuntimeException("La incidencia con ID " + id + " no existe."));
 
         return new IncidenciaDTO(incidencia);
+    }
+
+    public List<IncidenciaDTO> getIncidencias() {
+        return incidenciaRepository.findAll().stream()
+                .map(incidencias -> new IncidenciaDTO(incidencias))
+                .collect(Collectors.toList());
     }
 }
