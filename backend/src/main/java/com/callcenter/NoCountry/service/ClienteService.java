@@ -24,10 +24,7 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
     
-    public List<Clientes> getClientes(){
-        return clienteRepository.findAll();
-    }
-    
+
     public List<Clientes> buscarPorDni(Long dni){
         try{
             return Collections.unmodifiableList(clienteRepository.findByDni(dni));
