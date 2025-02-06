@@ -14,7 +14,6 @@ import {
 	DropdownMenu,
 	DropdownItem,
 	Chip,
-
 	Pagination,
 	Selection,
 	ChipProps,
@@ -29,12 +28,12 @@ import { capitalize } from "@/utils/functions/capitalize";
 import { TableProps, Data } from "@/props/tableProps";
 import { generateTableColumns } from "@/utils/functions/GenerateColumnsTable";
 
-
 const statusColorMap: Record<string, ChipProps["color"]> = {
 	active: "success",
 	paused: "danger",
 	vacation: "warning",
 };
+
 const Table = ({
 	initialVisibleColumns,
 	sortable,
@@ -45,31 +44,11 @@ const Table = ({
 	viewClick,
 	deleteClick,
 	handleAddClick,
-	modalPost
+	modalPost,
 }: TableProps) => {
-	//?iinitialVisibleColumns  indica un array de strings que representan las columnas visibles  de la tabla al iniciar la aplicación
-	/* 
-La propiedad status recibe un array de objetos con las propiedades uid y name. Estas propiedades se utilizan para identificar y mostrar el estado de la fila en la tabla.
-	statuses={[
-						{ uid: "active", name: "Active" }, cambiar el nombre en funcion de lo que se desea mostrar, el uid asigna el color
-						{ uid: "paused", name: "Paused" },
-						{ uid: "vacation", name: "Vacation" },
-					]} el valor active se muestra en verde, el valor paused se muestra en rojo y el valor vacation se muestra en amarillo.
-
-La propiedad data recibe un json con la data a renderizar.
-
-La propiedad DataProps recibe las props del data, ya que  pueden cambiar. 
-
-
-*/
-
 	const [filterValue, setFilterValue] = React.useState("");
-	const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
-		new Set([])
-	);
-	const [visibleColumns, setVisibleColumns] = React.useState<Selection>(
-		new Set(initialVisibleColumns)
-	);
+	const [selectedKeys, setSelectedKeys] = React.useState<Selection>(new Set([]));
+	const [visibleColumns, setVisibleColumns] = React.useState<Selection>(new Set(initialVisibleColumns));
 	const [statusFilter, setStatusFilter] = React.useState<Selection>("all");
 	const [rowsPerPage, setRowsPerPage] = React.useState(10);
 	const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
@@ -79,43 +58,29 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 	const [page, setPage] = React.useState(1);
 
 	const pages = Math.ceil(data.length / rowsPerPage);
-
 	const hasSearchFilter = Boolean(filterValue);
 	const columns = generateTableColumns(data, sortable);
-    if (actions) columns.push({ name: "ACTIONS", uid: "actions", sortable: false });
+	if (actions) columns.push({ name: "ACTIONS", uid: "actions", sortable: false });
 
 	const headerColumns = React.useMemo(() => {
 		if (visibleColumns === "all") return columns;
-
-		return columns.filter((column) =>
-			Array.from(visibleColumns).includes(column.uid)
-		);
+		return columns.filter((column) => Array.from(visibleColumns).includes(column.uid));
 	}, [visibleColumns]);
 
 	const filteredItems = React.useMemo(() => {
 		let filteredUsers = [...data];
-
 		if (hasSearchFilter) {
-			filteredUsers = filteredUsers.filter((user) =>
-				user.name.toLowerCase().includes(filterValue.toLowerCase())
-			);
+			filteredUsers = filteredUsers.filter((user) => user.name.toLowerCase().includes(filterValue.toLowerCase()));
 		}
-		if (
-			statusFilter !== "all" &&
-			Array.from(statusFilter).length !== statuses.length
-		) {
-			filteredUsers = filteredUsers.filter((user) =>
-				Array.from(statusFilter).includes(user.status)
-			);
+		if (statusFilter !== "all" && Array.from(statusFilter).length !== statuses.length) {
+			filteredUsers = filteredUsers.filter((user) => Array.from(statusFilter).includes(user.status));
 		}
-
 		return filteredUsers;
 	}, [data, filterValue, statusFilter]);
 
 	const items = React.useMemo(() => {
 		const start = (page - 1) * rowsPerPage;
 		const end = start + rowsPerPage;
-
 		return filteredItems.slice(start, end);
 	}, [page, filteredItems, rowsPerPage]);
 
@@ -124,33 +89,25 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 			const first = a[sortDescriptor.column as keyof Data] as number;
 			const second = b[sortDescriptor.column as keyof Data] as number;
 			const cmp = first < second ? -1 : first > second ? 1 : 0;
-
 			return sortDescriptor.direction === "descending" ? -cmp : cmp;
 		});
 	}, [sortDescriptor, items]);
 
 	const renderCell = React.useCallback((data: Data, columnKey: React.Key) => {
 		const cellValue = data[columnKey as keyof Data];
-
 		switch (columnKey) {
 			case "name":
 				return <div className='flex flex-col'>{cellValue}</div>;
 			case "role":
 				return (
 					<div className='flex flex-col'>
-						<p className='text-bold text-small capitalize'>{cellValue}</p>
-						<p className='text-bold text-tiny capitalize text-default-500'>
-							{data.team}
-						</p>
+						<p className='font-bold text-sm capitalize'>{cellValue}</p>
+						<p className='font-bold text-xs capitalize text-gray-500'>{data.team}</p>
 					</div>
 				);
 			case "status":
 				return (
-					<Chip
-						className='capitalize border-none gap-1 text-default-600'
-						color={statusColorMap[data.status]}
-						size='sm'
-						variant='dot'>
+					<Chip className='capitalize border-none gap-1 text-gray-600' color={statusColorMap[data.status]} size='sm' variant='dot'>
 						{cellValue}
 					</Chip>
 				);
@@ -160,21 +117,13 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 						<Dropdown>
 							<DropdownTrigger>
 								<Button isIconOnly radius='full' size='sm' variant='light'>
-									<VerticalDotsIcon className='text-default-400 ' />
+									<VerticalDotsIcon className='text-gray-400' />
 								</Button>
 							</DropdownTrigger>
 							<DropdownMenu>
-								<DropdownItem onClick={() => viewClick?.(data.id)} key='view'>
-									View
-								</DropdownItem>
-								<DropdownItem onClick={() => editClick?.(data.id)} key='edit'>
-									Edit
-								</DropdownItem>
-								<DropdownItem
-									onClick={() => deleteClick?.(data.id)}
-									key='delete'>
-									Delete
-								</DropdownItem>
+								<DropdownItem onClick={() => viewClick?.(data.id)} key='view'>View</DropdownItem>
+								<DropdownItem onClick={() => editClick?.(data.id)} key='edit'>Edit</DropdownItem>
+								<DropdownItem onClick={() => deleteClick?.(data.id)} key='delete'>Delete</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
 					</div>
@@ -184,13 +133,10 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 		}
 	}, []);
 
-	const onRowsPerPageChange = React.useCallback(
-		(e: React.ChangeEvent<HTMLSelectElement>) => {
-			setRowsPerPage(Number(e.target.value));
-			setPage(1);
-		},
-		[]
-	);
+	const onRowsPerPageChange = React.useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
+		setRowsPerPage(Number(e.target.value));
+		setPage(1);
+	}, []);
 
 	const onSearchChange = React.useCallback((value?: string) => {
 		if (value) {
@@ -207,13 +153,10 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 				<div className='flex justify-between gap-3 items-end'>
 					<Input
 						isClearable
-						classNames={{
-							base: "w-full sm:max-w-[44%]",
-							inputWrapper: "border-1",
-						}}
+						classNames={{ base: "w-full lg:max-w-[44%]", inputWrapper: "border-1" }}
 						placeholder='Search by name...'
 						size='sm'
-						startContent={<SearchIcon className='text-default-300' />}
+						startContent={<SearchIcon className='text-gray-300' />}
 						value={filterValue}
 						variant='bordered'
 						onClear={() => setFilterValue("")}
@@ -221,11 +164,8 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 					/>
 					<div className='flex gap-3'>
 						<Dropdown>
-							<DropdownTrigger className='hidden sm:flex'>
-								<Button
-									endContent={<ChevronDownIcon className='text-small' />}
-									size='sm'
-									variant='flat'>
+							<DropdownTrigger className='hidden lg:flex'>
+								<Button endContent={<ChevronDownIcon className='text-sm' />} size='sm' variant='flat'>
 									Status
 								</Button>
 							</DropdownTrigger>
@@ -244,11 +184,8 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 							</DropdownMenu>
 						</Dropdown>
 						<Dropdown>
-							<DropdownTrigger className='hidden sm:flex'>
-								<Button
-									endContent={<ChevronDownIcon className='text-small' />}
-									size='sm'
-									variant='flat'>
+							<DropdownTrigger className='hidden lg:flex'>
+								<Button endContent={<ChevronDownIcon className='text-sm' />} size='sm' variant='flat'>
 									Columns
 								</Button>
 							</DropdownTrigger>
@@ -266,24 +203,16 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 								))}
 							</DropdownMenu>
 						</Dropdown>
-						<Button
-							onClick={handleAddClick}
-							className='bg-foreground text-background'
-							endContent={<PlusIcon />}
-							size='sm'>
+						<Button onClick={handleAddClick} className='bg-black text-white' endContent={<PlusIcon />} size='sm'>
 							Add New
 						</Button>
 					</div>
 				</div>
 				<div className='flex justify-between items-center'>
-					<span className='text-default-400 text-small'>
-						Total {data.length} data
-					</span>
-					<label className='flex items-center text-default-400 text-small'>
+					<span className='text-gray-400 text-sm'>Total {data.length} data</span>
+					<label className='flex items-center text-gray-400 text-sm'>
 						Rows per page:
-						<select
-							className='bg-transparent outline-none text-default-400 text-small'
-							onChange={onRowsPerPageChange}>
+						<select className='bg-transparent outline-none text-gray-400 text-sm' onChange={onRowsPerPageChange}>
 							<option value='5'>5</option>
 							<option value='10'>10</option>
 							<option value='15'>15</option>
@@ -292,24 +221,14 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 				</div>
 			</div>
 		);
-	}, [
-		filterValue,
-		statusFilter,
-		visibleColumns,
-		onSearchChange,
-		onRowsPerPageChange,
-		data.length,
-		hasSearchFilter,
-	]);
+	}, [filterValue, statusFilter, visibleColumns, onSearchChange, onRowsPerPageChange, data.length]);
 
 	const bottomContent = React.useMemo(() => {
 		return (
 			<div className='py-2 px-2 flex justify-between items-center'>
 				<Pagination
 					showControls
-					classNames={{
-						cursor: "bg-foreground text-background",
-					}}
+					classNames={{ cursor: "bg-black text-white" }}
 					color='default'
 					isDisabled={hasSearchFilter}
 					page={page}
@@ -317,10 +236,8 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 					variant='light'
 					onChange={setPage}
 				/>
-				<span className='text-small text-default-400'>
-					{selectedKeys === "all"
-						? "All items selected"
-						: `${selectedKeys.size} of ${items.length} selected`}
+				<span className='text-sm text-gray-400'>
+					{selectedKeys === "all" ? "All items selected" : `${selectedKeys.size} of ${items.length} selected`}
 				</span>
 			</div>
 		);
@@ -329,16 +246,10 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 	const classNames = React.useMemo(
 		() => ({
 			wrapper: ["w-full", "max-w-full", "flex-grow", "overflow-auto"],
-			th: ["bg-transparent", "text-default-500", "border-b", "border-divider"],
+			th: ["bg-transparent", "text-gray-500", "border-b", "border-gray-200"],
 			td: [
-				// changing the rows border radius
-				// first
 				"group-data-[first=true]/tr:first:before:rounded-none",
-				"group-data-[first=true]/tr:last:before:rounded-none",
-				// middle
 				"group-data-[middle=true]/tr:before:rounded-none",
-				// last
-				"group-data-[last=true]/tr:first:before:rounded-none",
 				"group-data-[last=true]/tr:last:before:rounded-none",
 			],
 		}),
@@ -350,11 +261,7 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 			aria-label='Example table with custom cells, pagination and sorting'
 			bottomContent={bottomContent}
 			bottomContentPlacement='outside'
-			checkboxesProps={{
-				classNames: {
-					wrapper: "after:bg-foreground after:text-background text-background",
-				},
-			}}
+			checkboxesProps={{ classNames: { wrapper: "after:bg-black after:text-white text-white" } }}
 			classNames={classNames}
 			selectedKeys={selectedKeys}
 			selectionMode='multiple'
@@ -362,13 +269,11 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 			topContent={topContent}
 			topContentPlacement='outside'
 			onSelectionChange={setSelectedKeys}
-			onSortChange={setSortDescriptor}>
+			onSortChange={setSortDescriptor}
+		>
 			<TableHeader columns={headerColumns}>
 				{(column) => (
-					<TableColumn
-						key={column.uid}
-						align={column.uid === "actions" ? "center" : "start"}
-						allowsSorting={column.sortable}>
+					<TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"} allowsSorting={column.sortable}>
 						{column.name}
 					</TableColumn>
 				)}
@@ -376,13 +281,12 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 			<TableBody emptyContent={"No data found"} items={sortedItems}>
 				{(item) => (
 					<TableRow key={item.id}>
-						{(columnKey) => (
-							<TableCell>{renderCell(item, columnKey)}</TableCell>
-						)}
+						{(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
 					</TableRow>
 				)}
 			</TableBody>
 		</HerouiTable>
 	);
 };
+
 export default Table;

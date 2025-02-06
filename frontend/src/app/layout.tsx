@@ -27,24 +27,25 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className={`${montserratFont.variable} ${robotoFont.variable} antialiased h-full w-full`}>
         <Providers>
           {!isLoginPage && (
-            <>
-              {/* Sidebar Fijo */}
+            <div className="flex h-full">
+              {/* Sidebar */}
               <Sidebar />
 
-              {/* Notificaciones Eliminadas */}
-
               {/* Contenedor Principal */}
-			  <main className="ml-80 flex-grow max-w-[calc(100vw-10px)] min-h-screen bg-white shadow-lg p-2 overflow-hidden">
-			  {children}
+              <main className="flex-grow min-h-screen bg-white shadow-lg p-4 lg:p-6 xl:p-8 2xl:p-10 flex">
+                {/* Contenido Dinámico */}
+                <div className="flex-grow">
+                  {children}
+                </div>
               </main>
-            </>
+            </div>
           )}
 
-          {isLoginPage && <main className="w-full min-h-screen">{children}</main>}
+          {isLoginPage && <main className="w-full min-h-screen p-4 lg:p-6 xl:p-8 2xl:p-10">{children}</main>}
         </Providers>
       </body>
     </html>
   );
 };
 
-export default RootLayout;
+export default RootLayout; 

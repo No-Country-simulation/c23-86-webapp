@@ -13,21 +13,17 @@ interface Notification {
 export default function Notifications() {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
-
-
   const mockMessages = [
     { message: "Operación completada con éxito", type: "success" },
     { message: "Hubo un problema con la solicitud", type: "error" },
     { message: "Atención: cambios pendientes", type: "warning" },
     { message: "Hay una actualización disponible", type: "info" },
-  ] as const; // as a const para evitar el error del tipo any
-  
+  ] as const;
 
-  // Se genera una notifacion aleatoria
   const addMockNotification = () => {
     const random = mockMessages[Math.floor(Math.random() * mockMessages.length)];
     const newNotification: Notification = {
-      id: Date.now(), // Se genera un nuevo ID sin sobrescribir
+      id: Date.now(),
       message: random.message,
       type: random.type,
     };
@@ -39,8 +35,8 @@ export default function Notifications() {
   };
 
   return (
-<div className="fixed left-20 top-0 h-screen w-64 bg-white dark:bg-gray-800 shadow-lg p-4 transition-all duration-300 z-40">
-<h2 className="text-lg font-semibold text-primary1 dark:text-primary2">
+    <div className="flex-shrink-0 w-64 bg-white dark:bg-gray-800 shadow-lg p-4 h-full overflow-y-auto">
+      <h2 className="text-lg font-semibold text-primary1 dark:text-primary2">
         Notificaciones
       </h2>
       <p className="text-secondary1 dark:text-secondary2">
@@ -74,4 +70,4 @@ export default function Notifications() {
       </div>
     </div>
   );
-}
+} 

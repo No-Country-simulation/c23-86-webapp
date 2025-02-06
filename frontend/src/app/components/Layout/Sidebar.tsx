@@ -17,9 +17,14 @@ export default function Sidebar() {
 
   return (
     <nav
-      className={`h-screen ${isExpanded ? "w-64" : "w-20"} bg-primary1 text-white flex flex-col py-6 shadow-lg fixed left-0 top-0 transition-all duration-300 z-50`}
+      className={`h-screen 
+        ${isExpanded ? "w-64 lg:w-72 xl:w-80 2xl:w-96" : "w-20 lg:w-24 xl:w-28 2xl:w-32"} 
+        bg-primary1 text-white flex flex-col py-6 shadow-lg fixed left-0 top-0 
+        transition-all duration-300 z-50
+      `}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
+      style={{ zIndex: isExpanded ? 60 : 50 }}
     >
       <NavbarLogo />
 
@@ -31,7 +36,7 @@ export default function Sidebar() {
               className="flex items-center gap-4 px-4 py-2 rounded-md hover:bg-primary3 transition duration-300"
             >
               {icon}
-              {isExpanded && <span className="text-sm">{label}</span>}
+              {isExpanded && <span className="text-sm lg:text-base xl:text-lg 2xl:text-xl">{label}</span>}
             </Link>
           </li>
         ))}
