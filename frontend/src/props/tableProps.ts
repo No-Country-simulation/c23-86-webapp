@@ -22,4 +22,5 @@ export type TableProps<T = Record<string, any>> = {
 	deleteClick?: (id: string) => void;
 	handleAddClick?: () => void;
 	modalPost?: React.ReactNode;
+	onRowSelect?: (data: Data) => void;
 }

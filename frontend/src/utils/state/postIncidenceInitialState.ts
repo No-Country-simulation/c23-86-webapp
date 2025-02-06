@@ -1,18 +1,6 @@
 const postIncidenceInitialState = {
-    nombre: "",
-    descripcion: "",
-    correo: "",
-    telefono: "",
-    detalles: [
-        {
-            idEmpleado: 0,
-            nombreEmpleado: "",
-            apellidoEmpleado: "",
-            fechaDeModificacion: "",
-            descripcion: "",
-            estado: "",
-            prioridad: "",
-        },
-    ],
+    idCliente: 0,
+    idServicio: 0,
+    descripcion: ''
 };
 export default postIncidenceInitialState;

@@ -6,4 +6,5 @@ export type TextareaProps = {
     cambio: Function;
     value: string;
     item?: React.ReactNode;
+    disabledTextarea?: boolean
 }

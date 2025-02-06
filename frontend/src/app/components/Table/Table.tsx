@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
 	Table as HerouiTable,
 	TableHeader,
@@ -14,21 +14,18 @@ import {
 	DropdownMenu,
 	DropdownItem,
 	Chip,
-
 	Pagination,
 	Selection,
 	ChipProps,
 	SortDescriptor,
 } from "@heroui/react";
-
 import { SearchIcon } from "./SearchIcon";
-import { PlusIcon } from "./PlusIcon";
 import { VerticalDotsIcon } from "./VerticalDotsIcon";
 import { ChevronDownIcon } from "./ChevronDownIcon";
 import { capitalize } from "@/utils/functions/capitalize";
 import { TableProps, Data } from "@/props/tableProps";
 import { generateTableColumns } from "@/utils/functions/GenerateColumnsTable";
-
+import useClientStore from "@/stores/clientsStore";
 
 const statusColorMap: Record<string, ChipProps["color"]> = {
 	active: "success",
@@ -45,28 +42,26 @@ const Table = ({
 	viewClick,
 	deleteClick,
 	handleAddClick,
-	modalPost
+	onRowSelect,
 }: TableProps) => {
-	//?iinitialVisibleColumns  indica un array de strings que representan las columnas visibles  de la tabla al iniciar la aplicación
-	/* 
-La propiedad status recibe un array de objetos con las propiedades uid y name. Estas propiedades se utilizan para identificar y mostrar el estado de la fila en la tabla.
-	statuses={[
-						{ uid: "active", name: "Active" }, cambiar el nombre en funcion de lo que se desea mostrar, el uid asigna el color
-						{ uid: "paused", name: "Paused" },
-						{ uid: "vacation", name: "Vacation" },
-					]} el valor active se muestra en verde, el valor paused se muestra en rojo y el valor vacation se muestra en amarillo.
-
-La propiedad data recibe un json con la data a renderizar.
-
-La propiedad DataProps recibe las props del data, ya que  pueden cambiar. 
-
-
-*/
-
+	const { getClientesById } = useClientStore();
 	const [filterValue, setFilterValue] = React.useState("");
 	const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
 		new Set([])
 	);
+	let idClient = Array.from(selectedKeys);
+	const handleRowClick = async () => {
+		await getClientesById(Number(idClient));
+		handleAddClick?.();
+	};
+	const handleSelectionChange = (keys: Selection) => {
+		setSelectedKeys(keys);
+		const selectedId = Array.from(keys)[0];
+		if (selectedId) {
+			getClientesById(Number(selectedId));
+			handleAddClick?.();
+		}
+	};
 	const [visibleColumns, setVisibleColumns] = React.useState<Selection>(
 		new Set(initialVisibleColumns)
 	);
@@ -78,11 +73,13 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 	});
 	const [page, setPage] = React.useState(1);
 
+	console.log(data)
 	const pages = Math.ceil(data.length / rowsPerPage);
 
 	const hasSearchFilter = Boolean(filterValue);
 	const columns = generateTableColumns(data, sortable);
-    if (actions) columns.push({ name: "ACTIONS", uid: "actions", sortable: false });
+	if (actions)
+		columns.push({ name: "ACTIONS", uid: "actions", sortable: false });
 
 	const headerColumns = React.useMemo(() => {
 		if (visibleColumns === "all") return columns;
@@ -92,32 +89,32 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 		);
 	}, [visibleColumns]);
 
-	const filteredItems = React.useMemo(() => {
-		let filteredUsers = [...data];
+	const filteredClients = React.useMemo(() => {
+		let filteredClients = [...data];
 
 		if (hasSearchFilter) {
-			filteredUsers = filteredUsers.filter((user) =>
-				user.name.toLowerCase().includes(filterValue.toLowerCase())
+			filteredClients = filteredClients.filter((incidencia) =>
+				incidencia.cliente.nombre.toLowerCase().includes(filterValue.toLowerCase())
 			);
 		}
 		if (
 			statusFilter !== "all" &&
 			Array.from(statusFilter).length !== statuses.length
 		) {
-			filteredUsers = filteredUsers.filter((user) =>
+			filteredClients = filteredClients.filter((user) =>
 				Array.from(statusFilter).includes(user.status)
 			);
 		}
 
-		return filteredUsers;
+		return filteredClients;
 	}, [data, filterValue, statusFilter]);
 
 	const items = React.useMemo(() => {
 		const start = (page - 1) * rowsPerPage;
 		const end = start + rowsPerPage;
 
-		return filteredItems.slice(start, end);
-	}, [page, filteredItems, rowsPerPage]);
+		return filteredClients.slice(start, end);
+	}, [page, filteredClients, rowsPerPage]);
 
 	const sortedItems = React.useMemo(() => {
 		return [...items].sort((a: Data, b: Data) => {
@@ -132,9 +129,28 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 	const renderCell = React.useCallback((data: Data, columnKey: React.Key) => {
 		const cellValue = data[columnKey as keyof Data];
 
+		// Si el valor de la celda es un array, mapea sus elementos
+		if (Array.isArray(cellValue)) {
+			return (
+				<ul className='list-disc pl-4'>
+					{cellValue.map((item, index) => (
+						<li key={index}>
+							{typeof item === "object" && item !== null
+								? item.descripcion
+								: item}
+						</li>
+					))}
+				</ul>
+			);
+		}
+		if (typeof cellValue === "object" && cellValue !== null) {
+			return <span>{(cellValue as any).nombre}</span>;
+		}
+
 		switch (columnKey) {
 			case "name":
 				return <div className='flex flex-col'>{cellValue}</div>;
+
 			case "role":
 				return (
 					<div className='flex flex-col'>
@@ -164,16 +180,8 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 								</Button>
 							</DropdownTrigger>
 							<DropdownMenu>
-								<DropdownItem onClick={() => viewClick?.(data.id)} key='view'>
-									View
-								</DropdownItem>
-								<DropdownItem onClick={() => editClick?.(data.id)} key='edit'>
-									Edit
-								</DropdownItem>
-								<DropdownItem
-									onClick={() => deleteClick?.(data.id)}
-									key='delete'>
-									Delete
+								<DropdownItem onClick={handleRowClick} key='view'>
+									Agregar
 								</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
@@ -266,13 +274,13 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 								))}
 							</DropdownMenu>
 						</Dropdown>
-						<Button
+						{/* <Button
 							onClick={handleAddClick}
 							className='bg-foreground text-background'
 							endContent={<PlusIcon />}
 							size='sm'>
 							Add New
-						</Button>
+						</Button> */}
 					</div>
 				</div>
 				<div className='flex justify-between items-center'>
@@ -346,43 +354,47 @@ La propiedad DataProps recibe las props del data, ya que  pueden cambiar.
 	);
 
 	return (
-		<HerouiTable
-			aria-label='Example table with custom cells, pagination and sorting'
-			bottomContent={bottomContent}
-			bottomContentPlacement='outside'
-			checkboxesProps={{
-				classNames: {
-					wrapper: "after:bg-foreground after:text-background text-background",
-				},
-			}}
-			classNames={classNames}
-			selectedKeys={selectedKeys}
-			selectionMode='multiple'
-			sortDescriptor={sortDescriptor}
-			topContent={topContent}
-			topContentPlacement='outside'
-			onSelectionChange={setSelectedKeys}
-			onSortChange={setSortDescriptor}>
-			<TableHeader columns={headerColumns}>
-				{(column) => (
-					<TableColumn
-						key={column.uid}
-						align={column.uid === "actions" ? "center" : "start"}
-						allowsSorting={column.sortable}>
-						{column.name}
-					</TableColumn>
-				)}
-			</TableHeader>
-			<TableBody emptyContent={"No data found"} items={sortedItems}>
-				{(item) => (
-					<TableRow key={item.id}>
-						{(columnKey) => (
-							<TableCell>{renderCell(item, columnKey)}</TableCell>
-						)}
-					</TableRow>
-				)}
-			</TableBody>
-		</HerouiTable>
+		<>
+			<HerouiTable
+				aria-label='Example table with custom cells, pagination and sorting'
+				bottomContent={bottomContent}
+				bottomContentPlacement='outside'
+				checkboxesProps={{
+					classNames: {
+						wrapper:
+							"after:bg-foreground after:text-background text-background",
+					},
+				}}
+				classNames={classNames}
+				selectedKeys={selectedKeys}
+				selectionMode='single'
+				sortDescriptor={sortDescriptor}
+				topContent={topContent}
+				topContentPlacement='outside'
+				onSelectionChange={handleSelectionChange}
+				onSortChange={setSortDescriptor}>
+				<TableHeader columns={headerColumns}>
+					{(column) => (
+						<TableColumn
+							key={column.uid}
+							align={column.uid === "actions" ? "center" : "start"}
+							allowsSorting={column.sortable}>
+							{column.name}
+						</TableColumn>
+					)}
+				</TableHeader>
+				<TableBody emptyContent={"No data found"} items={sortedItems}>
+					{(item) => (
+						<TableRow key={item.id}>
+							{(columnKey) => (
+								<TableCell>{renderCell(item, columnKey)}</TableCell>
+							)}
+						</TableRow>
+					)}
+				</TableBody>
+			</HerouiTable>
+		</>
 	);
 };
+
 export default Table;

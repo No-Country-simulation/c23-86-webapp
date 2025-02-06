@@ -1,48 +1,58 @@
 import React from 'react'
 import Input from "../Input";
 import { PostIncidenceProps } from '@/props/IncidenceProps';
+import { ClientsFormProps } from '@/props/ClientsProps';
 
-const ClientsForm = ({ formData, handleInputChange }: { formData: PostIncidenceProps, handleInputChange: (field: string, value: string) => void; }) => (
-	<div className="grid grid-cols-2 gap-4 p-4 bg-background1 border border-secondary1 rounded-md shadow-md">
+const ClientsForm = ({
+	formData,
+	handleInputChange,
+}: {
+	formData: ClientsFormProps;
+	handleInputChange: (field: string, value: string) => void;
+}) => (
+	<div className='grid grid-cols-2 gap-4 p-4 bg-background1 border border-secondary1 rounded-md shadow-md'>
 		<Input
+			disabledInput={true}
 			nombre='Nombre'
 			inputType='text'
 			cambio={handleInputChange}
 			value={formData.nombre || ""}
 		/>
 		<Input
+			disabledInput={true}
 			nombre='Apellido'
 			inputType='text'
 			cambio={handleInputChange}
 			value={formData.apellido || ""}
 		/>
 		<Input
+			disabledInput={true}
 			nombre='DNI'
 			inputType='number'
 			cambio={handleInputChange}
-			value={formData.dni || ""}
+			value={String(formData.dni) || ""}
 		/>
 		<Input
+			disabledInput={true}
 			nombre='Correo'
 			inputType='email'
 			cambio={handleInputChange}
 			value={formData.correo || ""}
 		/>
 		<Input
+			disabledInput={true}
 			nombre='Telefono'
 			inputType='tel'
 			cambio={handleInputChange}
 			value={formData.telefono || ""}
 		/>
-		<div className="flex flex-col gap-2">
-			<select
-				className="w-full h-10 border border-secondary1 bg-background2 p-2 rounded font-montserrat text-primary3 text-sm"
-				value={formData.estado || ""}
-				onChange={(e) => handleInputChange("estado", e.target.value)}>
-				<option value='activo'>Activo</option>
-				<option value='inactivo'>Inactivo</option>
-			</select>
-		</div>
+		{/* <Input
+			disabledInput={true}
+			nombre='Estado'
+			inputType='tel'
+			value={formData.estado || ""}
+			cambio={handleInputChange}
+		/> */}
 	</div>
 );
 
