@@ -32,4 +32,15 @@ export interface Incidence {
 	[key: string]: any;
 }
 
-export type PostIncidenceProps = Omit<Incidence, "id" | "idCliente" >;
+export interface PostIncidenceProps {
+    idCliente: number;
+    idServicio: number;  
+    descripcion: string;
+}
+
+export interface PostIncidencesDetailsProps {
+    idEmpleado: number;
+    descripcion: string;
+    estado: string;
+    prioridad: number;
+}

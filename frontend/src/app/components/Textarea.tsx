@@ -7,17 +7,19 @@ const Textarea = ({
 	error,
 	cambio,
 	value,
-	item
+	item,
+	disabledTextarea
 }: TextareaProps) => {
 	const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const newValue = event.target.value;
-		cambio(newValue);
+		cambio(nombre,newValue);
+		console.log(newValue)
 	};
-
 	return (
 		<div className='flex flex-col gap-2  '>
 			<div className='relative flex items-center '>
 				<textarea
+					disabled={disabledTextarea}
 					className="w-full h-24 border border-secondary1 bg-background2 p-2 rounded font-montserrat text-primary3 text-sm resize-none"
 					id={nombre}
 					name={nombre}

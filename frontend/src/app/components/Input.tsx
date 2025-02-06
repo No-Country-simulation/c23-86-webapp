@@ -9,6 +9,7 @@ const Input = ({
 	value,
 	item,
 	inputType,
+	disabledInput
 }: InputProps) => {
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const newValue = event.target.value;
@@ -20,6 +21,7 @@ const Input = ({
 		
 			<div className='relative flex items-center '>
 				<input
+					disabled = {disabledInput}
 					className="w-full h-10 border border-secondary1 bg-background2 p-2 rounded font-montserrat text-primary3 text-sm"
 					type={inputType}
 					id={inputType}

@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useTicketsStats from "@/hooks/useTicketsStats";
 import StatisticsSummary from "./components/StatisticsSummary";
 import TicketsTable from "./components/TicketsTable";
@@ -9,81 +9,61 @@ import useIncidenceStore from "@/stores/incidenceStore";
 import { users } from "@/utils/Data/data";
 import Table from "./components/Table/Table";
 import handlerViewClick from "@/utils/functions/handlerViewClick";
-import { Data } from "@/props/tableProps";
 import Notifications from "./components/Notifications/Notifications";
-import { users2 } from "@/utils/Data/data2";
 import handlerDeleteClick from "@/utils/functions/handlerDeleteClick";
 import handlerEditClick from "@/utils/functions/handlerEditClick";
-import { Incidence, PostIncidenceProps } from "@/props/IncidenceProps";
 import IncidencePostModal from "./components/NewIncidenceModal/IncidencePostModal";
-
+import postIncidences from "@/utils/functions/postIncidence";
+import postIncidenceInitialState from "@/utils/state/postIncidenceInitialState";
+import useClientStore from "@/stores/clientsStore";
+import { get } from "http";
+import { Data } from "@/props/tableProps";
 
 const Dashboard = () => {
-	const initialState = {
-		id: 0,
-		idCliente: "",
-		cliente: {
-			id: 0,
-			nombre: "",
-			apellido: "",
-			dni: 0,
-			correo: "",
-			telefono: "",
-			estado: "",
-		},
-		servicio: {
-			id: 0,
-			nombre: "",
-			descripcion: "",
-		},
-		descripcion: "",
-		fechaDeAlta: "",
-		detalles: [
-			{
-				idEmpleado: 0,
-				nombreEmpleado: "",
-				apellidoEmpleado: "",
-				fechaDeModificacion: "",
-				descripcion: "",
-				estado: "",
-				prioridad: "",
-			},
-		],
-	};
-	// Hook personalizado para obtener datos de estadísticas y tickets
+	const initialState = postIncidenceInitialState;
 	const { stats, recentTickets } = useTicketsStats();
 	//?const { user } = useAuthStore(); user en el estado global.
-	// Estado para manejar la estadística seleccionada
+	const { cliente, clientes } = useClientStore();
+	console.log(cliente)
+
 	const [selectedState, setSelectedState] = useState<string | null>(null);
 	const [showNotifications, setShowNotifications] = useState(false);
 	const [modalOpen, setModalOpen] = useState(false);
 	const [formData, setFormData] = useState(initialState);
+
+	const [selectedRowData, setSelectedRowData] = useState<Data | null>(null);
 
 	// Función para manejar clics en las tarjetas de estadísticas
 	const handleCardClick = (state: string) => {
 		setSelectedState(state);
 		setShowNotifications(!showNotifications);
 	};
+	const handleRowClick = (rowData: Data) => {
+		setSelectedRowData(rowData);
+		setModalOpen(true);
+	};
+	const { incidences, getIncidences } = useIncidenceStore();
 
-	const { incidences, getIncidences, postIncidences } = useIncidenceStore();
-	const detalles = incidences.map((incidence) => incidence.detalles);
 	useEffect(() => {
+		console.log("useEffect");
 		getIncidences();
+		console.log("intentando traer incidencias", incidences);
 	}, []);
-	console.log(incidences);
 
+	console.log(incidences);
+	const detalles = incidences.map((incidence) => incidence.detalles);
 	const handleModalInputAndTextareaChange = (field: string, value: string) => {
 		setFormData((prev) => ({
 			...prev,
 			[field]: value,
 		}));
 	};
-
+	console.log(detalles[1]);
 	const handleFormSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 
 		if (formData) {
-			postIncidences(formData as Incidence);
+			postIncidences(formData);
 		} else {
 			console.error("FormData is undefined");
 		}
@@ -114,14 +94,14 @@ const Dashboard = () => {
 			{/* Modal adicion de incidencia*/}
 			{modalOpen && (
 				<IncidencePostModal
+					formData={cliente}
 					handleInputChange={handleModalInputAndTextareaChange}
-					formData={formData}
 					statuses={[
 						{ uid: "active", name: "Active" },
 						{ uid: "paused", name: "Paused" },
 						{ uid: "vacation", name: "Vacation" },
 					]}
-					cambio={handleModalInputAndTextareaChange}
+					cambio={(field:string, value:string) => handleModalInputAndTextareaChange(field, value)}
 					handleFormSubmit={handleFormSubmit}
 					handleDecline={handleDeclineForm}
 				/>
@@ -165,21 +145,32 @@ const Dashboard = () => {
 					{/* 🔥 Contenedor de la Tabla Ajustado */}
 					<div className='max-w-full overflow-x-auto'>
 						<div className='min-w-[800px]'>
-							<Table
-								sortable={["name", "status"]}
-								data={detalles}
-								initialVisibleColumns={["all"]}
-								statuses={[
-									{ uid: "active", name: "Active" },
-									{ uid: "paused", name: "Paused" },
-									{ uid: "vacation", name: "Vacation" },
-								]}
-								viewClick={handleViewClick}
-								editClick={handleEditClick}
-								deleteClick={handleDeleteClick}
-								actions={true}
-								handleAddClick={() => setModalOpen(true)}
-							/>
+							{incidences.length === 0 ? (
+								<p>Cargando datos...</p>
+							) : (
+								<Table
+									sortable={["cliente", "fechaAlta"]}
+									data={incidences}
+									initialVisibleColumns={[
+										"cliente",
+										"descripcion",
+										"detalles",
+										"servicio",
+										"actions",
+									]}
+									statuses={[
+										{ uid: "active", name: "Active" },
+										{ uid: "paused", name: "Paused" },
+										{ uid: "vacation", name: "Vacation" },
+									]}
+									viewClick={handleViewClick}
+									editClick={handleEditClick}
+									deleteClick={handleDeleteClick}
+									actions={true}
+									handleAddClick={() => setModalOpen(true)}
+									onRowSelect={handleRowClick}
+								/>
+							)}
 						</div>
 					</div>
 				</div>

@@ -6,5 +6,6 @@ export type InputProps = {
     cambio: Function;
     value: string;
     item?: React.ReactNode;
-    inputType:string | 'text' 
+    inputType: string | 'text' 
+    disabledInput?: boolean
 }
