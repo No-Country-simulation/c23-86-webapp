@@ -17,7 +17,7 @@ public class CorsConfig {
         config.setAllowedOrigins(List.of(
                 "http://localhost:3000",
                 "https://c23-86-call-master.vercel.app"
-        )); // Origen permitido
+        )); // Agregar múltiples orígenes
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Métodos permitidos
         config.setAllowedHeaders(List.of("Authorization", "Content-Type")); // Headers permitidos
         config.setAllowCredentials(true); // Permitir envío de cookies y autenticación
@@ -27,4 +27,3 @@ public class CorsConfig {
         return new CorsFilter(source);
     }
 }
-
